@@ -35,12 +35,17 @@
             MoveDownButton = new Button();
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
+            Name = new DataGridViewTextBoxColumn();
+            Path = new DataGridViewTextBoxColumn();
+            Pattern = new DataGridViewTextBoxColumn();
+            TotalPages = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             SuspendLayout();
             // 
             // FilesDataGridView
             // 
             FilesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            FilesDataGridView.Columns.AddRange(new DataGridViewColumn[] { Name, Path, Pattern, TotalPages });
             FilesDataGridView.Location = new Point(12, 41);
             FilesDataGridView.Name = "FilesDataGridView";
             FilesDataGridView.Size = new Size(787, 242);
@@ -100,6 +105,31 @@
             CombineFilesButton.Text = "Combine files";
             CombineFilesButton.UseVisualStyleBackColor = true;
             // 
+            // Name
+            // 
+            Name.HeaderText = "Name";
+            Name.Name = "Name";
+            Name.ReadOnly = true;
+            // 
+            // Path
+            // 
+            Path.HeaderText = "Path";
+            Path.Name = "Path";
+            Path.ReadOnly = true;
+            Path.Width = 200;
+            // 
+            // Pattern
+            // 
+            Pattern.HeaderText = "Pattern";
+            Pattern.Name = "Pattern";
+            // 
+            // TotalPages
+            // 
+            TotalPages.HeaderText = "Total pages";
+            TotalPages.Name = "TotalPages";
+            TotalPages.ReadOnly = true;
+            TotalPages.Width = 90;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -112,7 +142,6 @@
             Controls.Add(AddFilesButton);
             Controls.Add(SettingsButton);
             Controls.Add(FilesDataGridView);
-            Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KombajnPDF";
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).EndInit();
@@ -128,5 +157,9 @@
         private Button MoveDownButton;
         private Button RemoveFilesButton;
         private Button CombineFilesButton;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn Path;
+        private DataGridViewTextBoxColumn Pattern;
+        private DataGridViewTextBoxColumn TotalPages;
     }
 }
