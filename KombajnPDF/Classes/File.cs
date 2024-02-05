@@ -10,7 +10,7 @@ namespace KombajnPDF.Classes
 
     internal class File
     {
-        [Browsable(false)]
+        private static int newId = 1;
         private string fullPath { get; set; }
 
         [Browsable(false)]
@@ -18,32 +18,28 @@ namespace KombajnPDF.Classes
 
         [Browsable(true)]
         [DisplayName("Name")]
-        public string FileName { get; set; }
+        public string NameDataGridViewTextBoxColumn { get; set; }
 
         [Browsable(true)]
         [DisplayName("Path")]
-        public string DirectoryPath { get; set; }
+        public string PathDataGridViewTextBoxColumn { get; set; }
 
         [Browsable(true)]
         [DisplayName("Pattern")]
-        public string Pattern { get; set; }
+        public string PatternDataGridViewTextBoxColumn { get; set; }
 
         [Browsable(true)]
         [DisplayName("Total pages")]
-        public int TotalPages { get; set; }
+        public int TotalPagesDataGridViewTextBoxColumn { get; set; }
 
-        private static int newId = 1;
         public File(string fullPath)
         {
-            if (fullPath == null)
-                throw new ArgumentNullException(nameof(fullPath));
-            if (!System.IO.File.Exists(fullPath))
-                throw new FileLoadException();
             Id = newId++;
             this.fullPath = fullPath;
-            FileName = Path.GetFileName(fullPath);
-            DirectoryPath = Path.GetDirectoryName(fullPath);
-            TotalPages = 1;
+            NameDataGridViewTextBoxColumn = Path.GetFileName(fullPath);
+            PathDataGridViewTextBoxColumn = Path.GetDirectoryName(fullPath);
+            PatternDataGridViewTextBoxColumn = "-";
+            TotalPagesDataGridViewTextBoxColumn = 1;
         }
     }
 }

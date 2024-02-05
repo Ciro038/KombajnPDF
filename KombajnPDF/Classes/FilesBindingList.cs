@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KombajnPDF.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,10 +9,16 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Classes
 {
-    internal class FilesBindingList : BindingList<File>
+    internal class FilesBindingList : BindingList<File>, IFilesBindingList
     {
         public void Add(string fullPathToFile)
         {
+            if (fullPathToFile == null)
+                throw new ArgumentNullException(nameof(fullPathToFile));
+            if (!System.IO.File.Exists(fullPathToFile))
+                throw new FileLoadException();
+            if (Path.GetExtension(fullPathToFile)!=".pdf")
+                return;
             base.Add(new File(fullPathToFile)) ;
         }
     }

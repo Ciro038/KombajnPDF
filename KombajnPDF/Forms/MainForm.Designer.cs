@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             FilesDataGridView = new DataGridView();
+            NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            PatternDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            TotalPagesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             SettingsButton = new Button();
             AddFilesButton = new Button();
             MoveUpFilesButton = new Button();
             MoveDownButton = new Button();
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
-            NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            PatternDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            TotalPagesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -46,6 +46,8 @@
             // 
             FilesDataGridView.AllowDrop = true;
             FilesDataGridView.AllowUserToAddRows = false;
+            FilesDataGridView.AllowUserToDeleteRows = false;
+            FilesDataGridView.AllowUserToResizeRows = false;
             FilesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             FilesDataGridView.Columns.AddRange(new DataGridViewColumn[] { NameDataGridViewTextBoxColumn, PathDataGridViewTextBoxColumn, PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn });
             FilesDataGridView.Location = new Point(12, 41);
@@ -54,7 +56,35 @@
             FilesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             FilesDataGridView.Size = new Size(787, 242);
             FilesDataGridView.TabIndex = 0;
+            FilesDataGridView.CellEndEdit += FilesDataGridView_CellEndEdit;
             FilesDataGridView.DragEnter += FilesDataGridView_DragEnter;
+            // 
+            // NameDataGridViewTextBoxColumn
+            // 
+            NameDataGridViewTextBoxColumn.HeaderText = "Name";
+            NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn";
+            NameDataGridViewTextBoxColumn.ReadOnly = true;
+            NameDataGridViewTextBoxColumn.Width = 144;
+            // 
+            // PathDataGridViewTextBoxColumn
+            // 
+            PathDataGridViewTextBoxColumn.HeaderText = "Path";
+            PathDataGridViewTextBoxColumn.Name = "PathDataGridViewTextBoxColumn";
+            PathDataGridViewTextBoxColumn.ReadOnly = true;
+            PathDataGridViewTextBoxColumn.Width = 400;
+            // 
+            // PatternDataGridViewTextBoxColumn
+            // 
+            PatternDataGridViewTextBoxColumn.HeaderText = "Pattern";
+            PatternDataGridViewTextBoxColumn.Name = "PatternDataGridViewTextBoxColumn";
+            PatternDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // TotalPagesDataGridViewTextBoxColumn
+            // 
+            TotalPagesDataGridViewTextBoxColumn.HeaderText = "Total pages";
+            TotalPagesDataGridViewTextBoxColumn.Name = "TotalPagesDataGridViewTextBoxColumn";
+            TotalPagesDataGridViewTextBoxColumn.ReadOnly = true;
+            TotalPagesDataGridViewTextBoxColumn.Width = 90;
             // 
             // SettingsButton
             // 
@@ -100,6 +130,7 @@
             RemoveFilesButton.TabIndex = 5;
             RemoveFilesButton.Text = "Ramove files";
             RemoveFilesButton.UseVisualStyleBackColor = true;
+            RemoveFilesButton.Click += RemoveFilesButton_Click;
             // 
             // CombineFilesButton
             // 
@@ -109,33 +140,6 @@
             CombineFilesButton.TabIndex = 6;
             CombineFilesButton.Text = "Combine files";
             CombineFilesButton.UseVisualStyleBackColor = true;
-            // 
-            // NameDataGridViewTextBoxColumn
-            // 
-            NameDataGridViewTextBoxColumn.HeaderText = "Name";
-            NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn";
-            NameDataGridViewTextBoxColumn.ReadOnly = true;
-            NameDataGridViewTextBoxColumn.Width = 144;
-            // 
-            // PathDataGridViewTextBoxColumn
-            // 
-            PathDataGridViewTextBoxColumn.HeaderText = "Path";
-            PathDataGridViewTextBoxColumn.Name = "PathDataGridViewTextBoxColumn";
-            PathDataGridViewTextBoxColumn.ReadOnly = true;
-            PathDataGridViewTextBoxColumn.Width = 400;
-            // 
-            // PatternDataGridViewTextBoxColumn
-            // 
-            PatternDataGridViewTextBoxColumn.HeaderText = "Pattern";
-            PatternDataGridViewTextBoxColumn.Name = "PatternDataGridViewTextBoxColumn";
-            PatternDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // TotalPagesDataGridViewTextBoxColumn
-            // 
-            TotalPagesDataGridViewTextBoxColumn.HeaderText = "Total pages";
-            TotalPagesDataGridViewTextBoxColumn.Name = "TotalPagesDataGridViewTextBoxColumn";
-            TotalPagesDataGridViewTextBoxColumn.ReadOnly = true;
-            TotalPagesDataGridViewTextBoxColumn.Width = 90;
             // 
             // MainForm
             // 

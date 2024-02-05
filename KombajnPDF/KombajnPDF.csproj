@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SharpPDF" Version="1.1.0" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
+    <PackageReference Include="PDFsharp" Version="6.0.0" />
   </ItemGroup>
 
 </Project>
