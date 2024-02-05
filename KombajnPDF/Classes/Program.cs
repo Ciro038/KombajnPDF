@@ -1,4 +1,4 @@
-namespace KombajnPDF
+namespace KombajnPDF.Classes
 {
     internal static class Program
     {

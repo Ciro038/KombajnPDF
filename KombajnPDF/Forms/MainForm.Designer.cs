@@ -54,6 +54,7 @@
             FilesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             FilesDataGridView.Size = new Size(787, 242);
             FilesDataGridView.TabIndex = 0;
+            FilesDataGridView.DragEnter += FilesDataGridView_DragEnter;
             // 
             // SettingsButton
             // 

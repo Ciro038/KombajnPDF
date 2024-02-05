@@ -12,4 +12,8 @@
     <PackageReference Include="SharpPDF" Version="1.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+
 </Project>
