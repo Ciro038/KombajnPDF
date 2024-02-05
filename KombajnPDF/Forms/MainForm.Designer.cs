@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             FilesDataGridView = new DataGridView();
             NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -39,7 +40,9 @@
             MoveDownButton = new Button();
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
+            MainErrorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // FilesDataGridView
@@ -141,6 +144,10 @@
             CombineFilesButton.Text = "Combine files";
             CombineFilesButton.UseVisualStyleBackColor = true;
             // 
+            // MainErrorProvider
+            // 
+            MainErrorProvider.ContainerControl = this;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,6 +164,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KombajnPDF";
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -173,5 +181,6 @@
         private DataGridViewTextBoxColumn PathDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PatternDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn TotalPagesDataGridViewTextBoxColumn;
+        private ErrorProvider MainErrorProvider;
     }
 }

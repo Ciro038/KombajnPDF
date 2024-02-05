@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PdfSharp.Pdf.IO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace KombajnPDF.Classes
             NameDataGridViewTextBoxColumn = Path.GetFileName(fullPath);
             PathDataGridViewTextBoxColumn = Path.GetDirectoryName(fullPath);
             PatternDataGridViewTextBoxColumn = "-";
-            TotalPagesDataGridViewTextBoxColumn = 1;
+            TotalPagesDataGridViewTextBoxColumn = PdfReader.Open(fullPath,PdfDocumentOpenMode.Import).PageCount;
         }
     }
 }

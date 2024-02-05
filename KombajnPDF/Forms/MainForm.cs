@@ -37,7 +37,9 @@ namespace KombajnPDF
 
         private void FilesDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            var t = e.RowIndex;
+            if (e.ColumnIndex != 2)
+                return;
+
         }
 
         private void RemoveFilesButton_Click(object sender, EventArgs e)
