@@ -29,7 +29,7 @@ namespace KombajnPDF
 
                 foreach (string file in files)
                 {
-                    filesBindingList.Add(FilesDataGridView.RowCount,file);
+                    filesBindingList.Add(FilesDataGridView.RowCount, file);
                 }
             }
         }
@@ -39,16 +39,28 @@ namespace KombajnPDF
             if (e.ColumnIndex != 2)
                 return;
             var file = filesBindingList.Where(x => x.RowIndex == e.RowIndex).First();
-            var filePatternChecker =new FilePatternChecker();
+            var filePatternChecker = new FilePatternChecker();
             if (!file.CheckPattern())
             {
                 MainErrorProvider.SetError(FilesDataGridView, "Wrong pattern for current file !");
             }
         }
-
+        private void AddFilesButton_Click(object sender, EventArgs e)
+        {
+            SelectFilesOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            if (SelectFilesOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string path in SelectFilesOpenFileDialog.FileNames)
+                {
+                    filesBindingList.Add(FilesDataGridView.RowCount, path);
+                }
+            }
+        }
         private void RemoveFilesButton_Click(object sender, EventArgs e)
         {
 
         }
+
+
     }
 }

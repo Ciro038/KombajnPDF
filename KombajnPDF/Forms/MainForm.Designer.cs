@@ -41,6 +41,7 @@
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
             MainErrorProvider = new ErrorProvider(components);
+            SelectFilesOpenFileDialog = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             SuspendLayout();
@@ -106,6 +107,7 @@
             AddFilesButton.TabIndex = 2;
             AddFilesButton.Text = "Add files";
             AddFilesButton.UseVisualStyleBackColor = true;
+            AddFilesButton.Click += AddFilesButton_Click;
             // 
             // MoveUpFilesButton
             // 
@@ -148,6 +150,13 @@
             // 
             MainErrorProvider.ContainerControl = this;
             // 
+            // SelectFilesOpenFileDialog
+            // 
+            SelectFilesOpenFileDialog.Filter = "Files PDF (*.pdf)|*.pdf";
+            SelectFilesOpenFileDialog.Multiselect = true;
+            SelectFilesOpenFileDialog.RestoreDirectory = true;
+            SelectFilesOpenFileDialog.Title = "Select files";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -182,5 +191,6 @@
         private DataGridViewTextBoxColumn PatternDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn TotalPagesDataGridViewTextBoxColumn;
         private ErrorProvider MainErrorProvider;
+        private OpenFileDialog SelectFilesOpenFileDialog;
     }
 }
