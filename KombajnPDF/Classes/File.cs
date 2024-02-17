@@ -5,17 +5,17 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace KombajnPDF.Classes
 {
 
     internal class File
     {
-        private static int newId = 1;
-        private string fullPath { get; set; }
+        private string fullPath;
 
         [Browsable(false)]
-        public int Id { get; set; }
+        public int RowIndex { get; set; }
 
         [Browsable(true)]
         [DisplayName("Name")]
@@ -33,14 +33,20 @@ namespace KombajnPDF.Classes
         [DisplayName("Total pages")]
         public int TotalPagesDataGridViewTextBoxColumn { get; set; }
 
-        public File(string fullPath)
+        public File(int rowIndex,string fullPathToFile)
         {
-            Id = newId++;
-            this.fullPath = fullPath;
-            NameDataGridViewTextBoxColumn = Path.GetFileName(fullPath);
-            PathDataGridViewTextBoxColumn = Path.GetDirectoryName(fullPath);
+            RowIndex = rowIndex;
+            fullPath = fullPathToFile;
+            NameDataGridViewTextBoxColumn = Path.GetFileName(fullPathToFile);
+            PathDataGridViewTextBoxColumn = Path.GetDirectoryName(fullPathToFile);
             PatternDataGridViewTextBoxColumn = "-";
-            TotalPagesDataGridViewTextBoxColumn = PdfReader.Open(fullPath,PdfDocumentOpenMode.Import).PageCount;
+            TotalPagesDataGridViewTextBoxColumn = PdfReader.Open(fullPathToFile, PdfDocumentOpenMode.Import).PageCount;
+        }
+
+        internal bool CheckPattern()
+        {
+            var fileChecker = new FilePatternChecker();
+            return fileChecker.CheckPattern(PatternDataGridViewTextBoxColumn);
         }
     }
 }

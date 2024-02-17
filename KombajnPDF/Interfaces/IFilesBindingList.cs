@@ -8,6 +8,6 @@ namespace KombajnPDF.Interfaces
 {
     internal interface IFilesBindingList
     {
-        public void Add(string fullPathToFile);
+        public void Add(int rowCount,string fullPathToFile);
     }
 }
