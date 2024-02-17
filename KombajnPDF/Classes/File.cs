@@ -46,7 +46,7 @@ namespace KombajnPDF.Classes
         internal bool CheckPattern()
         {
             var fileChecker = new FilePatternChecker();
-            return fileChecker.CheckPattern(PatternDataGridViewTextBoxColumn);
+            return fileChecker.CheckPattern(PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn);
         }
     }
 }
