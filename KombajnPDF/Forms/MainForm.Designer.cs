@@ -154,6 +154,7 @@
             CombineFilesButton.TabIndex = 6;
             CombineFilesButton.Text = "Combine files";
             CombineFilesButton.UseVisualStyleBackColor = true;
+            CombineFilesButton.Click += CombineFilesButton_Click;
             // 
             // MainErrorProvider
             // 

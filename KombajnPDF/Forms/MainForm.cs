@@ -8,16 +8,20 @@ namespace KombajnPDF
     public partial class MainForm : Form
     {
         private IFilesBindingList filesBindingList;
+        private DataGridViewCellStyle correctDataGridViewCellStyle;
+        private DataGridViewCellStyle errorDataGridViewCellStyle;
         public MainForm()
         {
             InitializeComponent();
             filesBindingList = new FilesBindingList();
-            //FilesDataGridView.Columns["Id"].DataPropertyName = "Id";
             FilesDataGridView.Columns["NameDataGridViewTextBoxColumn"].DataPropertyName = "NameDataGridViewTextBoxColumn";
             FilesDataGridView.Columns["PathDataGridViewTextBoxColumn"].DataPropertyName = "PathDataGridViewTextBoxColumn";
             FilesDataGridView.Columns["PatternDataGridViewTextBoxColumn"].DataPropertyName = "PatternDataGridViewTextBoxColumn";
             FilesDataGridView.Columns["TotalPagesDataGridViewTextBoxColumn"].DataPropertyName = "TotalPagesDataGridViewTextBoxColumn";
 
+            correctDataGridViewCellStyle = FilesDataGridView.DefaultCellStyle;
+            errorDataGridViewCellStyle = correctDataGridViewCellStyle.Clone();
+            errorDataGridViewCellStyle.BackColor = Color.Red;
 
             FilesDataGridView.DataSource = filesBindingList;
         }
@@ -38,12 +42,26 @@ namespace KombajnPDF
 
         private void FilesDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 2)
-                return;
             var file = filesBindingList[e.RowIndex];
-            if (!file.CheckPattern())
+            if (FilesDataGridView.Columns[e.ColumnIndex].Name != nameof(file.PatternDataGridViewTextBoxColumn))
+                return;
+            try
             {
-                MainErrorProvider.SetError(FilesDataGridView, "Wrong pattern for current file !");
+                if (!file.CheckPattern())
+                {
+                    FilesDataGridView.Rows[e.RowIndex].DefaultCellStyle = errorDataGridViewCellStyle;
+                    MainErrorProvider.SetError(FilesDataGridView, "Wrong pattern for current file !");
+                }
+                else
+                {
+                    FilesDataGridView.Rows[e.RowIndex].DefaultCellStyle = correctDataGridViewCellStyle;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FilesDataGridView.Rows[e.RowIndex].DefaultCellStyle = errorDataGridViewCellStyle;
+                MainErrorProvider.SetError(FilesDataGridView, ex.Message);
             }
         }
         private void AddFilesButton_Click(object sender, EventArgs e)
@@ -85,7 +103,7 @@ namespace KombajnPDF
                 newIndexes.Add(newIndex);
             }
             FilesDataGridView.ClearSelection();
-            foreach (int newIndex in newIndexes.OrderByDescending(x=>x))
+            foreach (int newIndex in newIndexes.OrderByDescending(x => x))
             {
                 FilesDataGridView.Rows[newIndex].Selected = true;
             }
@@ -100,7 +118,7 @@ namespace KombajnPDF
             List<int> newIndexes = new List<int>();
             foreach (DataGridViewRow item in FilesDataGridView.SelectedRows)
             {
-                if (item.Index == FilesDataGridView.Rows.Count-1)
+                if (item.Index == FilesDataGridView.Rows.Count - 1)
                 {
                     continue;
                 }
@@ -116,6 +134,11 @@ namespace KombajnPDF
             {
                 FilesDataGridView.Rows[newIndex].Selected = true;
             }
+        }
+
+        private void CombineFilesButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

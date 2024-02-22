@@ -29,27 +29,27 @@ namespace KombajnPDF.Classes
                     {
                         ListOfPagesToPrint.AddRange(Enumerable.Range(1, totalPages));
                     }
-                    else if (currentPart.StartsWith("-"))
+                    else if (currentPart.StartsWith('-'))
                     {
-                        int endPage = Convert.ToInt32(currentPart.Split("-")[1]);
+                        int endPage = Convert.ToInt32(currentPart.Split('-')[1]);
                         if (endPage> totalPages)
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
                         ListOfPagesToPrint.AddRange(Enumerable.Range(1, endPage));
                     }
-                    else if (currentPart.EndsWith("-"))
+                    else if (currentPart.EndsWith('-'))
                     {
-                        int startPage = Convert.ToInt32(currentPart.Split("-")[0]);
+                        int startPage = Convert.ToInt32(currentPart.Split('-')[0]);
                         if (startPage > totalPages)
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
                         ListOfPagesToPrint.AddRange(Enumerable.Range(startPage, totalPages));
                     }
-                    else if (currentPart.Contains("-"))
+                    else if (currentPart.Contains('-'))
                     {
-                        var startEndPages = currentPart.Split("-");
+                        var startEndPages = currentPart.Split('-');
                         int startPage= Convert.ToInt32(startEndPages[0]);
                         int endPage= Convert.ToInt32(startEndPages[1]);
                         if (startPage > totalPages)
@@ -64,6 +64,11 @@ namespace KombajnPDF.Classes
                     }
                     else
                     {
+                        int currentPage=Convert.ToInt32(currentPart);
+                        if (currentPage>totalPages)
+                        {
+                            throw new InvalidDataException("Invbalid page number");
+                        }
                         ListOfPagesToPrint.Add(Convert.ToInt32(currentPart));
                     }
                 }
