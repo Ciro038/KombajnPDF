@@ -13,10 +13,11 @@ namespace KombajnPDF.Classes
     {
         public new File this[int index]
         {
-            get
-            {
-                return base[index];
-            }
+            get { return base[index]; }
+        }
+        public new List<File> Items
+        {
+            get { return (List<File>)base.Items; }
         }
         public void Add(string fullPathToFile)
         {
@@ -35,7 +36,7 @@ namespace KombajnPDF.Classes
 
         public new void RemoveAt(int rowIndex)
         {
-           base.RemoveAt(rowIndex);
+            base.RemoveAt(rowIndex);
         }
         public new void Insert(int index, File file)
         {

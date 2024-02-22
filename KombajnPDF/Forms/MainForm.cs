@@ -1,5 +1,7 @@
 using KombajnPDF.Classes;
 using KombajnPDF.Interfaces;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 using System.Windows.Forms;
 using File = KombajnPDF.Classes.File;
 
@@ -138,7 +140,15 @@ namespace KombajnPDF
 
         private void CombineFilesButton_Click(object sender, EventArgs e)
         {
-
+            if (FilesDataGridView.Rows.Count == 0)
+            {
+                return;
+            }
+            var mainDocument = new PdfDocument();
+            foreach (File file in filesBindingList.Items)
+            {
+                mainDocument.AddPage();
+            }
         }
     }
 }

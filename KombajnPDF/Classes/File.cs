@@ -44,5 +44,11 @@ namespace KombajnPDF.Classes
             var fileChecker = new FilePatternChecker();
             return fileChecker.CheckPattern(PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn);
         }
+        internal List<int> GetPagesToPrint()
+        {
+            var fileChecker = new FilePatternChecker();
+            fileChecker.CheckPattern(PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn);
+            return fileChecker.ListOfPagesToPrint;
+        }
     }
 }
