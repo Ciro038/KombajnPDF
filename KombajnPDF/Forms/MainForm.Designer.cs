@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             FilesDataGridView = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
             NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             PatternDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -53,7 +54,7 @@
             FilesDataGridView.AllowUserToDeleteRows = false;
             FilesDataGridView.AllowUserToResizeRows = false;
             FilesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            FilesDataGridView.Columns.AddRange(new DataGridViewColumn[] { NameDataGridViewTextBoxColumn, PathDataGridViewTextBoxColumn, PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn });
+            FilesDataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, NameDataGridViewTextBoxColumn, PathDataGridViewTextBoxColumn, PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn });
             FilesDataGridView.Location = new Point(12, 41);
             FilesDataGridView.Name = "FilesDataGridView";
             FilesDataGridView.RowHeadersVisible = false;
@@ -62,6 +63,12 @@
             FilesDataGridView.TabIndex = 0;
             FilesDataGridView.CellEndEdit += FilesDataGridView_CellEndEdit;
             FilesDataGridView.DragEnter += FilesDataGridView_DragEnter;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.Visible = false;
             // 
             // NameDataGridViewTextBoxColumn
             // 
@@ -117,6 +124,7 @@
             MoveUpFilesButton.TabIndex = 3;
             MoveUpFilesButton.Text = "Move up";
             MoveUpFilesButton.UseVisualStyleBackColor = true;
+            MoveUpFilesButton.Click += MoveUpFilesButton_Click;
             // 
             // MoveDownButton
             // 
@@ -126,6 +134,7 @@
             MoveDownButton.TabIndex = 4;
             MoveDownButton.Text = "Move down";
             MoveDownButton.UseVisualStyleBackColor = true;
+            MoveDownButton.Click += MoveDownButton_Click;
             // 
             // RemoveFilesButton
             // 
@@ -186,11 +195,12 @@
         private Button MoveDownButton;
         private Button RemoveFilesButton;
         private Button CombineFilesButton;
+        private ErrorProvider MainErrorProvider;
+        private OpenFileDialog SelectFilesOpenFileDialog;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn NameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PathDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PatternDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn TotalPagesDataGridViewTextBoxColumn;
-        private ErrorProvider MainErrorProvider;
-        private OpenFileDialog SelectFilesOpenFileDialog;
     }
 }

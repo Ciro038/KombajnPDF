@@ -9,17 +9,37 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Classes
 {
-    internal class FilesBindingList : BindingList<File>
+    internal class FilesBindingList : BindingList<File>, IFilesBindingList
     {
-        public void Add(int rowIndex, string fullPathToFile)
+        public new File this[int index]
+        {
+            get
+            {
+                return base[index];
+            }
+        }
+        public void Add(string fullPathToFile)
         {
             if (fullPathToFile == null)
                 throw new ArgumentNullException(nameof(fullPathToFile));
+            if (String.IsNullOrEmpty(fullPathToFile))
+            {
+                throw new ArgumentNullException(nameof(fullPathToFile));
+            }
             if (!System.IO.File.Exists(fullPathToFile))
                 throw new FileLoadException();
-            if (Path.GetExtension(fullPathToFile).ToUpper() != ".PDF")
+            if (!Path.GetExtension(fullPathToFile).Equals(".PDF", StringComparison.CurrentCultureIgnoreCase))
                 return;
-            base.Add(new File(rowIndex, fullPathToFile));
+            base.Add(new File(fullPathToFile));
+        }
+
+        public new void RemoveAt(int rowIndex)
+        {
+           base.RemoveAt(rowIndex);
+        }
+        public new void Insert(int index, File file)
+        {
+            base.Insert(index, file);
         }
     }
 }

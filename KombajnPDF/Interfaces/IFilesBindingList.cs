@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KombajnPDF.Classes;
 
 namespace KombajnPDF.Interfaces
 {
     internal interface IFilesBindingList
     {
-        public void Add(int rowCount,string fullPathToFile);
+        public Classes.File this[int index] { get; }
+        public void Add(string fullPathToFile);
+        public void RemoveAt(int rowIndex);
+        public void Insert(int index, Classes.File file);
+
     }
 }

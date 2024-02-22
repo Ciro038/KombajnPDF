@@ -14,9 +14,6 @@ namespace KombajnPDF.Classes
     {
         private string fullPath;
 
-        [Browsable(false)]
-        public int RowIndex { get; set; }
-
         [Browsable(true)]
         [DisplayName("Name")]
         public string NameDataGridViewTextBoxColumn { get; set; }
@@ -33,9 +30,8 @@ namespace KombajnPDF.Classes
         [DisplayName("Total pages")]
         public int TotalPagesDataGridViewTextBoxColumn { get; set; }
 
-        public File(int rowIndex,string fullPathToFile)
+        public File(string fullPathToFile)
         {
-            RowIndex = rowIndex;
             fullPath = fullPathToFile;
             NameDataGridViewTextBoxColumn = Path.GetFileName(fullPathToFile);
             PathDataGridViewTextBoxColumn = Path.GetDirectoryName(fullPathToFile);
