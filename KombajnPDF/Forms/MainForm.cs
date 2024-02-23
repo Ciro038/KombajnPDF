@@ -144,10 +144,14 @@ namespace KombajnPDF
             {
                 return;
             }
-            var mainDocument = new PdfDocument();
-            foreach (File file in filesBindingList.Items)
+            try
             {
-                mainDocument.AddPage();
+                FilesCombiner filesCombiner = new FilesCombiner();
+                filesCombiner.CombineFiles(filesBindingList.Items);
+            }
+            catch (Exception ex)
+            {
+                MainErrorProvider.SetError(FilesDataGridView, ex.Message);
             }
         }
     }

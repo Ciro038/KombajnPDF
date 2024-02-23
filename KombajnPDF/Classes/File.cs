@@ -12,7 +12,8 @@ namespace KombajnPDF.Classes
 
     internal class File
     {
-        private string fullPath;
+        [Browsable(false)]
+        public string FullPath { get; private set; }
 
         [Browsable(true)]
         [DisplayName("Name")]
@@ -32,7 +33,7 @@ namespace KombajnPDF.Classes
 
         public File(string fullPathToFile)
         {
-            fullPath = fullPathToFile;
+            FullPath = fullPathToFile;
             NameDataGridViewTextBoxColumn = Path.GetFileName(fullPathToFile);
             PathDataGridViewTextBoxColumn = Path.GetDirectoryName(fullPathToFile);
             PatternDataGridViewTextBoxColumn = "-";
