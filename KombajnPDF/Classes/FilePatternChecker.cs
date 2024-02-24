@@ -6,14 +6,26 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Classes
 {
+    /// <summary>
+    /// Class to validate pattern for the file
+    /// </summary>
     internal class FilePatternChecker
     {
+        /// <summary>
+        /// List of pages to print
+        /// </summary>
         public List<int> ListOfPagesToPrint { get; private set; }
-        public bool CheckPattern(string pattern, int totalPages)
+        /// <summary>
+        /// Method checks whether the pattern is correct for the given number of pages
+        /// </summary>
+        /// <param name="pattern">Pattern to check pages to print</param>
+        /// <param name="countOfPages">Cont of pages</param>
+        /// <returns>true if patters is correct</returns>
+        public bool CheckPattern(string pattern, int countOfPages)
         {
             if (String.IsNullOrEmpty(pattern) || pattern == "-")
             {
-                ListOfPagesToPrint = Enumerable.Range(1, totalPages).ToList();
+                ListOfPagesToPrint = Enumerable.Range(1, countOfPages).ToList();
                 return true;
             }
             if (PatternContainsNotAllowedChars(pattern))
@@ -27,12 +39,12 @@ namespace KombajnPDF.Classes
                     string currentPart = pagesParts[i];
                     if (currentPart == "-")
                     {
-                        ListOfPagesToPrint.AddRange(Enumerable.Range(1, totalPages));
+                        ListOfPagesToPrint.AddRange(Enumerable.Range(1, countOfPages));
                     }
                     else if (currentPart.StartsWith('-'))
                     {
                         int endPage = Convert.ToInt32(currentPart.Split('-')[1]);
-                        if (endPage> totalPages)
+                        if (endPage> countOfPages)
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
@@ -41,22 +53,22 @@ namespace KombajnPDF.Classes
                     else if (currentPart.EndsWith('-'))
                     {
                         int startPage = Convert.ToInt32(currentPart.Split('-')[0]);
-                        if (startPage > totalPages)
+                        if (startPage > countOfPages)
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
-                        ListOfPagesToPrint.AddRange(Enumerable.Range(startPage, totalPages));
+                        ListOfPagesToPrint.AddRange(Enumerable.Range(startPage, countOfPages));
                     }
                     else if (currentPart.Contains('-'))
                     {
                         var startEndPages = currentPart.Split('-');
                         int startPage= Convert.ToInt32(startEndPages[0]);
                         int endPage= Convert.ToInt32(startEndPages[1]);
-                        if (startPage > totalPages)
+                        if (startPage > countOfPages)
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
-                        if (endPage > totalPages)
+                        if (endPage > countOfPages)
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
@@ -65,7 +77,7 @@ namespace KombajnPDF.Classes
                     else
                     {
                         int currentPage=Convert.ToInt32(currentPart);
-                        if (currentPage>totalPages)
+                        if (currentPage>countOfPages)
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
@@ -80,6 +92,11 @@ namespace KombajnPDF.Classes
             }
             return true;
         }
+        /// <summary>
+        /// Method checks whether pattern contains illegal chars
+        /// </summary>
+        /// <param name="pattern">Pattern to check pages to print</param>
+        /// <returns>true if he doesn't have it</returns>
         private bool PatternContainsNotAllowedChars(string pattern)
         {
             char[] allowedChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', ';' };
