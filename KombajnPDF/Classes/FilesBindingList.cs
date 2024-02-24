@@ -11,26 +11,16 @@ namespace KombajnPDF.Classes
 {
     internal class FilesBindingList : BindingList<File>, IFilesBindingList
     {
-        public new File this[int index]
+        public new IFile this[int index]
         {
             get { return base[index]; }
         }
-        public new List<File> Items
+        public new List<IFile> Items
         {
-            get { return (List<File>)base.Items; }
+            get { return ((List<File>)base.Items).ConvertAll(file => (IFile)file); }
         }
         public void Add(string fullPathToFile)
         {
-            if (fullPathToFile == null)
-                throw new ArgumentNullException(nameof(fullPathToFile));
-            if (String.IsNullOrEmpty(fullPathToFile))
-            {
-                throw new ArgumentNullException(nameof(fullPathToFile));
-            }
-            if (!System.IO.File.Exists(fullPathToFile))
-                throw new FileLoadException();
-            if (!Path.GetExtension(fullPathToFile).Equals(".PDF", StringComparison.CurrentCultureIgnoreCase))
-                return;
             base.Add(new File(fullPathToFile));
         }
 
@@ -38,9 +28,9 @@ namespace KombajnPDF.Classes
         {
             base.RemoveAt(rowIndex);
         }
-        public new void Insert(int index, File file)
+        public void Insert(int index, string fullPathToFile)
         {
-            base.Insert(index, file);
+            base.Insert(index, new File(fullPathToFile));
         }
     }
 }

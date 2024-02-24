@@ -98,10 +98,10 @@ namespace KombajnPDF
                 {
                     continue;
                 }
-                var copiedRow = filesBindingList[item.Index];
+                string fullPathToFile = filesBindingList[item.Index].GetFullPath();
                 int newIndex = item.Index - 1;
                 filesBindingList.RemoveAt(item.Index);
-                filesBindingList.Insert(newIndex, copiedRow);
+                filesBindingList.Insert(newIndex, fullPathToFile);
                 newIndexes.Add(newIndex);
             }
             FilesDataGridView.ClearSelection();
@@ -124,11 +124,10 @@ namespace KombajnPDF
                 {
                     continue;
                 }
-                FilesDataGridView.Rows[item.Index].Selected = false;
-                var copiedRow = filesBindingList[item.Index];
+                string fullPathToFile = filesBindingList[item.Index].GetFullPath();
                 int newIndex = item.Index + 1;
                 filesBindingList.RemoveAt(item.Index);
-                filesBindingList.Insert(newIndex, copiedRow);
+                filesBindingList.Insert(newIndex, fullPathToFile);
                 newIndexes.Add(newIndex);
             }
             FilesDataGridView.ClearSelection();

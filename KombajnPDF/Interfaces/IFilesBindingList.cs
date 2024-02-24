@@ -10,11 +10,11 @@ namespace KombajnPDF.Interfaces
 {
     internal interface IFilesBindingList
     {
-        List<Classes.File> Items { get; }
-        public Classes.File this[int index] { get; }
+        List<IFile> Items { get; }
+        public IFile this[int index] { get; }
         public void Add(string fullPathToFile);
         public void RemoveAt(int rowIndex);
-        public void Insert(int index, Classes.File file);
+        public void Insert(int index, string fullPathToFile);
 
     }
 }

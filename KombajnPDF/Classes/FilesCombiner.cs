@@ -13,11 +13,12 @@ namespace KombajnPDF.Classes
     {
         private string GetPathToTarget()
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Filter = "Files PDF|*.pdf";
-            saveFileDialog.Title = "Save file PDF";
-            saveFileDialog.FileName = "NewDocument.pdf";
+            SaveFileDialog saveFileDialog = new()
+            {
+                Filter = "Files PDF|*.pdf",
+                Title = "Save file PDF",
+                FileName = "NewDocument.pdf"
+            };
 
             DialogResult result = saveFileDialog.ShowDialog();
 
@@ -26,7 +27,7 @@ namespace KombajnPDF.Classes
                 string pathToSave = saveFileDialog.FileName;
                 if (String.IsNullOrEmpty(pathToSave))
                 {
-                    return null;
+                    return String.Empty;
                 }
                 string extension = Path.GetExtension(pathToSave);
                 if (String.IsNullOrEmpty(extension))
@@ -39,22 +40,22 @@ namespace KombajnPDF.Classes
                 }
                 else
                 {
-                    return null;
+                    return String.Empty;
                 }
             }
             else
             {
-                return null;
+                return String.Empty;
             }
         }
-        internal void CombineFiles(List<File> items)
+        internal void CombineFiles(List<IFile> items)
         {
             string fullPath = GetPathToTarget();
             if (String.IsNullOrEmpty(fullPath)) { throw new ArgumentException("First choose where to save the file."); }
             var mainDocument = new PdfDocument();
-            foreach (File file in items)
+            foreach (IFile file in items)
             {
-                var currentDocument = PdfReader.Open(file.FullPath, PdfDocumentOpenMode.Import);
+                var currentDocument = PdfReader.Open(file.GetFullPath(), PdfDocumentOpenMode.Import);
                 foreach (int pageNumber in file.GetPagesToPrint())
                 {
                     mainDocument.AddPage(currentDocument.Pages[pageNumber - 1]);
