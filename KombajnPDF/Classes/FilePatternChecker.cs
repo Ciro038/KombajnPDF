@@ -60,7 +60,7 @@ namespace KombajnPDF.Classes
                         {
                             throw new InvalidDataException("Invbalid page number");
                         }
-                        ListOfPagesToPrint.AddRange(Enumerable.Range(startPage, endPage));
+                        ListOfPagesToPrint.AddRange(Enumerable.Range(startPage, endPage- startPage+1));
                     }
                     else
                     {
