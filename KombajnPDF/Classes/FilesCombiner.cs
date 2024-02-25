@@ -9,8 +9,15 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Classes
 {
+    /// <summary>
+    /// Class is responsible for combining files into one
+    /// </summary>
     internal class FilesCombiner
     {
+        /// <summary>
+        /// Get path to the new file
+        /// </summary>
+        /// <returns>New full path to the file</returns>
         private string GetPathToTarget()
         {
             SaveFileDialog saveFileDialog = new()
@@ -48,6 +55,11 @@ namespace KombajnPDF.Classes
                 return String.Empty;
             }
         }
+        /// <summary>
+        /// Combine files into new one 
+        /// </summary>
+        /// <param name="items">Files to combine</param>
+        /// <exception cref="ArgumentException">Thrown if no path is selected/exception>
         internal void CombineFiles(List<IFile> items)
         {
             string fullPath = GetPathToTarget();
