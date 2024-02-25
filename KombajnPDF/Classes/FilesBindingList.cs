@@ -19,18 +19,30 @@ namespace KombajnPDF.Classes
         {
             get { return ((List<File>)base.Items).ConvertAll(file => (IFile)file); }
         }
+        /// <summary>
+        /// Adds an object to the end of the collection based on full path to the file
+        /// </summary>
+        /// <param name="fullPathToFile">Full path to the file</param>
         public void Add(string fullPathToFile)
         {
             base.Add(new File(fullPathToFile));
         }
-
+        /// <summary>
+        /// Removes the element at the specified index od collection
+        /// </summary>
+        /// <param name="rowIndex">The zero-based index of the e,emet to remove</param>
         public new void RemoveAt(int rowIndex)
         {
             base.RemoveAt(rowIndex);
         }
+        /// <summary>
+        /// Insert an element into collection at the specified index
+        /// </summary>
+        /// <param name="index">The zero-based index at which item should be inserted</param>
+        /// <param name="fullPathToFile">Full path to the file</param>
         public void Insert(int index, string fullPathToFile)
         {
-            base.Insert(index, new File(fullPathToFile));
+           base.Insert(index, new File(fullPathToFile));
         }
     }
 }
