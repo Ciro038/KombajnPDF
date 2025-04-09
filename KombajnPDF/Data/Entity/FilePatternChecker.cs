@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Class to validate pattern for the file
@@ -23,7 +23,7 @@ namespace KombajnPDF.Classes
         /// <returns>true if patters is correct</returns>
         public bool CheckPattern(string pattern, int countOfPages)
         {
-            if (String.IsNullOrEmpty(pattern) || pattern == "-")
+            if (string.IsNullOrEmpty(pattern) || pattern == "-")
             {
                 ListOfPagesToPrint = Enumerable.Range(1, countOfPages).ToList();
                 return true;

@@ -1,4 +1,4 @@
-﻿using KombajnPDF.Interfaces;
+﻿using KombajnPDF.Data.Abstract;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF.Data.Entity
 {
     internal class FilesBindingList : BindingList<File>, IFilesBindingList
     {
@@ -25,7 +25,7 @@ namespace KombajnPDF.Classes
         /// <param name="fullPathToFile">Full path to the file</param>
         public void Add(string fullPathToFile)
         {
-            base.Add(new File(fullPathToFile));
+            Add(new File(fullPathToFile));
         }
         /// <summary>
         /// Removes the element at the specified index od collection
@@ -42,7 +42,7 @@ namespace KombajnPDF.Classes
         /// <param name="fullPathToFile">Full path to the file</param>
         public void Insert(int index, string fullPathToFile)
         {
-           base.Insert(index, new File(fullPathToFile));
+           Insert(index, new File(fullPathToFile));
         }
     }
 }

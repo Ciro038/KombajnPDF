@@ -1,9 +1,9 @@
-using KombajnPDF.Classes;
-using KombajnPDF.Interfaces;
+using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System.Windows.Forms;
-using File = KombajnPDF.Classes.File;
+using File = KombajnPDF.Data.Entity.File;
 
 namespace KombajnPDF
 {
@@ -152,6 +152,11 @@ namespace KombajnPDF
             {
                 MainErrorProvider.SetError(FilesDataGridView, ex.Message);
             }
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

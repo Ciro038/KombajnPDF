@@ -1,4 +1,4 @@
-﻿using KombajnPDF.Interfaces;
+﻿using KombajnPDF.Data.Abstract;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Class is responsible for combining files into one
@@ -32,12 +32,12 @@ namespace KombajnPDF.Classes
             if (result == DialogResult.OK)
             {
                 string pathToSave = saveFileDialog.FileName;
-                if (String.IsNullOrEmpty(pathToSave))
+                if (string.IsNullOrEmpty(pathToSave))
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
                 string extension = Path.GetExtension(pathToSave);
-                if (String.IsNullOrEmpty(extension))
+                if (string.IsNullOrEmpty(extension))
                 {
                     return pathToSave += ".pdf";
                 }
@@ -47,12 +47,12 @@ namespace KombajnPDF.Classes
                 }
                 else
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
             }
             else
             {
-                return String.Empty;
+                return string.Empty;
             }
         }
         /// <summary>
@@ -63,7 +63,7 @@ namespace KombajnPDF.Classes
         internal void CombineFiles(List<IFile> items)
         {
             string fullPath = GetPathToTarget();
-            if (String.IsNullOrEmpty(fullPath)) { throw new ArgumentException("First choose where to save the file."); }
+            if (string.IsNullOrEmpty(fullPath)) { throw new ArgumentException("First choose where to save the file."); }
             var mainDocument = new PdfDocument();
             foreach (IFile file in items)
             {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Interfaces
+namespace KombajnPDF.Data.Abstract
 {
     internal interface IFile
     {

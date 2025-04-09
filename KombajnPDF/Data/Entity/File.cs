@@ -1,4 +1,5 @@
-﻿using KombajnPDF.Interfaces;
+﻿using KombajnPDF.Classes;
+using KombajnPDF.Data.Abstract;
 using PdfSharp.Pdf.IO;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace KombajnPDF.Classes;
+namespace KombajnPDF.Data.Entity;
 /// <summary>
 /// Class representing a file
 /// </summary>
@@ -55,7 +56,7 @@ internal class File : IFile
     /// <exception cref="FileLoadException">if file is not a pdf</exception>
     public File(string fullPathToFile)
     {
-        if (String.IsNullOrEmpty(fullPathToFile))
+        if (string.IsNullOrEmpty(fullPathToFile))
             throw new ArgumentNullException(nameof(fullPathToFile));
         if (!System.IO.File.Exists(fullPathToFile))
             throw new FileLoadException();

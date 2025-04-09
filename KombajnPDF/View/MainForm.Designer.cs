@@ -105,6 +105,7 @@
             SettingsButton.TabIndex = 1;
             SettingsButton.Text = "Settings";
             SettingsButton.UseVisualStyleBackColor = true;
+            SettingsButton.Click += SettingsButton_Click;
             // 
             // AddFilesButton
             // 

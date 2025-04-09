@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Enum\" />
+    <Folder Include="Presenter\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 
