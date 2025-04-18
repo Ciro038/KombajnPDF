@@ -166,7 +166,7 @@
             SelectFilesOpenFileDialog.Filter = "Files PDF (*.pdf)|*.pdf";
             SelectFilesOpenFileDialog.Multiselect = true;
             SelectFilesOpenFileDialog.RestoreDirectory = true;
-            SelectFilesOpenFileDialog.Title = "Select files";
+            SelectFilesOpenFileDialog.Title = "Select _files";
             // 
             // MainForm
             // 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace KombajnPDF.Data.Entity
 {
     /// <summary>
-    /// Class is responsible for combining files into one
+    /// Class is responsible for combining _files into one
     /// </summary>
     internal class FilesCombiner
     {
@@ -56,7 +56,7 @@ namespace KombajnPDF.Data.Entity
             }
         }
         /// <summary>
-        /// Combine files into new one 
+        /// Combine _files into new one 
         /// </summary>
         /// <param name="items">Files to combine</param>
         /// <exception cref="ArgumentException">Thrown if no path is selected/exception>

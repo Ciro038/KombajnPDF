@@ -1,5 +1,7 @@
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Entity;
+using KombajnPDF.Interface;
+using KombajnPDF.Presenter;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System.Windows.Forms;
@@ -7,15 +9,33 @@ using File = KombajnPDF.Data.Entity.File;
 
 namespace KombajnPDF
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IMainFormView
     {
-        private IFilesBindingList filesBindingList;
+        private readonly MainFormPresenter presenter;
         private DataGridViewCellStyle correctDataGridViewCellStyle;
         private DataGridViewCellStyle errorDataGridViewCellStyle;
+
+        public event Action<int, string> FilesDataGridViewOnPatternCellEdited;
+        public event Action<DragEventArgs> FilesDataGridViewDragEnter;
+        public event Action AddFilesButtonOnAddFilesClicked;
+        public event Action<DataGridViewSelectedRowCollection> RemoveFilesButtonClicked;
+        public event Action<List<int>> MoveUpFilesButtonClicked;
+        public event Action<List<int>> MoveDownFilesButtonClicked;
+        public event Action CombineFilesButtonClicked;
+        public event Action OpenSettingsFormClicked;
+
         public MainForm()
         {
             InitializeComponent();
-            filesBindingList = new FilesBindingList();
+            presenter = new MainFormPresenter(this);
+
+            InitializeDataGrid();
+        }
+        private void InitializeDataGrid()
+        {
+            FilesDataGridView.AutoGenerateColumns = false;
+            FilesDataGridView.DataSource = presenter.GetBindingList();
+
             FilesDataGridView.Columns["NameDataGridViewTextBoxColumn"].DataPropertyName = "NameDataGridViewTextBoxColumn";
             FilesDataGridView.Columns["PathDataGridViewTextBoxColumn"].DataPropertyName = "PathDataGridViewTextBoxColumn";
             FilesDataGridView.Columns["PatternDataGridViewTextBoxColumn"].DataPropertyName = "PatternDataGridViewTextBoxColumn";
@@ -24,139 +44,89 @@ namespace KombajnPDF
             correctDataGridViewCellStyle = FilesDataGridView.DefaultCellStyle;
             errorDataGridViewCellStyle = correctDataGridViewCellStyle.Clone();
             errorDataGridViewCellStyle.BackColor = Color.Red;
-
-            FilesDataGridView.DataSource = filesBindingList;
         }
+
         private void FilesDataGridView_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data is null)
-                return;
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-
-                foreach (string file in files)
-                {
-                    filesBindingList.Add(file);
-                }
-            }
+            FilesDataGridViewDragEnter(e);
         }
-
         private void FilesDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            var file = filesBindingList[e.RowIndex];
-            if (FilesDataGridView.Columns[e.ColumnIndex].Name != nameof(file.PatternDataGridViewTextBoxColumn))
-                return;
-            try
-            {
-                if (!file.CheckPattern())
-                {
-                    FilesDataGridView.Rows[e.RowIndex].DefaultCellStyle = errorDataGridViewCellStyle;
-                    MainErrorProvider.SetError(FilesDataGridView, "Wrong pattern for current file !");
-                }
-                else
-                {
-                    FilesDataGridView.Rows[e.RowIndex].DefaultCellStyle = correctDataGridViewCellStyle;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                FilesDataGridView.Rows[e.RowIndex].DefaultCellStyle = errorDataGridViewCellStyle;
-                MainErrorProvider.SetError(FilesDataGridView, ex.Message);
-            }
+            FilesDataGridViewOnPatternCellEdited(e.RowIndex, FilesDataGridView.Columns[e.ColumnIndex].Name);
         }
         private void AddFilesButton_Click(object sender, EventArgs e)
         {
-            SelectFilesOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            if (SelectFilesOpenFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                foreach (string path in SelectFilesOpenFileDialog.FileNames)
-                {
-                    filesBindingList.Add(path);
-                }
-            }
+            AddFilesButtonOnAddFilesClicked();
         }
         private void RemoveFilesButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in FilesDataGridView.SelectedRows)
-            {
-                filesBindingList.RemoveAt(row.Index);
-            }
+            RemoveFilesButtonClicked(FilesDataGridView.SelectedRows);
         }
 
         private void MoveUpFilesButton_Click(object sender, EventArgs e)
         {
-            if (FilesDataGridView.Rows.Count == 1)
-            {
-                return;
-            }
-            List<int> newIndexes = new List<int>();
-            foreach (DataGridViewRow item in FilesDataGridView.SelectedRows)
-            {
-                if (item.Index == 0)
-                {
-                    continue;
-                }
-                string fullPathToFile = filesBindingList[item.Index].GetFullPath();
-                int newIndex = item.Index - 1;
-                filesBindingList.RemoveAt(item.Index);
-                filesBindingList.Insert(newIndex, fullPathToFile);
-                newIndexes.Add(newIndex);
-            }
-            FilesDataGridView.ClearSelection();
-            foreach (int newIndex in newIndexes.OrderByDescending(x => x))
-            {
-                FilesDataGridView.Rows[newIndex].Selected = true;
-            }
+            var selectedIndexes = FilesDataGridView.SelectedRows
+    .Cast<DataGridViewRow>()
+    .Select(r => r.Index)
+    .ToList();
+
+            MoveUpFilesButtonClicked(selectedIndexes);
         }
 
         private void MoveDownButton_Click(object sender, EventArgs e)
         {
-            if (FilesDataGridView.Rows.Count == 1)
-            {
-                return;
-            }
-            List<int> newIndexes = new List<int>();
-            foreach (DataGridViewRow item in FilesDataGridView.SelectedRows)
-            {
-                if (item.Index == FilesDataGridView.Rows.Count - 1)
-                {
-                    continue;
-                }
-                string fullPathToFile = filesBindingList[item.Index].GetFullPath();
-                int newIndex = item.Index + 1;
-                filesBindingList.RemoveAt(item.Index);
-                filesBindingList.Insert(newIndex, fullPathToFile);
-                newIndexes.Add(newIndex);
-            }
-            FilesDataGridView.ClearSelection();
-            foreach (int newIndex in newIndexes.OrderBy(x => x))
-            {
-                FilesDataGridView.Rows[newIndex].Selected = true;
-            }
+            var selectedIndexes = FilesDataGridView.SelectedRows
+    .Cast<DataGridViewRow>()
+    .Select(r => r.Index)
+    .ToList();
+
+            MoveDownFilesButtonClicked(selectedIndexes);
         }
 
         private void CombineFilesButton_Click(object sender, EventArgs e)
         {
-            if (FilesDataGridView.Rows.Count == 0)
-            {
-                return;
-            }
-            try
-            {
-                FilesCombiner filesCombiner = new FilesCombiner();
-                filesCombiner.CombineFiles(filesBindingList.Items);
-            }
-            catch (Exception ex)
-            {
-                MainErrorProvider.SetError(FilesDataGridView, ex.Message);
-            }
+            CombineFilesButtonClicked();
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
+            OpenSettingsFormClicked();
+        }
 
+        public DataGridViewCellStyle GetCorrectStyle() => correctDataGridViewCellStyle;
+        public DataGridViewCellStyle GetErrorStyle() => errorDataGridViewCellStyle;
+
+        public void ShowError(string message)
+        {
+            MainErrorProvider.SetError(FilesDataGridView, message);
+        }
+
+        public void SetRowStyle(int rowIndex, DataGridViewCellStyle style)
+        {
+            FilesDataGridView.Rows[rowIndex].DefaultCellStyle = style;
+        }
+
+        public string[] ShowOpenFileDialog()
+        {
+            SelectFilesOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            return SelectFilesOpenFileDialog.ShowDialog() == DialogResult.OK
+                ? SelectFilesOpenFileDialog.FileNames
+                : Array.Empty<string>();
+        }
+
+        public void RefreshGrid()
+        {
+            FilesDataGridView.Refresh();
+        }
+
+        public void SelectRows(List<int> rowIndexes)
+        {
+            FilesDataGridView.ClearSelection();
+            foreach (int index in rowIndexes)
+            {
+                if (index >= 0 && index < FilesDataGridView.Rows.Count)
+                    FilesDataGridView.Rows[index].Selected = true;
+            }
         }
     }
 }
