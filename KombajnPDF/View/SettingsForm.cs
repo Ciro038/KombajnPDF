@@ -18,18 +18,24 @@ namespace KombajnPDF.View
     public partial class SettingsForm : Form, ISettingsFormView
     {
         private readonly SettingsFormPresenter presenter;
-        //private readonly ILanguageService languageService;
         public event Action LoadAvailableLanguages;
 
         public event Action<LanguagesEnum> LanguageChanged;
-        public SettingsForm(ILanguageService languageService)
+        public SettingsForm()
         {
             InitializeComponent();
             //this.languageService = languageService;
 
-            presenter = new SettingsFormPresenter(this, languageService);
+            presenter = new SettingsFormPresenter(this);
 
             LoadAvailableLanguages();
+
+            GlobalSettingsProvider.Instance.LanguageChanged += () =>
+            {
+                LanguageService.LocalizeForm(this);
+            };
+
+            LanguageService.LocalizeForm(this);
         }
 
         public void SetAvailableLanguages(LanguagesEnum currentLanguage, LanguagesEnum[] languagesEnums)

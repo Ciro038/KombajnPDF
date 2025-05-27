@@ -11,6 +11,6 @@ namespace KombajnPDF.Data.Abstract
     {
         LanguagesEnum CurrentLanguage { get; }
 
-        void ChangeLanguage(LanguagesEnum language);
+        void SetLanguage(LanguagesEnum language);
     }
 }

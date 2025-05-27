@@ -99,9 +99,9 @@
             // 
             // SettingsButton
             // 
-            SettingsButton.Location = new Point(843, 1);
+            SettingsButton.Location = new Point(888, 2);
             SettingsButton.Name = "SettingsButton";
-            SettingsButton.Size = new Size(75, 23);
+            SettingsButton.Size = new Size(24, 24);
             SettingsButton.TabIndex = 1;
             SettingsButton.Text = "Settings";
             SettingsButton.UseVisualStyleBackColor = true;
@@ -153,6 +153,7 @@
             CombineFilesButton.Name = "CombineFilesButton";
             CombineFilesButton.Size = new Size(103, 46);
             CombineFilesButton.TabIndex = 6;
+            CombineFilesButton.Tag = "combinefiles";
             CombineFilesButton.Text = "Combine files";
             CombineFilesButton.UseVisualStyleBackColor = true;
             CombineFilesButton.Click += CombineFilesButton_Click;

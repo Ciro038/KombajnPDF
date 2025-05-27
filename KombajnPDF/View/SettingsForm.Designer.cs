@@ -33,6 +33,7 @@
             // 
             // CurrentLanguageComboBox
             // 
+            CurrentLanguageComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             CurrentLanguageComboBox.FormattingEnabled = true;
             CurrentLanguageComboBox.Location = new Point(12, 12);
             CurrentLanguageComboBox.Name = "CurrentLanguageComboBox";
@@ -47,6 +48,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(CurrentLanguageComboBox);
             Name = "SettingsForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "SettingsForm";
             ResumeLayout(false);
         }

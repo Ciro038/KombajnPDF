@@ -1,4 +1,5 @@
 ﻿using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using KombajnPDF.Data.Enum;
 using KombajnPDF.Interface;
 using KombajnPDF.View;
@@ -13,11 +14,9 @@ namespace KombajnPDF.Presenter
     class SettingsFormPresenter
     {
         private readonly ISettingsFormView settingsForm;
-        private readonly ILanguageService languageService;
-        public SettingsFormPresenter(ISettingsFormView settingsForm, ILanguageService languageService)
+        public SettingsFormPresenter(ISettingsFormView settingsForm)
         {
             this.settingsForm = settingsForm;
-            this.languageService = languageService;
 
             settingsForm.LoadAvailableLanguages += OnLoadAvailableLanguages;
             settingsForm.LanguageChanged += OnLanguageChanged;
@@ -25,7 +24,7 @@ namespace KombajnPDF.Presenter
 
         private void OnLanguageChanged(LanguagesEnum language)
         {
-            languageService.ChangeLanguage(language);
+            GlobalSettingsProvider.Instance.CurrentLanguage = language;
         }
 
         private void OnLoadAvailableLanguages()
@@ -33,7 +32,7 @@ namespace KombajnPDF.Presenter
             var languages = Enum.GetValues(typeof(LanguagesEnum))
                 .Cast<LanguagesEnum>()
                 .ToArray();
-            settingsForm.SetAvailableLanguages(languageService.CurrentLanguage, languages);
+            settingsForm.SetAvailableLanguages(GlobalSettingsProvider.Instance.CurrentLanguage, languages);
         }
     }
 }

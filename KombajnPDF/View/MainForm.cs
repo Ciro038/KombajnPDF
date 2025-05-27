@@ -30,6 +30,34 @@ namespace KombajnPDF
             presenter = new MainFormPresenter(this);
 
             InitializeDataGrid();
+
+            GlobalSettingsProvider.Instance.LanguageChanged += () =>
+            {
+                LanguageService.LocalizeForm(this);
+            };
+
+            LanguageService.LocalizeForm(this);
+
+            //SettingsButton.Image = Properties.Resources.Icons.Icons.SettingsIcon.ToBitmap();
+            var originalIcon = Properties.Resources.Icons.Icons.SettingsIcon.ToBitmap();
+            var resizedIcon = ResizeImage(originalIcon, SettingsButton.ClientSize);
+            SettingsButton.Image = resizedIcon;
+            SettingsButton.Text = string.Empty;
+            SettingsButton.ImageAlign = ContentAlignment.MiddleCenter;
+            SettingsButton.FlatStyle = FlatStyle.Flat;
+            SettingsButton.FlatAppearance.BorderSize = 0;
+            SettingsButton.BackColor = Color.Transparent;
+            SettingsButton.TextImageRelation = TextImageRelation.Overlay;
+        }
+        public static Image ResizeImage(Image image, Size size)
+        {
+            Bitmap bmp = new Bitmap(size.Width, size.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(image, 0, 0, size.Width, size.Height);
+            }
+            return bmp;
         }
         private void InitializeDataGrid()
         {
@@ -66,9 +94,9 @@ namespace KombajnPDF
         private void MoveUpFilesButton_Click(object sender, EventArgs e)
         {
             var selectedIndexes = FilesDataGridView.SelectedRows
-    .Cast<DataGridViewRow>()
-    .Select(r => r.Index)
-    .ToList();
+                .Cast<DataGridViewRow>()
+                .Select(r => r.Index)
+                .ToList();
 
             MoveUpFilesButtonClicked(selectedIndexes);
         }
@@ -76,9 +104,9 @@ namespace KombajnPDF
         private void MoveDownButton_Click(object sender, EventArgs e)
         {
             var selectedIndexes = FilesDataGridView.SelectedRows
-    .Cast<DataGridViewRow>()
-    .Select(r => r.Index)
-    .ToList();
+                .Cast<DataGridViewRow>()
+                .Select(r => r.Index)
+                .ToList();
 
             MoveDownFilesButtonClicked(selectedIndexes);
         }

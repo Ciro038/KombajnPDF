@@ -15,13 +15,11 @@ namespace KombajnPDF.Presenter
     {
         private readonly IMainFormView _view;
         private readonly FilesBindingList _files;
-        private readonly ILanguageService _languageService;
 
         public MainFormPresenter(IMainFormView mainForm)
         {
             _view = mainForm;
             _files = new FilesBindingList();
-            _languageService = new LanguageService();
 
             mainForm.FilesDataGridViewOnPatternCellEdited += OnPatternCellEdited;
             mainForm.FilesDataGridViewDragEnter += OnFilesDataGridViewDragEnter;
@@ -35,7 +33,7 @@ namespace KombajnPDF.Presenter
 
         private void OpenSettingsFormClicked()
         {
-            var form = new SettingsForm(_languageService);
+            var form = new SettingsForm();
             form.ShowDialog();
         }
 
