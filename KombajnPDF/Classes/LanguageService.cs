@@ -9,9 +9,9 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Classes
 {
-    class LanguageService : ILanguageService
+    class LanguageService 
     {
         private LanguagesEnum _currentLanguage;
 
@@ -26,7 +26,7 @@ namespace KombajnPDF.Data.Entity
 
         private void LoadTranslationsResources()
         {
-            foreach (LanguagesEnum lang in System.Enum.GetValues(typeof(LanguagesEnum)))
+            foreach (LanguagesEnum lang in Enum.GetValues(typeof(LanguagesEnum)))
             {
                 string baseName = $"KombajnPDF.Properties.Translations.Strings.{lang}";
                 var rm = new ResourceManager(baseName, typeof(LanguageService).Assembly);
@@ -37,7 +37,7 @@ namespace KombajnPDF.Data.Entity
         public LanguagesEnum CurrentLanguage => _currentLanguage;
         private void LoadCurrentLanguage()
         {
-            LanguagesEnum language = (LanguagesEnum)System.Enum.Parse(typeof(LanguagesEnum), Properties.Settings.Default.Language);
+            LanguagesEnum language = (LanguagesEnum)Enum.Parse(typeof(LanguagesEnum), Properties.Settings.Default.Language);
             _currentLanguage = language;
         }
         public void SetLanguage(LanguagesEnum language)
@@ -57,15 +57,18 @@ namespace KombajnPDF.Data.Entity
             return $"[{key}]";
         }
 
-        public static void LocalizeForm(Control parent)
+        public static void TranslateControl(Control parent)
         {
+            if (parent.Tag is string tag1)
+                parent.Text = Translate(tag1);
+
             foreach (Control ctrl in parent.Controls)
             {
-                if (ctrl.Tag is string tag)
-                    ctrl.Text = Translate(tag);
+                if (ctrl.Tag is string tag2)
+                    ctrl.Text = Translate(tag2);
 
                 if (ctrl.HasChildren)
-                    LocalizeForm(ctrl);
+                    TranslateControl(ctrl);
             }
         }
     }

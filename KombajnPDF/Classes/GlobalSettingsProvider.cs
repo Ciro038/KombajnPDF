@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Classes
 {
     public sealed class GlobalSettingsProvider
     {

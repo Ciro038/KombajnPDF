@@ -1,5 +1,5 @@
+using KombajnPDF.Classes;
 using KombajnPDF.Data.Abstract;
-using KombajnPDF.Data.Entity;
 using KombajnPDF.Interface;
 using KombajnPDF.Presenter;
 using PdfSharp.Pdf;
@@ -33,32 +33,19 @@ namespace KombajnPDF
 
             GlobalSettingsProvider.Instance.LanguageChanged += () =>
             {
-                LanguageService.LocalizeForm(this);
+                LanguageService.TranslateControl(this);
             };
 
-            LanguageService.LocalizeForm(this);
+            LanguageService.TranslateControl(this);
 
-            //SettingsButton.Image = Properties.Resources.Icons.Icons.SettingsIcon.ToBitmap();
-            var originalIcon = Properties.Resources.Icons.Icons.SettingsIcon.ToBitmap();
-            var resizedIcon = ResizeImage(originalIcon, SettingsButton.ClientSize);
-            SettingsButton.Image = resizedIcon;
-            SettingsButton.Text = string.Empty;
-            SettingsButton.ImageAlign = ContentAlignment.MiddleCenter;
-            SettingsButton.FlatStyle = FlatStyle.Flat;
-            SettingsButton.FlatAppearance.BorderSize = 0;
-            SettingsButton.BackColor = Color.Transparent;
-            SettingsButton.TextImageRelation = TextImageRelation.Overlay;
+            IconsProvider.SetIconWithResize(SettingsButton, Properties.Resources.Icons.Icons.SettingsIcon);
+            IconsProvider.SetIconWithResize(MoveUpFilesButton, Properties.Resources.Icons.Icons.UpIcon);
+            IconsProvider.SetIconWithResize(MoveDownButton, Properties.Resources.Icons.Icons.DownIcon);
+            IconsProvider.SetIconWithResize(RemoveFilesButton, Properties.Resources.Icons.Icons.DeleteIcon);
+            IconsProvider.SetIconWithResize(AddFilesButton, Properties.Resources.Icons.Icons.AddIcon);
+            IconsProvider.SetIconWithResize(HelpButton, Properties.Resources.Icons.Icons.HelpIcon);
         }
-        public static Image ResizeImage(Image image, Size size)
-        {
-            Bitmap bmp = new Bitmap(size.Width, size.Height);
-            using (Graphics g = Graphics.FromImage(bmp))
-            {
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(image, 0, 0, size.Width, size.Height);
-            }
-            return bmp;
-        }
+
         private void InitializeDataGrid()
         {
             FilesDataGridView.AutoGenerateColumns = false;

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             FilesDataGridView = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -43,6 +44,7 @@
             CombineFilesButton = new Button();
             MainErrorProvider = new ErrorProvider(components);
             SelectFilesOpenFileDialog = new OpenFileDialog();
+            HelpButton = new Button();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             SuspendLayout();
@@ -99,9 +101,9 @@
             // 
             // SettingsButton
             // 
-            SettingsButton.Location = new Point(888, 2);
+            SettingsButton.Location = new Point(42, 8);
             SettingsButton.Name = "SettingsButton";
-            SettingsButton.Size = new Size(24, 24);
+            SettingsButton.Size = new Size(27, 27);
             SettingsButton.TabIndex = 1;
             SettingsButton.Text = "Settings";
             SettingsButton.UseVisualStyleBackColor = true;
@@ -109,9 +111,9 @@
             // 
             // AddFilesButton
             // 
-            AddFilesButton.Location = new Point(813, 41);
+            AddFilesButton.Location = new Point(805, 41);
             AddFilesButton.Name = "AddFilesButton";
-            AddFilesButton.Size = new Size(99, 23);
+            AddFilesButton.Size = new Size(74, 33);
             AddFilesButton.TabIndex = 2;
             AddFilesButton.Text = "Add files";
             AddFilesButton.UseVisualStyleBackColor = true;
@@ -119,9 +121,9 @@
             // 
             // MoveUpFilesButton
             // 
-            MoveUpFilesButton.Location = new Point(813, 78);
+            MoveUpFilesButton.Location = new Point(805, 94);
             MoveUpFilesButton.Name = "MoveUpFilesButton";
-            MoveUpFilesButton.Size = new Size(99, 23);
+            MoveUpFilesButton.Size = new Size(74, 33);
             MoveUpFilesButton.TabIndex = 3;
             MoveUpFilesButton.Text = "Move up";
             MoveUpFilesButton.UseVisualStyleBackColor = true;
@@ -129,9 +131,9 @@
             // 
             // MoveDownButton
             // 
-            MoveDownButton.Location = new Point(813, 115);
+            MoveDownButton.Location = new Point(805, 139);
             MoveDownButton.Name = "MoveDownButton";
-            MoveDownButton.Size = new Size(99, 23);
+            MoveDownButton.Size = new Size(74, 33);
             MoveDownButton.TabIndex = 4;
             MoveDownButton.Text = "Move down";
             MoveDownButton.UseVisualStyleBackColor = true;
@@ -139,9 +141,9 @@
             // 
             // RemoveFilesButton
             // 
-            RemoveFilesButton.Location = new Point(813, 152);
+            RemoveFilesButton.Location = new Point(805, 185);
             RemoveFilesButton.Name = "RemoveFilesButton";
-            RemoveFilesButton.Size = new Size(99, 23);
+            RemoveFilesButton.Size = new Size(74, 33);
             RemoveFilesButton.TabIndex = 5;
             RemoveFilesButton.Text = "Ramove files";
             RemoveFilesButton.UseVisualStyleBackColor = true;
@@ -149,9 +151,9 @@
             // 
             // CombineFilesButton
             // 
-            CombineFilesButton.Location = new Point(809, 237);
+            CombineFilesButton.Location = new Point(805, 237);
             CombineFilesButton.Name = "CombineFilesButton";
-            CombineFilesButton.Size = new Size(103, 46);
+            CombineFilesButton.Size = new Size(89, 46);
             CombineFilesButton.TabIndex = 6;
             CombineFilesButton.Tag = "combinefiles";
             CombineFilesButton.Text = "Combine files";
@@ -169,11 +171,21 @@
             SelectFilesOpenFileDialog.RestoreDirectory = true;
             SelectFilesOpenFileDialog.Title = "Select _files";
             // 
+            // HelpButton
+            // 
+            HelpButton.Location = new Point(12, 9);
+            HelpButton.Name = "HelpButton";
+            HelpButton.Size = new Size(24, 24);
+            HelpButton.TabIndex = 7;
+            HelpButton.Text = "Help";
+            HelpButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(920, 318);
+            ClientSize = new Size(901, 318);
+            Controls.Add(HelpButton);
             Controls.Add(CombineFilesButton);
             Controls.Add(RemoveFilesButton);
             Controls.Add(MoveDownButton);
@@ -181,6 +193,7 @@
             Controls.Add(AddFilesButton);
             Controls.Add(SettingsButton);
             Controls.Add(FilesDataGridView);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KombajnPDF";
@@ -205,5 +218,6 @@
         private DataGridViewTextBoxColumn PathDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PatternDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn TotalPagesDataGridViewTextBoxColumn;
+        private Button HelpButton;
     }
 }

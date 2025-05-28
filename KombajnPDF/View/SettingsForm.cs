@@ -1,5 +1,5 @@
-﻿using KombajnPDF.Data.Abstract;
-using KombajnPDF.Data.Entity;
+﻿using KombajnPDF.Classes;
+using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
 using KombajnPDF.Interface;
 using KombajnPDF.Presenter;
@@ -32,10 +32,10 @@ namespace KombajnPDF.View
 
             GlobalSettingsProvider.Instance.LanguageChanged += () =>
             {
-                LanguageService.LocalizeForm(this);
+                LanguageService.TranslateControl(this);
             };
 
-            LanguageService.LocalizeForm(this);
+            LanguageService.TranslateControl(this);
         }
 
         public void SetAvailableLanguages(LanguagesEnum currentLanguage, LanguagesEnum[] languagesEnums)

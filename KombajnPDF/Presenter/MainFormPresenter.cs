@@ -1,4 +1,5 @@
-﻿using KombajnPDF.Data.Abstract;
+﻿using KombajnPDF.Classes;
+using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Entity;
 using KombajnPDF.Interface;
 using KombajnPDF.View;

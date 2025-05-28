@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Classes
 {
     /// <summary>
     /// Class is responsible for combining _files into one
