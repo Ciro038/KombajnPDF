@@ -194,6 +194,7 @@
             Controls.Add(SettingsButton);
             Controls.Add(FilesDataGridView);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KombajnPDF";
