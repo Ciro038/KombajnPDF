@@ -1,7 +1,9 @@
 ﻿using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
+using KombajnPDF.Interface;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -11,53 +13,57 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Classes
 {
-    class LanguageService 
+    public class LanguageService : ILanguageService
     {
         private LanguagesEnum _currentLanguage;
 
-        private static readonly Dictionary<LanguagesEnum, ResourceManager> _resourceManagers =
-            new Dictionary<LanguagesEnum, ResourceManager>();
+        // Lazy cache ResourceManagerów
+        private readonly Dictionary<LanguagesEnum, ResourceManager> _resourceManagers = new();
 
         public LanguageService()
         {
             LoadCurrentLanguage();
-            LoadTranslationsResources();
-        }
-
-        private void LoadTranslationsResources()
-        {
-            foreach (LanguagesEnum lang in Enum.GetValues(typeof(LanguagesEnum)))
-            {
-                string baseName = $"KombajnPDF.Properties.Translations.Strings.{lang}";
-                var rm = new ResourceManager(baseName, typeof(LanguageService).Assembly);
-                _resourceManagers[lang] = rm;
-            }
         }
 
         public LanguagesEnum CurrentLanguage => _currentLanguage;
+
         private void LoadCurrentLanguage()
         {
-            LanguagesEnum language = (LanguagesEnum)Enum.Parse(typeof(LanguagesEnum), Properties.Settings.Default.Language);
-            _currentLanguage = language;
+            var language = GetLanguage();
+            SetLanguage(language);
         }
+
+        public LanguagesEnum GetLanguage()
+        {
+            if (Enum.TryParse(Properties.Settings.Default.Language, out LanguagesEnum lang))
+                return lang;
+
+            return LanguagesEnum.English; // domyślny fallback
+        }
+
         public void SetLanguage(LanguagesEnum language)
         {
             _currentLanguage = language;
             Properties.Settings.Default.Language = language.ToString();
+            Properties.Settings.Default.Save();
         }
 
-        public static string Translate(string key)
+        public string Translate(string key)
         {
-            var lang = GlobalSettingsProvider.Instance.CurrentLanguage;
-            if (_resourceManagers.TryGetValue(lang, out var manager))
+            var lang = _currentLanguage;
+
+            if (!_resourceManagers.TryGetValue(lang, out var manager))
             {
-                var test = manager.GetString(key) ?? $"[{key}]";
-                return manager.GetString(key) ?? $"[{key}]";
+                string baseName = $"KombajnPDF.Properties.Translations.Strings.{lang}";
+                manager = new ResourceManager(baseName, typeof(LanguageService).Assembly);
+                _resourceManagers[lang] = manager;
             }
-            return $"[{key}]";
+
+            string? result = manager.GetString(key);
+            return result ?? $"[{key}]";
         }
 
-        public static void TranslateControl(Control parent)
+        public void TranslateControl(Control parent)
         {
             if (parent.Tag is string tag1)
                 parent.Text = Translate(tag1);

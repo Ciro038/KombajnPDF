@@ -33,10 +33,10 @@ namespace KombajnPDF
 
             GlobalSettingsProvider.Instance.LanguageChanged += () =>
             {
-                LanguageService.TranslateControl(this);
+                GlobalSettingsProvider.Instance.TranslateControl(this);
             };
 
-            LanguageService.TranslateControl(this);
+            GlobalSettingsProvider.Instance.TranslateControl(this);
 
             IconsProvider.SetIconWithResize(SettingsButton, Properties.Resources.Icons.Icons.SettingsIcon);
             IconsProvider.SetIconWithResize(MoveUpFilesButton, Properties.Resources.Icons.Icons.UpIcon);

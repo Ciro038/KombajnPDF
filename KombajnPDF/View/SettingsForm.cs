@@ -32,10 +32,10 @@ namespace KombajnPDF.View
 
             GlobalSettingsProvider.Instance.LanguageChanged += () =>
             {
-                LanguageService.TranslateControl(this);
+                GlobalSettingsProvider.Instance.TranslateControl(this);
             };
 
-            LanguageService.TranslateControl(this);
+            GlobalSettingsProvider.Instance.TranslateControl(this);
         }
 
         public void SetAvailableLanguages(LanguagesEnum currentLanguage, LanguagesEnum[] languagesEnums)
