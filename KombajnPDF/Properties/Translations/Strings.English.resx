@@ -123,6 +123,12 @@
   <data name="COMBINE_FILES" xml:space="preserve">
     <value>Combine files</value>
   </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>Information</value>
+  </data>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Language</value>
   </data>
@@ -131,5 +137,8 @@
   </data>
   <data name="SETTINGS" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="UNEXPECTED_EXCEPTION_OCCURED" xml:space="preserve">
+    <value>An unexpected exception occurred</value>
   </data>
 </root>

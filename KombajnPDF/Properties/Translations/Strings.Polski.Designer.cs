@@ -79,6 +79,24 @@ namespace KombajnPDF.Properties.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Błąd.
+        /// </summary>
+        internal static string ERROR {
+            get {
+                return ResourceManager.GetString("ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informacja.
+        /// </summary>
+        internal static string INFORMATION {
+            get {
+                return ResourceManager.GetString("INFORMATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Język.
         /// </summary>
         internal static string LANGUAGE {
@@ -102,6 +120,15 @@ namespace KombajnPDF.Properties.Translations {
         internal static string SETTINGS {
             get {
                 return ResourceManager.GetString("SETTINGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected exception occurred.
+        /// </summary>
+        internal static string UNEXPECTED_EXCEPTION_OCCURED {
+            get {
+                return ResourceManager.GetString("UNEXPECTED_EXCEPTION_OCCURED", resourceCulture);
             }
         }
     }

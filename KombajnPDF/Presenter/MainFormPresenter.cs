@@ -63,7 +63,7 @@ namespace KombajnPDF.Presenter
             {
                 var combiner = new FilesCombiner();
                 combiner.CombineFiles(_files.Items);
-                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.COMBINED_FILES));
+                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.Translate(TranslationCodes.INFORMATION),MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

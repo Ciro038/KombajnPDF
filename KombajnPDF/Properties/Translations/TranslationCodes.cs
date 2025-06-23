@@ -34,6 +34,21 @@ namespace KombajnPDF.Properties.Translations
         /// <summary>
         /// Final message or label shown after files have been successfully combined.
         /// </summary>
-        COMBINED_FILES
+        COMBINED_FILES,
+
+        /// <summary>
+        /// An unexpected exception occurred
+        /// </summary>
+        UNEXPECTED_EXCEPTION_OCCURRED,
+
+        /// <summary>
+        /// Error message
+        /// </summary>
+        ERROR,
+
+        /// <summary>
+        /// Information message
+        /// </summary>
+        INFORMATION
     }
 }
