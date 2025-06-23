@@ -6,12 +6,34 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Properties.Translations
 {
+    /// <summary>
+    /// Translation key codes used throughout the application.
+    /// </summary>
     public enum TranslationCodes
     {
-        COMBINE_FILES=1,
+        /// <summary>
+        /// Label or text for the "Combine Files" button or option.
+        /// </summary>
+        COMBINE_FILES = 1,
+
+        /// <summary>
+        /// Label or heading related to the application's language selection.
+        /// </summary>
         LANGUAGE,
+
+        /// <summary>
+        /// Refers to the application's settings section or button.
+        /// </summary>
         SETTINGS,
+
+        /// <summary>
+        /// Message or label indicating that the language has been changed.
+        /// </summary>
         LANGUAGE_CHANGED,
+
+        /// <summary>
+        /// Final message or label shown after files have been successfully combined.
+        /// </summary>
         COMBINED_FILES
     }
 }

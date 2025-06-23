@@ -9,21 +9,36 @@ using File = KombajnPDF.Data.Entity.File;
 
 namespace KombajnPDF
 {
+    /// <summary>
+    /// Main form of the application that handles user interface logic for PDF combining.
+    /// Implements <see cref="IMainFormView"/> to communicate with the presenter.
+    /// </summary>
     public partial class MainForm : Form, IMainFormView
     {
         private readonly MainFormPresenter presenter;
         private DataGridViewCellStyle correctDataGridViewCellStyle;
         private DataGridViewCellStyle errorDataGridViewCellStyle;
 
+        /// <inheritdoc/>
         public event Action<int, string> FilesDataGridViewOnPatternCellEdited;
+        /// <inheritdoc/>
         public event Action<DragEventArgs> FilesDataGridViewDragEnter;
+        /// <inheritdoc/>
         public event Action AddFilesButtonOnAddFilesClicked;
+        /// <inheritdoc/>
         public event Action<DataGridViewSelectedRowCollection> RemoveFilesButtonClicked;
+        /// <inheritdoc/>
         public event Action<List<int>> MoveUpFilesButtonClicked;
+        /// <inheritdoc/>
         public event Action<List<int>> MoveDownFilesButtonClicked;
+        /// <inheritdoc/>
         public event Action CombineFilesButtonClicked;
+        /// <inheritdoc/>
         public event Action OpenSettingsFormClicked;
 
+        /// <summary>
+        /// Initializes the main form and its components.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -46,6 +61,9 @@ namespace KombajnPDF
             IconsProvider.SetIconWithResize(HelpButton, Properties.Resources.Icons.Icons.HelpIcon);
         }
 
+        /// <summary>
+        /// Initializes the file data grid view, binds it to the file list, and sets up styles.
+        /// </summary>
         private void InitializeDataGrid()
         {
             FilesDataGridView.AutoGenerateColumns = false;
@@ -63,19 +81,22 @@ namespace KombajnPDF
 
         private void FilesDataGridView_DragEnter(object sender, DragEventArgs e)
         {
-            FilesDataGridViewDragEnter(e);
+            FilesDataGridViewDragEnter?.Invoke(e);
         }
+
         private void FilesDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            FilesDataGridViewOnPatternCellEdited(e.RowIndex, FilesDataGridView.Columns[e.ColumnIndex].Name);
+            FilesDataGridViewOnPatternCellEdited?.Invoke(e.RowIndex, FilesDataGridView.Columns[e.ColumnIndex].Name);
         }
+
         private void AddFilesButton_Click(object sender, EventArgs e)
         {
-            AddFilesButtonOnAddFilesClicked();
+            AddFilesButtonOnAddFilesClicked?.Invoke();
         }
+
         private void RemoveFilesButton_Click(object sender, EventArgs e)
         {
-            RemoveFilesButtonClicked(FilesDataGridView.SelectedRows);
+            RemoveFilesButtonClicked?.Invoke(FilesDataGridView.SelectedRows);
         }
 
         private void MoveUpFilesButton_Click(object sender, EventArgs e)
@@ -85,7 +106,7 @@ namespace KombajnPDF
                 .Select(r => r.Index)
                 .ToList();
 
-            MoveUpFilesButtonClicked(selectedIndexes);
+            MoveUpFilesButtonClicked?.Invoke(selectedIndexes);
         }
 
         private void MoveDownButton_Click(object sender, EventArgs e)
@@ -95,32 +116,38 @@ namespace KombajnPDF
                 .Select(r => r.Index)
                 .ToList();
 
-            MoveDownFilesButtonClicked(selectedIndexes);
+            MoveDownFilesButtonClicked?.Invoke(selectedIndexes);
         }
 
         private void CombineFilesButton_Click(object sender, EventArgs e)
         {
-            CombineFilesButtonClicked();
+            CombineFilesButtonClicked?.Invoke();
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            OpenSettingsFormClicked();
+            OpenSettingsFormClicked?.Invoke();
         }
 
+        /// <inheritdoc/>
         public DataGridViewCellStyle GetCorrectStyle() => correctDataGridViewCellStyle;
+
+        /// <inheritdoc/>
         public DataGridViewCellStyle GetErrorStyle() => errorDataGridViewCellStyle;
 
+        /// <inheritdoc/>
         public void ShowError(string message)
         {
             MainErrorProvider.SetError(FilesDataGridView, message);
         }
 
+        /// <inheritdoc/>
         public void SetRowStyle(int rowIndex, DataGridViewCellStyle style)
         {
             FilesDataGridView.Rows[rowIndex].DefaultCellStyle = style;
         }
 
+        /// <inheritdoc/>
         public string[] ShowOpenFileDialog()
         {
             SelectFilesOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -129,11 +156,13 @@ namespace KombajnPDF
                 : Array.Empty<string>();
         }
 
+        /// <inheritdoc/>
         public void RefreshGrid()
         {
             FilesDataGridView.Refresh();
         }
 
+        /// <inheritdoc/>
         public void SelectRows(List<int> rowIndexes)
         {
             FilesDataGridView.ClearSelection();
@@ -146,7 +175,7 @@ namespace KombajnPDF
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-
+            // Reserved for help functionality
         }
     }
 }

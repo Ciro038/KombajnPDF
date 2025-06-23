@@ -13,11 +13,20 @@ using System.Windows.Forms;
 
 namespace KombajnPDF.Presenter
 {
+    /// <summary>
+    /// Represents the presenter for the main form in a Model-View-Presenter (MVP) pattern.
+    /// Handles user interactions and updates the view accordingly.
+    /// </summary>
     class MainFormPresenter
     {
         private readonly IMainFormView _view;
         private readonly FilesBindingList _files;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainFormPresenter"/> class
+        /// and subscribes to events from the view.
+        /// </summary>
+        /// <param name="mainForm">The main form view.</param>
         public MainFormPresenter(IMainFormView mainForm)
         {
             _view = mainForm;
@@ -33,12 +42,18 @@ namespace KombajnPDF.Presenter
             mainForm.OpenSettingsFormClicked += OpenSettingsFormClicked;
         }
 
+        /// <summary>
+        /// Opens the settings form when the corresponding button is clicked.
+        /// </summary>
         private void OpenSettingsFormClicked()
         {
             var form = new SettingsForm();
             form.ShowDialog();
         }
 
+        /// <summary>
+        /// Combines the selected files and displays a message on success.
+        /// </summary>
         public void CombineFilesButtonClicked()
         {
             if (_files.Count == 0)
@@ -55,6 +70,11 @@ namespace KombajnPDF.Presenter
                 _view.ShowError(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Moves selected files one position down in the list.
+        /// </summary>
+        /// <param name="selectedIndexes">Indexes of selected files.</param>
         private void OnMoveDownFilesButtonClicked(List<int> selectedIndexes)
         {
             if (_files.Count <= 1) return;
@@ -76,6 +96,10 @@ namespace KombajnPDF.Presenter
             _view.SelectRows(newIndexes);
         }
 
+        /// <summary>
+        /// Moves selected files one position up in the list.
+        /// </summary>
+        /// <param name="selectedIndexes">Indexes of selected files.</param>
         private void OnMoveUpFilesButtonClicked(List<int> selectedIndexes)
         {
             if (_files.Count <= 1) return;
@@ -95,36 +119,21 @@ namespace KombajnPDF.Presenter
 
             _view.RefreshGrid();
             _view.SelectRows(newIndexes);
-            //if (FilesDataGridView.Rows.Count == 1)
-            //{
-            //    return;
-            //}
-            //List<int> newIndexes = new List<int>();
-            //foreach (DataGridViewRow item in FilesDataGridView.SelectedRows)
-            //{
-            //    if (item.Index == 0)
-            //    {
-            //        continue;
-            //    }
-            //    string fullPathToFile = filesBindingList[item.Index].GetFullPath();
-            //    int newIndex = item.Index - 1;
-            //    filesBindingList.RemoveAt(item.Index);
-            //    filesBindingList.Insert(newIndex, fullPathToFile);
-            //    newIndexes.Add(newIndex);
-            //}
-            //FilesDataGridView.ClearSelection();
-            //foreach (int newIndex in newIndexes.OrderByDescending(x => x))
-            //{
-            //    FilesDataGridView.Rows[newIndex].Selected = true;
-            //}
         }
 
+        /// <summary>
+        /// Removes selected files from the list.
+        /// </summary>
+        /// <param name="selectedRows">Selected rows from the DataGridView.</param>
         private void OnRemoveFilesButtonClicked(DataGridViewSelectedRowCollection selectedRows)
         {
             foreach (DataGridViewRow row in selectedRows)
                 _files.RemoveAt(row.Index);
         }
 
+        /// <summary>
+        /// Adds files selected via file dialog to the list.
+        /// </summary>
         private void OnAddFilesButtonClicked()
         {
             var files = _view.ShowOpenFileDialog();
@@ -132,6 +141,10 @@ namespace KombajnPDF.Presenter
                 _files.Add(path);
         }
 
+        /// <summary>
+        /// Handles drag-and-drop of files into the DataGridView.
+        /// </summary>
+        /// <param name="e">The drag event arguments.</param>
         private void OnFilesDataGridViewDragEnter(DragEventArgs e)
         {
             if (e.Data is null || !e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -142,6 +155,11 @@ namespace KombajnPDF.Presenter
                 _files.Add(file);
         }
 
+        /// <summary>
+        /// Validates and applies a new pattern to a file when a DataGridView cell is edited.
+        /// </summary>
+        /// <param name="rowIndex">The index of the edited row.</param>
+        /// <param name="columnName">The name of the edited column.</param>
         private void OnPatternCellEdited(int rowIndex, string columnName)
         {
             var file = _files[rowIndex];
@@ -167,9 +185,14 @@ namespace KombajnPDF.Presenter
             }
         }
 
+        /// <summary>
+        /// Returns the current list of files managed by the presenter.
+        /// </summary>
+        /// <returns>A binding list of files.</returns>
         internal FilesBindingList GetBindingList()
         {
             return _files;
         }
     }
+
 }

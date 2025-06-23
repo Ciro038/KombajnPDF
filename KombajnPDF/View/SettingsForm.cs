@@ -15,38 +15,70 @@ using System.Windows.Forms;
 
 namespace KombajnPDF.View
 {
+    /// <summary>
+    /// Represents the settings form used to manage global application settings such as language.
+    /// Implements the ISettingsFormView interface.
+    /// </summary>
     public partial class SettingsForm : Form, ISettingsFormView
     {
+        /// <summary>
+        /// Presenter instance that handles logic between the view and model.
+        /// </summary>
         private readonly SettingsFormPresenter presenter;
+
+        /// <summary>
+        /// Event triggered when the form should load available languages.
+        /// </summary>
         public event Action LoadAvailableLanguages;
 
+        /// <summary>
+        /// Event triggered when the user selects a different language.
+        /// </summary>
         public event Action<LanguagesEnum> LanguageChanged;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SettingsForm"/> class.
+        /// </summary>
         public SettingsForm()
         {
             InitializeComponent();
-            //this.languageService = languageService;
 
             presenter = new SettingsFormPresenter(this);
 
-            LoadAvailableLanguages();
+            // Trigger loading of available languages.
+            LoadAvailableLanguages?.Invoke();
 
+            // Subscribe to global language change event to refresh UI text.
             GlobalSettingsProvider.Instance.LanguageChanged += () =>
             {
                 GlobalSettingsProvider.Instance.TranslateControl(this);
             };
 
+            // Perform initial translation of UI elements.
             GlobalSettingsProvider.Instance.TranslateControl(this);
         }
 
+        /// <summary>
+        /// Populates the language combo box with available languages and selects the current one.
+        /// </summary>
+        /// <param name="currentLanguage">The currently selected language.</param>
+        /// <param name="languagesEnums">Array of all supported languages.</param>
         public void SetAvailableLanguages(LanguagesEnum currentLanguage, LanguagesEnum[] languagesEnums)
         {
             CurrentLanguageComboBox.Items.AddRange(languagesEnums.Cast<object>().ToArray());
             CurrentLanguageComboBox.SelectedItem = currentLanguage;
         }
 
+        /// <summary>
+        /// Event handler for when the selected language in the combo box changes.
+        /// </summary>
         private void CurrentLanguageComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            LanguageChanged((LanguagesEnum)CurrentLanguageComboBox.SelectedItem);
+            if (CurrentLanguageComboBox.SelectedItem is LanguagesEnum selectedLanguage)
+            {
+                LanguageChanged?.Invoke(selectedLanguage);
+            }
         }
     }
+
 }

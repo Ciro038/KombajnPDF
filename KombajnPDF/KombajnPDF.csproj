@@ -7,11 +7,15 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
-    <ApplicationIcon>CombineIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\CombineIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="CombineIcon.ico" />
+    <None Remove="Resources\CombineIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\CombineIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
