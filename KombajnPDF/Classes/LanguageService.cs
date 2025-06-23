@@ -1,6 +1,7 @@
 ﻿using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
 using KombajnPDF.Interface;
+using KombajnPDF.Properties.Translations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -48,30 +49,29 @@ namespace KombajnPDF.Classes
             Properties.Settings.Default.Save();
         }
 
-        public string Translate(string key)
+        public string Translate(TranslationCodes translationCode)
         {
-            var lang = _currentLanguage;
-
-            if (!_resourceManagers.TryGetValue(lang, out var manager))
+            if (!_resourceManagers.TryGetValue(_currentLanguage, out var manager))
             {
-                string baseName = $"KombajnPDF.Properties.Translations.Strings.{lang}";
+                string baseName = $"KombajnPDF.Properties.Translations.Strings.{_currentLanguage}";
                 manager = new ResourceManager(baseName, typeof(LanguageService).Assembly);
-                _resourceManagers[lang] = manager;
+                _resourceManagers[_currentLanguage] = manager;
             }
 
-            string? result = manager.GetString(key);
-            return result ?? $"[{key}]";
+            string key = translationCode.ToString();
+            return manager.GetString(key) ?? $"[{key}]";
         }
 
         public void TranslateControl(Control parent)
         {
-            if (parent.Tag is string tag1)
-                parent.Text = Translate(tag1);
+            //TODO: sprawdzić czy w tym miejscu poprawnie się tłumaczy aplikacja
+            if (parent.Tag is string code)
+                parent.Text = Translate((TranslationCodes)Enum.Parse(typeof(TranslationCodes), code));
 
             foreach (Control ctrl in parent.Controls)
             {
-                if (ctrl.Tag is string tag2)
-                    ctrl.Text = Translate(tag2);
+                if (ctrl.Tag is string childCode)
+                    ctrl.Text = Translate((TranslationCodes)Enum.Parse(typeof(TranslationCodes), childCode));
 
                 if (ctrl.HasChildren)
                     TranslateControl(ctrl);

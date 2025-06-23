@@ -117,13 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="combinefiles" xml:space="preserve">
+  <data name="COMBINED_FILES" xml:space="preserve">
+    <value>Combined files</value>
+  </data>
+  <data name="COMBINE_FILES" xml:space="preserve">
     <value>Combine files</value>
   </data>
-  <data name="language" xml:space="preserve">
+  <data name="LANGUAGE" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="settings" xml:space="preserve">
+  <data name="LANGUAGE_CHANGED" xml:space="preserve">
+    <value>Language changed</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
     <value>Settings</value>
   </data>
 </root>

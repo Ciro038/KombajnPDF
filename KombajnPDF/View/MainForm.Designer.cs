@@ -155,7 +155,7 @@
             CombineFilesButton.Name = "CombineFilesButton";
             CombineFilesButton.Size = new Size(89, 46);
             CombineFilesButton.TabIndex = 6;
-            CombineFilesButton.Tag = "combinefiles";
+            CombineFilesButton.Tag = "COMBINE_FILES";
             CombineFilesButton.Text = "Combine files";
             CombineFilesButton.UseVisualStyleBackColor = true;
             CombineFilesButton.Click += CombineFilesButton_Click;
@@ -179,6 +179,7 @@
             HelpButton.TabIndex = 7;
             HelpButton.Text = "Help";
             HelpButton.UseVisualStyleBackColor = true;
+            HelpButton.Click += HelpButton_Click;
             // 
             // MainForm
             // 

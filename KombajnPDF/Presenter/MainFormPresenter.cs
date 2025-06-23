@@ -2,6 +2,7 @@
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Entity;
 using KombajnPDF.Interface;
+using KombajnPDF.Properties.Translations;
 using KombajnPDF.View;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ namespace KombajnPDF.Presenter
             {
                 var combiner = new FilesCombiner();
                 combiner.CombineFiles(_files.Items);
+                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.COMBINED_FILES));
             }
             catch (Exception ex)
             {

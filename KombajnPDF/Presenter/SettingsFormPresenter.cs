@@ -2,6 +2,7 @@
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
 using KombajnPDF.Interface;
+using KombajnPDF.Properties.Translations;
 using KombajnPDF.View;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,11 @@ namespace KombajnPDF.Presenter
 
         private void OnLanguageChanged(LanguagesEnum language)
         {
-            GlobalSettingsProvider.Instance.CurrentLanguage = language;
+            if (language != GlobalSettingsProvider.Instance.CurrentLanguage)
+            {
+                GlobalSettingsProvider.Instance.CurrentLanguage = language;
+                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.LANGUAGE_CHANGED));
+            }
         }
 
         private void OnLoadAvailableLanguages()

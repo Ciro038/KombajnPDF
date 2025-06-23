@@ -63,27 +63,45 @@ namespace KombajnPDF.Properties.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Combine files.
         /// </summary>
-        internal static string combinefiles {
+        internal static string COMBINE_FILES {
             get {
-                return ResourceManager.GetString("combinefiles", resourceCulture);
+                return ResourceManager.GetString("COMBINE_FILES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combined files.
+        /// </summary>
+        internal static string COMBINED_FILES {
+            get {
+                return ResourceManager.GetString("COMBINED_FILES", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
-        internal static string language {
+        internal static string LANGUAGE {
             get {
-                return ResourceManager.GetString("language", resourceCulture);
+                return ResourceManager.GetString("LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language changed.
+        /// </summary>
+        internal static string LANGUAGE_CHANGED {
+            get {
+                return ResourceManager.GetString("LANGUAGE_CHANGED", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string settings {
+        internal static string SETTINGS {
             get {
-                return ResourceManager.GetString("settings", resourceCulture);
+                return ResourceManager.GetString("SETTINGS", resourceCulture);
             }
         }
     }

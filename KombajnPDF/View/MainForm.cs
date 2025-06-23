@@ -143,5 +143,10 @@ namespace KombajnPDF
                     FilesDataGridView.Rows[index].Selected = true;
             }
         }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using KombajnPDF.Data.Enum;
 using KombajnPDF.Interface;
+using KombajnPDF.Properties.Translations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace KombajnPDF.Classes
             _languageService = new LanguageService();
         }
 
-        public string Translate(string key) => _languageService.Translate(key);
+        public string Translate(TranslationCodes translationCode) => _languageService.Translate(translationCode);
 
         public void TranslateControl(Control control) => _languageService.TranslateControl(control);
 

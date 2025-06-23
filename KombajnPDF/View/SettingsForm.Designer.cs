@@ -52,7 +52,7 @@
             groupBox1.Size = new Size(139, 57);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
-            groupBox1.Tag = "language";
+            groupBox1.Tag = "LANGUAGE";
             groupBox1.Text = "Language";
             // 
             // SettingsForm
@@ -65,7 +65,7 @@
             MaximizeBox = false;
             Name = "SettingsForm";
             StartPosition = FormStartPosition.CenterParent;
-            Tag = "settings";
+            Tag = "SETTINGS";
             Text = "SettingsForm";
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
