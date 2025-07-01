@@ -1,0 +1,15 @@
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+
+This application includes third-party open source software components. Below is a list of these components and their associated licenses.
+
+1. PDFsharp  
+   License: MIT License  
+   Source: https://github.com/empira/PDFsharp  
+   Copyright (c) 2005-2023 empira Software GmbH  
+   See full MIT license in the LICENSE file included with this application.
+
+2. Costura.Fody  
+   License: MIT License  
+   Source: https://github.com/Fody/Costura  
+   Copyright (c) 2013 Simon Cropp  
+   See full MIT license in the LICENSE file included with this application.
