@@ -50,8 +50,11 @@ namespace KombajnPDF.Interface
         /// <summary>
         /// Triggered when the user clicks to open the settings form.
         /// </summary>
-        event Action OpenSettingsFormClicked;
-
+        event Action SettingsButtonClicked;
+        /// <summary>
+        /// Triggered when the user clicks to open the info form.  
+        /// </summary>
+        event Action InfoButtonClicked;
         /// <summary>
         /// Returns a cell style used to indicate valid input.
         /// </summary>

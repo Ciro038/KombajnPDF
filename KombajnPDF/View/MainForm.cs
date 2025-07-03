@@ -34,7 +34,9 @@ namespace KombajnPDF
         /// <inheritdoc/>
         public event Action CombineFilesButtonClicked;
         /// <inheritdoc/>
-        public event Action OpenSettingsFormClicked;
+        public event Action SettingsButtonClicked;
+        /// <inheritdoc/>
+        public event Action InfoButtonClicked;
 
         /// <summary>
         /// Initializes the main form and its components.
@@ -126,7 +128,7 @@ namespace KombajnPDF
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            OpenSettingsFormClicked?.Invoke();
+            SettingsButtonClicked?.Invoke();
         }
 
         /// <inheritdoc/>
@@ -175,7 +177,7 @@ namespace KombajnPDF
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            // Reserved for help functionality
+            InfoButtonClicked?.Invoke();
         }
     }
 }

@@ -39,7 +39,16 @@ namespace KombajnPDF.Presenter
             mainForm.MoveUpFilesButtonClicked += OnMoveUpFilesButtonClicked;
             mainForm.MoveDownFilesButtonClicked += OnMoveDownFilesButtonClicked;
             mainForm.CombineFilesButtonClicked += CombineFilesButtonClicked;
-            mainForm.OpenSettingsFormClicked += OpenSettingsFormClicked;
+            mainForm.SettingsButtonClicked += OpenSettingsFormClicked;
+            mainForm.InfoButtonClicked += OpenInfoFormClicked;
+        }
+        /// <summary>
+        /// Opens the info form when the corresponding button is clicked.
+        /// </summary>
+        private void OpenInfoFormClicked()
+        {
+            var form = new InfoForm();
+            form.ShowDialog();
         }
 
         /// <summary>
@@ -63,7 +72,7 @@ namespace KombajnPDF.Presenter
             {
                 var combiner = new FilesCombiner();
                 combiner.CombineFiles(_files.Items);
-                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.Translate(TranslationCodes.INFORMATION),MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.Translate(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

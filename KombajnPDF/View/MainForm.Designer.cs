@@ -177,7 +177,7 @@
             HelpButton.Name = "HelpButton";
             HelpButton.Size = new Size(24, 24);
             HelpButton.TabIndex = 7;
-            HelpButton.Text = "Help";
+            HelpButton.Text = "Info";
             HelpButton.UseVisualStyleBackColor = true;
             HelpButton.Click += HelpButton_Click;
             // 
