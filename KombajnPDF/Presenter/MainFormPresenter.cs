@@ -47,7 +47,7 @@ namespace KombajnPDF.Presenter
         /// </summary>
         private void OpenInfoFormClicked()
         {
-            var form = new InfoForm();
+            using var form = new InfoForm();
             form.ShowDialog();
         }
 
@@ -56,7 +56,8 @@ namespace KombajnPDF.Presenter
         /// </summary>
         private void OpenSettingsFormClicked()
         {
-            var form = new SettingsForm();
+
+            using var form = new SettingsForm();
             form.ShowDialog();
         }
 
@@ -70,6 +71,7 @@ namespace KombajnPDF.Presenter
 
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                 var combiner = new FilesCombiner();
                 combiner.CombineFiles(_files.Items);
                 MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.Translate(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -77,6 +79,10 @@ namespace KombajnPDF.Presenter
             catch (Exception ex)
             {
                 _view.ShowError(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
         }
 
