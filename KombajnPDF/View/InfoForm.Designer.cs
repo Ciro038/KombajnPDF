@@ -77,9 +77,9 @@
             // 
             InstructionGroupBox.Controls.Add(InstructionTextBox);
             InstructionGroupBox.Dock = DockStyle.Fill;
-            InstructionGroupBox.Location = new Point(3, 185);
+            InstructionGroupBox.Location = new Point(3, 209);
             InstructionGroupBox.Name = "InstructionGroupBox";
-            InstructionGroupBox.Size = new Size(601, 234);
+            InstructionGroupBox.Size = new Size(601, 210);
             InstructionGroupBox.TabIndex = 0;
             InstructionGroupBox.TabStop = false;
             InstructionGroupBox.Tag = "INSTRUCTION_MANUAL";
@@ -93,7 +93,7 @@
             InstructionTextBox.Name = "InstructionTextBox";
             InstructionTextBox.ReadOnly = true;
             InstructionTextBox.ScrollBars = ScrollBars.Both;
-            InstructionTextBox.Size = new Size(595, 212);
+            InstructionTextBox.Size = new Size(595, 188);
             InstructionTextBox.TabIndex = 1;
             // 
             // InfoGroupBox
@@ -102,7 +102,7 @@
             InfoGroupBox.Dock = DockStyle.Top;
             InfoGroupBox.Location = new Point(3, 3);
             InfoGroupBox.Name = "InfoGroupBox";
-            InfoGroupBox.Size = new Size(601, 182);
+            InfoGroupBox.Size = new Size(601, 206);
             InfoGroupBox.TabIndex = 1;
             InfoGroupBox.TabStop = false;
             InfoGroupBox.Tag = "INFORMATION_ABOUT_APPLICATION";
@@ -116,7 +116,7 @@
             InfoTextBox.Name = "InfoTextBox";
             InfoTextBox.ReadOnly = true;
             InfoTextBox.ScrollBars = ScrollBars.Both;
-            InfoTextBox.Size = new Size(595, 160);
+            InfoTextBox.Size = new Size(595, 184);
             InfoTextBox.TabIndex = 0;
             // 
             // LicenseTabPage
@@ -136,9 +136,9 @@
             // 
             OtherLicenseGroupBox.Controls.Add(OtherLicenseTextBox);
             OtherLicenseGroupBox.Dock = DockStyle.Fill;
-            OtherLicenseGroupBox.Location = new Point(3, 179);
+            OtherLicenseGroupBox.Location = new Point(3, 209);
             OtherLicenseGroupBox.Name = "OtherLicenseGroupBox";
-            OtherLicenseGroupBox.Size = new Size(601, 240);
+            OtherLicenseGroupBox.Size = new Size(601, 210);
             OtherLicenseGroupBox.TabIndex = 1;
             OtherLicenseGroupBox.TabStop = false;
             OtherLicenseGroupBox.Tag = "EXTERNAL_COMPONENT_LICENSE";
@@ -152,7 +152,7 @@
             OtherLicenseTextBox.Name = "OtherLicenseTextBox";
             OtherLicenseTextBox.ReadOnly = true;
             OtherLicenseTextBox.ScrollBars = ScrollBars.Both;
-            OtherLicenseTextBox.Size = new Size(595, 218);
+            OtherLicenseTextBox.Size = new Size(595, 188);
             OtherLicenseTextBox.TabIndex = 1;
             // 
             // MainLicenseGroupBox
@@ -161,7 +161,7 @@
             MainLicenseGroupBox.Dock = DockStyle.Top;
             MainLicenseGroupBox.Location = new Point(3, 3);
             MainLicenseGroupBox.Name = "MainLicenseGroupBox";
-            MainLicenseGroupBox.Size = new Size(601, 176);
+            MainLicenseGroupBox.Size = new Size(601, 206);
             MainLicenseGroupBox.TabIndex = 0;
             MainLicenseGroupBox.TabStop = false;
             MainLicenseGroupBox.Tag = "MAIN_LICENSE";
@@ -175,7 +175,7 @@
             MainLicenseTextBox.Name = "MainLicenseTextBox";
             MainLicenseTextBox.ReadOnly = true;
             MainLicenseTextBox.ScrollBars = ScrollBars.Both;
-            MainLicenseTextBox.Size = new Size(595, 154);
+            MainLicenseTextBox.Size = new Size(595, 184);
             MainLicenseTextBox.TabIndex = 1;
             // 
             // InfoForm
