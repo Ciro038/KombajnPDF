@@ -41,7 +41,6 @@ namespace KombajnPDF.View
             try
             {
                 string licensePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENSE", "LICENSE.txt");
-                //C:\Users\Ja\source\repos\KombajnPDF\KombajnPDF\LICENSE\LICENSE.txt
                 if (File.Exists(licensePath))
                 {
                     string licenseText = File.ReadAllText(licensePath, Encoding.UTF8);
