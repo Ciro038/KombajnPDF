@@ -55,7 +55,7 @@ namespace KombajnPDF.Classes
         /// </summary>
         /// <param name="translationCode">The translation code to be translated.</param>
         /// <returns>Localized string based on the current language.</returns>
-        public string Translate(TranslationCodes translationCode) => _languageService.Translate(translationCode);
+        public string TranslateCode(TranslationCodes translationCode) => _languageService.Translate(translationCode);
 
         /// <summary>
         /// Recursively applies translation to a control and all its children based on their Tag properties.

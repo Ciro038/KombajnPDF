@@ -88,11 +88,68 @@ namespace KombajnPDF.Properties.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Licencja zewnętrznych komponentów.
+        /// </summary>
+        internal static string EXTERNAL_COMPONENT_LICENSE {
+            get {
+                return ResourceManager.GetString("EXTERNAL_COMPONENT_LICENSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Informacja.
         /// </summary>
         internal static string INFORMATION {
             get {
                 return ResourceManager.GetString("INFORMATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informacje o aplikacji.
+        /// </summary>
+        internal static string INFORMATION_ABOUT_APPLICATION {
+            get {
+                return ResourceManager.GetString("INFORMATION_ABOUT_APPLICATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplikacja „KombajnPDF” umożliwia nie tylko łączenie wielu plików PDF w jeden, ale także wybór konkretnych stron z każdego pliku PDF, które mają zostać wyodrębnione i dołączone do dokumentu wynikowego..
+        /// </summary>
+        internal static string INFORMATION_ABOUT_APPLICATION_TEXT {
+            get {
+                return ResourceManager.GetString("INFORMATION_ABOUT_APPLICATION_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informacje.
+        /// </summary>
+        internal static string INFORMATIONS {
+            get {
+                return ResourceManager.GetString("INFORMATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instrukcja obsługi.
+        /// </summary>
+        internal static string INSTRUCTION_MANUAL {
+            get {
+                return ResourceManager.GetString("INSTRUCTION_MANUAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Po uruchomieniu aplikacji należy dodać pliki PDF, które chcemy połączyć – służy do tego przycisk z ikoną plusa.
+        ///2. Dodane pliki pojawią się na liście, gdzie można zmieniać ich kolejność (przyciski z ikoną strzałki w dół i przyciski z ikoną strzałki w górę) lub usuwać wybrane pozycje przycisk z ikoną kosza na śmieci.
+        ///3. Po ustawieniu odpowiedniej kolejności plików należy kliknąć przycisk połącz pliki, aby połączyć wybrane dokumenty w jeden plik PDF. 
+        ///4. Program poprosi o wskazanie miejsca i nazwy dla n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string INSTRUCTION_MANUAL_TEXT {
+            get {
+                return ResourceManager.GetString("INSTRUCTION_MANUAL_TEXT", resourceCulture);
             }
         }
         
@@ -111,6 +168,24 @@ namespace KombajnPDF.Properties.Translations {
         internal static string LANGUAGE_CHANGED {
             get {
                 return ResourceManager.GetString("LANGUAGE_CHANGED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Licencja.
+        /// </summary>
+        internal static string LICENSE {
+            get {
+                return ResourceManager.GetString("LICENSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Główna licencja.
+        /// </summary>
+        internal static string MAIN_LICENSE {
+            get {
+                return ResourceManager.GetString("MAIN_LICENSE", resourceCulture);
             }
         }
         

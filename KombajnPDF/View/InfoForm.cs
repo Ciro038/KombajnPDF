@@ -23,6 +23,9 @@ namespace KombajnPDF.View
             };
 
             GlobalSettingsProvider.Instance.TranslateControl(this);
+
+            InfoTextBox.Text = GlobalSettingsProvider.Instance.TranslateCode(Properties.Translations.TranslationCodes.INFORMATION_ABOUT_APPLICATION_TEXT);
+            InstructionTextBox.Text = GlobalSettingsProvider.Instance.TranslateCode(Properties.Translations.TranslationCodes.INSTRUCTION_MANUAL_TEXT);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace KombajnPDF.Classes
             catch (Exception ex)
             {
                 LogUnhandledException(ex);
-                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.UNEXPECTED_EXCEPTION_OCCURRED), GlobalSettingsProvider.Instance.Translate(TranslationCodes.ERROR), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.UNEXPECTED_EXCEPTION_OCCURRED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.ERROR), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         /// <summary>

@@ -28,16 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoForm));
             MainInfoTabControl = new TabControl();
             InfoTabPage = new TabPage();
             InstructionGroupBox = new GroupBox();
+            InstructionTextBox = new TextBox();
             InfoGroupBox = new GroupBox();
+            InfoTextBox = new TextBox();
             LicenseTabPage = new TabPage();
             OtherLicenseGroupBox = new GroupBox();
+            OtherLicenseTextBox = new TextBox();
             MainLicenseGroupBox = new GroupBox();
+            MainLicenseTextBox = new TextBox();
             MainInfoTabControl.SuspendLayout();
             InfoTabPage.SuspendLayout();
+            InstructionGroupBox.SuspendLayout();
+            InfoGroupBox.SuspendLayout();
             LicenseTabPage.SuspendLayout();
+            OtherLicenseGroupBox.SuspendLayout();
+            MainLicenseGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // MainInfoTabControl
@@ -60,28 +69,55 @@
             InfoTabPage.Padding = new Padding(3);
             InfoTabPage.Size = new Size(607, 422);
             InfoTabPage.TabIndex = 0;
+            InfoTabPage.Tag = "INFORMATION";
             InfoTabPage.Text = "INFO";
             InfoTabPage.UseVisualStyleBackColor = true;
             // 
             // InstructionGroupBox
             // 
+            InstructionGroupBox.Controls.Add(InstructionTextBox);
             InstructionGroupBox.Dock = DockStyle.Fill;
             InstructionGroupBox.Location = new Point(3, 185);
             InstructionGroupBox.Name = "InstructionGroupBox";
             InstructionGroupBox.Size = new Size(601, 234);
             InstructionGroupBox.TabIndex = 0;
             InstructionGroupBox.TabStop = false;
+            InstructionGroupBox.Tag = "INSTRUCTION_MANUAL";
             InstructionGroupBox.Text = "INSTRUCTION";
+            // 
+            // InstructionTextBox
+            // 
+            InstructionTextBox.Dock = DockStyle.Fill;
+            InstructionTextBox.Location = new Point(3, 19);
+            InstructionTextBox.Multiline = true;
+            InstructionTextBox.Name = "InstructionTextBox";
+            InstructionTextBox.ReadOnly = true;
+            InstructionTextBox.ScrollBars = ScrollBars.Both;
+            InstructionTextBox.Size = new Size(595, 212);
+            InstructionTextBox.TabIndex = 1;
             // 
             // InfoGroupBox
             // 
+            InfoGroupBox.Controls.Add(InfoTextBox);
             InfoGroupBox.Dock = DockStyle.Top;
             InfoGroupBox.Location = new Point(3, 3);
             InfoGroupBox.Name = "InfoGroupBox";
             InfoGroupBox.Size = new Size(601, 182);
             InfoGroupBox.TabIndex = 1;
             InfoGroupBox.TabStop = false;
+            InfoGroupBox.Tag = "INFORMATION_ABOUT_APPLICATION";
             InfoGroupBox.Text = "INFO";
+            // 
+            // InfoTextBox
+            // 
+            InfoTextBox.Dock = DockStyle.Fill;
+            InfoTextBox.Location = new Point(3, 19);
+            InfoTextBox.Multiline = true;
+            InfoTextBox.Name = "InfoTextBox";
+            InfoTextBox.ReadOnly = true;
+            InfoTextBox.ScrollBars = ScrollBars.Both;
+            InfoTextBox.Size = new Size(595, 160);
+            InfoTextBox.TabIndex = 0;
             // 
             // LicenseTabPage
             // 
@@ -92,28 +128,55 @@
             LicenseTabPage.Padding = new Padding(3);
             LicenseTabPage.Size = new Size(607, 422);
             LicenseTabPage.TabIndex = 1;
+            LicenseTabPage.Tag = "LICENSE";
             LicenseTabPage.Text = "LICENSE";
             LicenseTabPage.UseVisualStyleBackColor = true;
             // 
             // OtherLicenseGroupBox
             // 
+            OtherLicenseGroupBox.Controls.Add(OtherLicenseTextBox);
             OtherLicenseGroupBox.Dock = DockStyle.Fill;
             OtherLicenseGroupBox.Location = new Point(3, 179);
             OtherLicenseGroupBox.Name = "OtherLicenseGroupBox";
             OtherLicenseGroupBox.Size = new Size(601, 240);
             OtherLicenseGroupBox.TabIndex = 1;
             OtherLicenseGroupBox.TabStop = false;
+            OtherLicenseGroupBox.Tag = "EXTERNAL_COMPONENT_LICENSE";
             OtherLicenseGroupBox.Text = "OTHER LICENSE";
+            // 
+            // OtherLicenseTextBox
+            // 
+            OtherLicenseTextBox.Dock = DockStyle.Fill;
+            OtherLicenseTextBox.Location = new Point(3, 19);
+            OtherLicenseTextBox.Multiline = true;
+            OtherLicenseTextBox.Name = "OtherLicenseTextBox";
+            OtherLicenseTextBox.ReadOnly = true;
+            OtherLicenseTextBox.ScrollBars = ScrollBars.Both;
+            OtherLicenseTextBox.Size = new Size(595, 218);
+            OtherLicenseTextBox.TabIndex = 1;
             // 
             // MainLicenseGroupBox
             // 
+            MainLicenseGroupBox.Controls.Add(MainLicenseTextBox);
             MainLicenseGroupBox.Dock = DockStyle.Top;
             MainLicenseGroupBox.Location = new Point(3, 3);
             MainLicenseGroupBox.Name = "MainLicenseGroupBox";
             MainLicenseGroupBox.Size = new Size(601, 176);
             MainLicenseGroupBox.TabIndex = 0;
             MainLicenseGroupBox.TabStop = false;
+            MainLicenseGroupBox.Tag = "MAIN_LICENSE";
             MainLicenseGroupBox.Text = "MAIN LICENSE";
+            // 
+            // MainLicenseTextBox
+            // 
+            MainLicenseTextBox.Dock = DockStyle.Fill;
+            MainLicenseTextBox.Location = new Point(3, 19);
+            MainLicenseTextBox.Multiline = true;
+            MainLicenseTextBox.Name = "MainLicenseTextBox";
+            MainLicenseTextBox.ReadOnly = true;
+            MainLicenseTextBox.ScrollBars = ScrollBars.Both;
+            MainLicenseTextBox.Size = new Size(595, 154);
+            MainLicenseTextBox.TabIndex = 1;
             // 
             // InfoForm
             // 
@@ -121,12 +184,22 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(615, 450);
             Controls.Add(MainInfoTabControl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "InfoForm";
             StartPosition = FormStartPosition.CenterScreen;
+            Tag = "INFORMATIONS";
             Text = "InfoForm";
             MainInfoTabControl.ResumeLayout(false);
             InfoTabPage.ResumeLayout(false);
+            InstructionGroupBox.ResumeLayout(false);
+            InstructionGroupBox.PerformLayout();
+            InfoGroupBox.ResumeLayout(false);
+            InfoGroupBox.PerformLayout();
             LicenseTabPage.ResumeLayout(false);
+            OtherLicenseGroupBox.ResumeLayout(false);
+            OtherLicenseGroupBox.PerformLayout();
+            MainLicenseGroupBox.ResumeLayout(false);
+            MainLicenseGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -139,5 +212,9 @@
         private GroupBox InfoGroupBox;
         private GroupBox OtherLicenseGroupBox;
         private GroupBox MainLicenseGroupBox;
+        private TextBox InstructionTextBox;
+        private TextBox InfoTextBox;
+        private TextBox OtherLicenseTextBox;
+        private TextBox MainLicenseTextBox;
     }
 }

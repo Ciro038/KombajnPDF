@@ -49,6 +49,14 @@ namespace KombajnPDF.Properties.Translations
         /// <summary>
         /// Information message
         /// </summary>
-        INFORMATION
+        INFORMATION,
+        INFORMATIONS,
+        INFORMATION_ABOUT_APPLICATION,
+        INFORMATION_ABOUT_APPLICATION_TEXT,
+        INSTRUCTION_MANUAL,
+        INSTRUCTION_MANUAL_TEXT,
+        LICENSE,
+        MAIN_LICENSE,
+        EXTERNAL_COMPONENT_LICENSE
     }
 }

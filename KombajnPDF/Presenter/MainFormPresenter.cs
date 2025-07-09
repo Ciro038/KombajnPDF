@@ -74,7 +74,7 @@ namespace KombajnPDF.Presenter
                 Cursor.Current = Cursors.WaitCursor;
                 var combiner = new FilesCombiner();
                 combiner.CombineFiles(_files.Items);
-                MessageBox.Show(GlobalSettingsProvider.Instance.Translate(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.Translate(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

@@ -126,14 +126,52 @@
   <data name="ERROR" xml:space="preserve">
     <value>Błąd</value>
   </data>
+  <data name="EXTERNAL_COMPONENT_LICENSE" xml:space="preserve">
+    <value>Licencja zewnętrznych komponentów</value>
+  </data>
   <data name="INFORMATION" xml:space="preserve">
     <value>Informacja</value>
+  </data>
+  <data name="INFORMATIONS" xml:space="preserve">
+    <value>Informacje</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION" xml:space="preserve">
+    <value>Informacje o aplikacji</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION_TEXT" xml:space="preserve">
+    <value>Aplikacja „KombajnPDF” umożliwia nie tylko łączenie wielu plików PDF w jeden, ale także wybór konkretnych stron z każdego pliku PDF, które mają zostać wyodrębnione i dołączone do dokumentu wynikowego.</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL" xml:space="preserve">
+    <value>Instrukcja obsługi</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL_TEXT" xml:space="preserve">
+    <value>1. Po uruchomieniu aplikacji należy dodać pliki PDF, które chcemy połączyć – służy do tego przycisk z ikoną plusa.
+2. Dodane pliki pojawią się na liście, gdzie można zmieniać ich kolejność (przyciski z ikoną strzałki w dół i przyciski z ikoną strzałki w górę) lub usuwać wybrane pozycje przycisk z ikoną kosza na śmieci.
+3. Po ustawieniu odpowiedniej kolejności plików należy kliknąć przycisk połącz pliki, aby połączyć wybrane dokumenty w jeden plik PDF. 
+4. Program poprosi o wskazanie miejsca i nazwy dla nowego pliku.
+
+Jak wybrać strony do wyodrębnienia:
+W głównym oknie aplikacji, przy każdym dodanym pliku PDF, znajduje się kolumna „Pattern”. W tej kolumnie użytkownik może wpisać wzorzec określający, które strony z danego pliku mają zostać użyte podczas łączenia. Domyślnie wpisany jest znak „-”, co oznacza, że zostaną wybrane wszystkie strony z pliku.
+
+Możliwości wzorca wyboru stron:
+Pojedyncze numery stron, np. "1;3;5" – wyodrębnione zostaną strony 1, 3 i 5.
+Zakresy stron, np. "2-4" – wyodrębnione zostaną strony 2, 3 i 4.
+Połączenie zakresów i pojedynczych stron, np. "1;3-5;7" – wyodrębnione zostaną strony 1, 3, 4, 5 i 7.
+"-" lub puste pole – wybrane zostaną wszystkie strony z pliku.
+"-5" – strony od 1 do 5.
+"3-" – strony od 3 do ostatniej.</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Język</value>
   </data>
   <data name="LANGUAGE_CHANGED" xml:space="preserve">
     <value>Język zmieniony</value>
+  </data>
+  <data name="LICENSE" xml:space="preserve">
+    <value>Licencja</value>
+  </data>
+  <data name="MAIN_LICENSE" xml:space="preserve">
+    <value>Główna licencja</value>
   </data>
   <data name="SETTINGS" xml:space="preserve">
     <value>Ustawienia</value>
