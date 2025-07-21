@@ -1,4 +1,5 @@
 ﻿using KombajnPDF.Classes;
+using KombajnPDF.Classes.Form;
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
 using KombajnPDF.Interface;
@@ -19,7 +20,7 @@ namespace KombajnPDF.View
     /// Represents the settings form used to manage global application settings such as language.
     /// Implements the ISettingsFormView interface.
     /// </summary>
-    public partial class SettingsForm : Form, ISettingsFormView
+    public partial class SettingsForm : BaseForm, ISettingsFormView
     {
         /// <summary>
         /// Presenter instance that handles logic between the view and model.
@@ -42,20 +43,7 @@ namespace KombajnPDF.View
         public SettingsForm()
         {
             InitializeComponent();
-
             presenter = new SettingsFormPresenter(this);
-
-            // Trigger loading of available languages.
-            LoadAvailableLanguages?.Invoke();
-
-            // Subscribe to global language change event to refresh UI text.
-            GlobalSettingsProvider.Instance.LanguageChanged += () =>
-            {
-                GlobalSettingsProvider.Instance.TranslateControl(this);
-            };
-
-            // Perform initial translation of UI elements.
-            GlobalSettingsProvider.Instance.TranslateControl(this);
         }
 
         /// <summary>
@@ -78,6 +66,12 @@ namespace KombajnPDF.View
             {
                 LanguageChanged?.Invoke(selectedLanguage);
             }
+        }
+
+        private void SettingsForm_Load(object sender, EventArgs e)
+        {
+            // Trigger loading of available languages.
+            LoadAvailableLanguages?.Invoke();
         }
     }
 

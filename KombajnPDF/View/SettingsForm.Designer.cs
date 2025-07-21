@@ -67,6 +67,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Tag = "SETTINGS";
             Text = "SettingsForm";
+            Load += SettingsForm_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }

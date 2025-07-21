@@ -1,4 +1,5 @@
 using KombajnPDF.Classes;
+using KombajnPDF.Classes.Form;
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.Interface;
 using KombajnPDF.Presenter;
@@ -13,7 +14,7 @@ namespace KombajnPDF
     /// Main form of the application that handles user interface logic for PDF combining.
     /// Implements <see cref="IMainFormView"/> to communicate with the presenter.
     /// </summary>
-    public partial class MainForm : Form, IMainFormView
+    public partial class MainForm : BaseForm, IMainFormView
     {
         private readonly MainFormPresenter presenter;
         private DataGridViewCellStyle correctDataGridViewCellStyle;
@@ -45,22 +46,6 @@ namespace KombajnPDF
         {
             InitializeComponent();
             presenter = new MainFormPresenter(this);
-
-            InitializeDataGrid();
-
-            GlobalSettingsProvider.Instance.LanguageChanged += () =>
-            {
-                GlobalSettingsProvider.Instance.TranslateControl(this);
-            };
-
-            GlobalSettingsProvider.Instance.TranslateControl(this);
-
-            IconsProvider.SetIconWithResize(SettingsButton, Properties.Resources.Icons.Icons.SettingsIcon);
-            IconsProvider.SetIconWithResize(MoveUpFilesButton, Properties.Resources.Icons.Icons.UpIcon);
-            IconsProvider.SetIconWithResize(MoveDownButton, Properties.Resources.Icons.Icons.DownIcon);
-            IconsProvider.SetIconWithResize(RemoveFilesButton, Properties.Resources.Icons.Icons.DeleteIcon);
-            IconsProvider.SetIconWithResize(AddFilesButton, Properties.Resources.Icons.Icons.AddIcon);
-            IconsProvider.SetIconWithResize(HelpButton, Properties.Resources.Icons.Icons.HelpIcon);
         }
 
         /// <summary>
@@ -178,6 +163,18 @@ namespace KombajnPDF
         private void HelpButton_Click(object sender, EventArgs e)
         {
             InfoButtonClicked?.Invoke();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            IconsProvider.SetIconWithResize(SettingsButton, Properties.Resources.Icons.Icons.SettingsIcon);
+            IconsProvider.SetIconWithResize(MoveUpFilesButton, Properties.Resources.Icons.Icons.UpIcon);
+            IconsProvider.SetIconWithResize(MoveDownButton, Properties.Resources.Icons.Icons.DownIcon);
+            IconsProvider.SetIconWithResize(RemoveFilesButton, Properties.Resources.Icons.Icons.DeleteIcon);
+            IconsProvider.SetIconWithResize(AddFilesButton, Properties.Resources.Icons.Icons.AddIcon);
+            IconsProvider.SetIconWithResize(HelpButton, Properties.Resources.Icons.Icons.HelpIcon);
+
+            InitializeDataGrid();
         }
     }
 }

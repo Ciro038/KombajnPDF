@@ -199,6 +199,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KombajnPDF";
+            Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)MainErrorProvider).EndInit();
             ResumeLayout(false);

@@ -95,6 +95,7 @@
             InstructionTextBox.ScrollBars = ScrollBars.Both;
             InstructionTextBox.Size = new Size(595, 188);
             InstructionTextBox.TabIndex = 1;
+            InstructionTextBox.Tag = "INSTRUCTION_MANUAL_TEXT";
             // 
             // InfoGroupBox
             // 
@@ -118,6 +119,7 @@
             InfoTextBox.ScrollBars = ScrollBars.Both;
             InfoTextBox.Size = new Size(595, 184);
             InfoTextBox.TabIndex = 0;
+            InfoTextBox.Tag = "INFORMATION_ABOUT_APPLICATION_TEXT";
             // 
             // LicenseTabPage
             // 
@@ -189,6 +191,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Tag = "INFORMATIONS";
             Text = "InfoForm";
+            Load += InfoForm_Load;
             MainInfoTabControl.ResumeLayout(false);
             InfoTabPage.ResumeLayout(false);
             InstructionGroupBox.ResumeLayout(false);
