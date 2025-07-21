@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="COMBINED_FILES" xml:space="preserve">
+    <value>Об'єднані файли</value>
+  </data>
+  <data name="COMBINE_FILES" xml:space="preserve">
+    <value>Об'єднати файли</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>Інформація</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Мова</value>
+  </data>
+  <data name="LANGUAGE_CHANGED" xml:space="preserve">
+    <value>Мову змінено</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="UNEXPECTED_EXCEPTION_OCCURED" xml:space="preserve">
+    <value>Виникла непередбачена помилка</value>
+  </data>
+  <data name="EXTERNAL_COMPONENT_LICENSE" xml:space="preserve">
+    <value>Ліцензія зовнішнього компонента</value>
+  </data>
+  <data name="INFORMATIONS" xml:space="preserve">
+    <value>Інформації</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION" xml:space="preserve">
+    <value>Інформація про додаток</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION_TEXT" xml:space="preserve">
+    <value>Додаток "KombajnPDF" дозволяє не лише об'єднувати кілька PDF-файлів в один, а й вибирати конкретні сторінки з кожного PDF-файлу для вилучення та включення до вихідного документа.</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL" xml:space="preserve">
+    <value>Інструкція користувача</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL_TEXT" xml:space="preserve">
+    <value>1. Після запуску додатка додайте PDF-файли, які потрібно об'єднати – скористайтеся кнопкою з іконкою плюса.
+2. Додані файли з'являться у списку, де можна змінити їх порядок (кнопки зі стрілками вгору та вниз) або видалити вибрані елементи (кнопка з іконкою кошика).
+3. Після встановлення правильної послідовності файлів натисніть кнопку об'єднання файлів, щоб об'єднати вибрані документи в один PDF-файл.
+4. Програма попросить вказати місце та ім'я для нового файлу.
+
+Як вибрати сторінки для вилучення:
+У головному вікні додатка для кожного доданого PDF-файлу є стовпець "Pattern". У цьому стовпці користувач може ввести шаблон, який визначає, які сторінки з файлу слід використовувати під час об'єднання. За замовчуванням введено символ "-", що означає, що будуть вибрані всі сторінки з файлу.
+
+Варіанти вибору шаблону:
+Окремі номери сторінок, наприклад, "1;3;5" – будуть вилучені сторінки 1, 3 і 5.
+Діапазони сторінок, наприклад, "2-4" – будуть вилучені сторінки 2, 3 і 4.
+Поєднання діапазонів і окремих сторінок, наприклад, "1;3-5;7" – будуть вилучені сторінки 1, 3, 4, 5 і 7.
+"-" або порожнє поле – будуть вибрані всі сторінки з файлу.
+"-5" – сторінки з 1 по 5.
+"3-" – сторінки з 3 по останню.</value>
+  </data>
+  <data name="LICENSE" xml:space="preserve">
+    <value>Ліцензія</value>
+  </data>
+  <data name="MAIN_LICENSE" xml:space="preserve">
+    <value>Основна ліцензія</value>
+  </data>
+</root> 

@@ -141,4 +141,42 @@
   <data name="UNEXPECTED_EXCEPTION_OCCURED" xml:space="preserve">
     <value>An unexpected exception occurred</value>
   </data>
+  <data name="EXTERNAL_COMPONENT_LICENSE" xml:space="preserve">
+    <value>External component license</value>
+  </data>
+  <data name="INFORMATIONS" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION" xml:space="preserve">
+    <value>Information about the application</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION_TEXT" xml:space="preserve">
+    <value>The "KombajnPDF" application allows not only merging multiple PDF files into one, but also selecting specific pages from each PDF file to be extracted and included in the output document.</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL" xml:space="preserve">
+    <value>User manual</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL_TEXT" xml:space="preserve">
+    <value>1. After launching the application, add the PDF files you want to merge – use the button with the plus icon.
+2. The added files will appear in the list, where you can change their order (buttons with up and down arrow icons) or remove selected items (button with the trash icon).
+3. After setting the correct order of files, click the combine files button to merge the selected documents into one PDF file.
+4. The program will ask you to specify the location and name for the new file.
+
+How to select pages to extract:
+In the main window of the application, for each added PDF file, there is a "Pattern" column. In this column, the user can enter a pattern specifying which pages from the file should be used during merging. By default, the character "-" is entered, which means that all pages from the file will be selected.
+
+Pattern selection options:
+Single page numbers, e.g. "1;3;5" – pages 1, 3, and 5 will be extracted.
+Page ranges, e.g. "2-4" – pages 2, 3, and 4 will be extracted.
+A combination of ranges and single pages, e.g. "1;3-5;7" – pages 1, 3, 4, 5, and 7 will be extracted.
+"-" or an empty field – all pages from the file will be selected.
+"-5" – pages from 1 to 5.
+"3-" – pages from 3 to the last one.</value>
+  </data>
+  <data name="LICENSE" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="MAIN_LICENSE" xml:space="preserve">
+    <value>Main license</value>
+  </data>
 </root>

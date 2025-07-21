@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="COMBINED_FILES" xml:space="preserve">
+    <value>已合并文件</value>
+  </data>
+  <data name="COMBINE_FILES" xml:space="preserve">
+    <value>合并文件</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="LANGUAGE_CHANGED" xml:space="preserve">
+    <value>语言已更改</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="UNEXPECTED_EXCEPTION_OCCURED" xml:space="preserve">
+    <value>发生了意外异常</value>
+  </data>
+  <data name="EXTERNAL_COMPONENT_LICENSE" xml:space="preserve">
+    <value>外部组件许可证</value>
+  </data>
+  <data name="INFORMATIONS" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION" xml:space="preserve">
+    <value>关于应用程序的信息</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION_TEXT" xml:space="preserve">
+    <value>“KombajnPDF”应用程序不仅允许将多个PDF文件合并为一个，还可以选择从每个PDF文件中提取特定页面并将其包含在输出文档中。</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL" xml:space="preserve">
+    <value>用户手册</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL_TEXT" xml:space="preserve">
+    <value>1. 启动应用程序后，添加要合并的PDF文件——使用带有加号图标的按钮。
+2. 添加的文件将出现在列表中，您可以更改它们的顺序（带有向上和向下箭头图标的按钮）或删除选定的项目（带有垃圾桶图标的按钮）。
+3. 设置好文件的正确顺序后，点击合并文件按钮，将选定的文档合并为一个PDF文件。
+4. 程序会要求您指定新文件的位置和名称。
+
+如何选择要提取的页面：
+在应用程序的主窗口中，对于每个添加的PDF文件，都有一个“Pattern”列。在此列中，用户可以输入一个模式，指定在合并过程中应使用文件中的哪些页面。默认情况下，输入字符“-”，表示将选择文件中的所有页面。
+
+模式选择选项：
+单个页码，例如“1;3;5”——将提取第1、3和5页。
+页码范围，例如“2-4”——将提取第2、3和4页。
+范围和单个页码的组合，例如“1;3-5;7”——将提取第1、3、4、5和7页。
+“-”或空字段——将选择文件中的所有页面。
+“-5”——第1页到第5页。
+“3-”——第3页到最后一页。</value>
+  </data>
+  <data name="LICENSE" xml:space="preserve">
+    <value>许可证</value>
+  </data>
+  <data name="MAIN_LICENSE" xml:space="preserve">
+    <value>主许可证</value>
+  </data>
+</root> 

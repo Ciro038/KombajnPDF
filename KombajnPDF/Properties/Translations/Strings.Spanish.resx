@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="COMBINED_FILES" xml:space="preserve">
+    <value>Archivos combinados</value>
+  </data>
+  <data name="COMBINE_FILES" xml:space="preserve">
+    <value>Combinar archivos</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LANGUAGE_CHANGED" xml:space="preserve">
+    <value>Idioma cambiado</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="UNEXPECTED_EXCEPTION_OCCURED" xml:space="preserve">
+    <value>Ocurrió una excepción inesperada</value>
+  </data>
+  <data name="EXTERNAL_COMPONENT_LICENSE" xml:space="preserve">
+    <value>Licencia de componente externo</value>
+  </data>
+  <data name="INFORMATIONS" xml:space="preserve">
+    <value>Informaciones</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION" xml:space="preserve">
+    <value>Información sobre la aplicación</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION_TEXT" xml:space="preserve">
+    <value>La aplicación "KombajnPDF" permite no solo combinar varios archivos PDF en uno, sino también seleccionar páginas específicas de cada archivo PDF para extraerlas e incluirlas en el documento de salida.</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL" xml:space="preserve">
+    <value>Manual de usuario</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL_TEXT" xml:space="preserve">
+    <value>1. Después de iniciar la aplicación, agregue los archivos PDF que desea combinar: use el botón con el icono de suma.
+2. Los archivos agregados aparecerán en la lista, donde puede cambiar su orden (botones con iconos de flecha hacia arriba y hacia abajo) o eliminar elementos seleccionados (botón con el icono de la papelera).
+3. Después de establecer el orden correcto de los archivos, haga clic en el botón de combinar archivos para fusionar los documentos seleccionados en un solo archivo PDF.
+4. El programa le pedirá que especifique la ubicación y el nombre del nuevo archivo.
+
+Cómo seleccionar páginas para extraer:
+En la ventana principal de la aplicación, para cada archivo PDF agregado, hay una columna "Pattern". En esta columna, el usuario puede ingresar un patrón que especifique qué páginas del archivo se deben usar durante la combinación. Por defecto, se ingresa el carácter "-", lo que significa que se seleccionarán todas las páginas del archivo.
+
+Opciones de selección de patrón:
+Números de página individuales, por ejemplo, "1;3;5": se extraerán las páginas 1, 3 y 5.
+Rangos de páginas, por ejemplo, "2-4": se extraerán las páginas 2, 3 y 4.
+Una combinación de rangos y páginas individuales, por ejemplo, "1;3-5;7": se extraerán las páginas 1, 3, 4, 5 y 7.
+"-" o un campo vacío: se seleccionarán todas las páginas del archivo.
+"-5": páginas de la 1 a la 5.
+"3-": páginas de la 3 a la última.</value>
+  </data>
+  <data name="LICENSE" xml:space="preserve">
+    <value>Licencia</value>
+  </data>
+  <data name="MAIN_LICENSE" xml:space="preserve">
+    <value>Licencia principal</value>
+  </data>
+</root> 

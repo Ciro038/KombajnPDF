@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="COMBINED_FILES" xml:space="preserve">
+    <value>結合されたファイル</value>
+  </data>
+  <data name="COMBINE_FILES" xml:space="preserve">
+    <value>ファイルを結合</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="INFORMATION" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="LANGUAGE_CHANGED" xml:space="preserve">
+    <value>言語が変更されました</value>
+  </data>
+  <data name="SETTINGS" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="UNEXPECTED_EXCEPTION_OCCURED" xml:space="preserve">
+    <value>予期しない例外が発生しました</value>
+  </data>
+  <data name="EXTERNAL_COMPONENT_LICENSE" xml:space="preserve">
+    <value>外部コンポーネントのライセンス</value>
+  </data>
+  <data name="INFORMATIONS" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION" xml:space="preserve">
+    <value>アプリケーションについての情報</value>
+  </data>
+  <data name="INFORMATION_ABOUT_APPLICATION_TEXT" xml:space="preserve">
+    <value>「KombajnPDF」アプリケーションは、複数のPDFファイルを1つに結合するだけでなく、各PDFファイルから特定のページを抽出して出力ドキュメントに含めることもできます。</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL" xml:space="preserve">
+    <value>ユーザーマニュアル</value>
+  </data>
+  <data name="INSTRUCTION_MANUAL_TEXT" xml:space="preserve">
+    <value>1. アプリケーションを起動したら、結合したいPDFファイルを追加します（プラスアイコンのボタンを使用）。
+2. 追加されたファイルはリストに表示され、順序を変更したり（上下矢印アイコンのボタン）、選択した項目を削除したり（ゴミ箱アイコンのボタン）できます。
+3. ファイルの順序を正しく設定したら、ファイル結合ボタンをクリックして選択したドキュメントを1つのPDFファイルにまとめます。
+4. プログラムは新しいファイルの保存場所と名前を指定するよう求めます。
+
+抽出するページの選択方法：
+アプリケーションのメインウィンドウでは、追加された各PDFファイルに「Pattern」列があります。この列に、結合時に使用するページを指定するパターンを入力できます。デフォルトでは「-」が入力されており、ファイル内のすべてのページが選択されます。
+
+パターン選択のオプション：
+単一ページ番号（例：「1;3;5」）—1、3、5ページが抽出されます。
+ページ範囲（例：「2-4」）—2、3、4ページが抽出されます。
+範囲と単一ページの組み合わせ（例：「1;3-5;7」）—1、3、4、5、7ページが抽出されます。
+「-」または空欄—すべてのページが選択されます。
+「-5」—1ページから5ページまで。
+「3-」—3ページから最後まで。</value>
+  </data>
+  <data name="LICENSE" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+  <data name="MAIN_LICENSE" xml:space="preserve">
+    <value>メインライセンス</value>
+  </data>
+</root> 
