@@ -64,6 +64,7 @@
             // 
             InfoTabPage.Controls.Add(InstructionGroupBox);
             InfoTabPage.Controls.Add(InfoGroupBox);
+            InfoTabPage.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
             InfoTabPage.Location = new Point(4, 24);
             InfoTabPage.Name = "InfoTabPage";
             InfoTabPage.Padding = new Padding(3);
@@ -88,12 +89,12 @@
             // InstructionTextBox
             // 
             InstructionTextBox.Dock = DockStyle.Fill;
-            InstructionTextBox.Location = new Point(3, 19);
+            InstructionTextBox.Location = new Point(3, 23);
             InstructionTextBox.Multiline = true;
             InstructionTextBox.Name = "InstructionTextBox";
             InstructionTextBox.ReadOnly = true;
             InstructionTextBox.ScrollBars = ScrollBars.Both;
-            InstructionTextBox.Size = new Size(595, 188);
+            InstructionTextBox.Size = new Size(595, 184);
             InstructionTextBox.TabIndex = 1;
             InstructionTextBox.Tag = "INSTRUCTION_MANUAL_TEXT";
             // 
@@ -112,12 +113,12 @@
             // InfoTextBox
             // 
             InfoTextBox.Dock = DockStyle.Fill;
-            InfoTextBox.Location = new Point(3, 19);
+            InfoTextBox.Location = new Point(3, 23);
             InfoTextBox.Multiline = true;
             InfoTextBox.Name = "InfoTextBox";
             InfoTextBox.ReadOnly = true;
             InfoTextBox.ScrollBars = ScrollBars.Both;
-            InfoTextBox.Size = new Size(595, 184);
+            InfoTextBox.Size = new Size(595, 180);
             InfoTextBox.TabIndex = 0;
             InfoTextBox.Tag = "INFORMATION_ABOUT_APPLICATION_TEXT";
             // 
@@ -138,6 +139,7 @@
             // 
             OtherLicenseGroupBox.Controls.Add(OtherLicenseTextBox);
             OtherLicenseGroupBox.Dock = DockStyle.Fill;
+            OtherLicenseGroupBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
             OtherLicenseGroupBox.Location = new Point(3, 209);
             OtherLicenseGroupBox.Name = "OtherLicenseGroupBox";
             OtherLicenseGroupBox.Size = new Size(601, 210);
@@ -149,18 +151,19 @@
             // OtherLicenseTextBox
             // 
             OtherLicenseTextBox.Dock = DockStyle.Fill;
-            OtherLicenseTextBox.Location = new Point(3, 19);
+            OtherLicenseTextBox.Location = new Point(3, 23);
             OtherLicenseTextBox.Multiline = true;
             OtherLicenseTextBox.Name = "OtherLicenseTextBox";
             OtherLicenseTextBox.ReadOnly = true;
             OtherLicenseTextBox.ScrollBars = ScrollBars.Both;
-            OtherLicenseTextBox.Size = new Size(595, 188);
+            OtherLicenseTextBox.Size = new Size(595, 184);
             OtherLicenseTextBox.TabIndex = 1;
             // 
             // MainLicenseGroupBox
             // 
             MainLicenseGroupBox.Controls.Add(MainLicenseTextBox);
             MainLicenseGroupBox.Dock = DockStyle.Top;
+            MainLicenseGroupBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
             MainLicenseGroupBox.Location = new Point(3, 3);
             MainLicenseGroupBox.Name = "MainLicenseGroupBox";
             MainLicenseGroupBox.Size = new Size(601, 206);
@@ -172,12 +175,12 @@
             // MainLicenseTextBox
             // 
             MainLicenseTextBox.Dock = DockStyle.Fill;
-            MainLicenseTextBox.Location = new Point(3, 19);
+            MainLicenseTextBox.Location = new Point(3, 23);
             MainLicenseTextBox.Multiline = true;
             MainLicenseTextBox.Name = "MainLicenseTextBox";
             MainLicenseTextBox.ReadOnly = true;
             MainLicenseTextBox.ScrollBars = ScrollBars.Both;
-            MainLicenseTextBox.Size = new Size(595, 184);
+            MainLicenseTextBox.Size = new Size(595, 180);
             MainLicenseTextBox.TabIndex = 1;
             // 
             // InfoForm
