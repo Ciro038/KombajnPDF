@@ -1,13 +1,7 @@
 using KombajnPDF.Classes;
 using KombajnPDF.Classes.Form;
-using KombajnPDF.Data.Abstract;
 using KombajnPDF.Interface;
 using KombajnPDF.Presenter;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-using File = KombajnPDF.Data.Entity.File;
 
 namespace KombajnPDF
 {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Data.Entity
 {
-    internal class FilesBindingList : BindingList<File>, IFilesBindingList
+    internal class FilesBindingList : BindingList<IFile>, IFilesBindingList
     {
         public new IFile this[int index]
         {
