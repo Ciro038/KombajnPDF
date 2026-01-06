@@ -88,11 +88,79 @@ namespace KombajnPDF.Properties.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to External component license.
+        /// </summary>
+        internal static string EXTERNAL_COMPONENT_LICENSE {
+            get {
+                return ResourceManager.GetString("EXTERNAL_COMPONENT_LICENSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File name.
+        /// </summary>
+        internal static string FILE_NAME {
+            get {
+                return ResourceManager.GetString("FILE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         internal static string INFORMATION {
             get {
                 return ResourceManager.GetString("INFORMATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information about the application.
+        /// </summary>
+        internal static string INFORMATION_ABOUT_APPLICATION {
+            get {
+                return ResourceManager.GetString("INFORMATION_ABOUT_APPLICATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &quot;KombajnPDF&quot; application allows not only merging multiple PDF files into one, but also selecting specific pages from each PDF file to be extracted and included in the output document..
+        /// </summary>
+        internal static string INFORMATION_ABOUT_APPLICATION_TEXT {
+            get {
+                return ResourceManager.GetString("INFORMATION_ABOUT_APPLICATION_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informations.
+        /// </summary>
+        internal static string INFORMATIONS {
+            get {
+                return ResourceManager.GetString("INFORMATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User manual.
+        /// </summary>
+        internal static string INSTRUCTION_MANUAL {
+            get {
+                return ResourceManager.GetString("INSTRUCTION_MANUAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. After launching the application, add the PDF files you want to merge – use the button with the plus icon.
+        ///2. The added files will appear in the list, where you can change their order (buttons with up and down arrow icons) or remove selected items (button with the trash icon).
+        ///3. After setting the correct order of files, click the combine files button to merge the selected documents into one PDF file.
+        ///4. The program will ask you to specify the location and name for the new file.
+        ///
+        ///How to select pages to ex [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string INSTRUCTION_MANUAL_TEXT {
+            get {
+                return ResourceManager.GetString("INSTRUCTION_MANUAL_TEXT", resourceCulture);
             }
         }
         
@@ -115,11 +183,56 @@ namespace KombajnPDF.Properties.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to License.
+        /// </summary>
+        internal static string LICENSE {
+            get {
+                return ResourceManager.GetString("LICENSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main license.
+        /// </summary>
+        internal static string MAIN_LICENSE {
+            get {
+                return ResourceManager.GetString("MAIN_LICENSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path to file.
+        /// </summary>
+        internal static string PATH_TO_FILE {
+            get {
+                return ResourceManager.GetString("PATH_TO_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pattern.
+        /// </summary>
+        internal static string PATTERN {
+            get {
+                return ResourceManager.GetString("PATTERN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string SETTINGS {
             get {
                 return ResourceManager.GetString("SETTINGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pages count.
+        /// </summary>
+        internal static string TOTAL_PAGES {
+            get {
+                return ResourceManager.GetString("TOTAL_PAGES", resourceCulture);
             }
         }
         

@@ -142,31 +142,39 @@
             // 
             // NameDataGridViewTextBoxColumn
             // 
+            NameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             NameDataGridViewTextBoxColumn.DataPropertyName = "FileNameWithExtension";
             NameDataGridViewTextBoxColumn.HeaderText = "Name";
+            NameDataGridViewTextBoxColumn.MinimumWidth = 260;
             NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn";
             NameDataGridViewTextBoxColumn.ReadOnly = true;
-            NameDataGridViewTextBoxColumn.Width = 144;
+            NameDataGridViewTextBoxColumn.Width = 260;
             // 
             // PathDataGridViewTextBoxColumn
             // 
+            PathDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             PathDataGridViewTextBoxColumn.DataPropertyName = "PathToFile";
             PathDataGridViewTextBoxColumn.HeaderText = "Path";
+            PathDataGridViewTextBoxColumn.MinimumWidth = 280;
             PathDataGridViewTextBoxColumn.Name = "PathDataGridViewTextBoxColumn";
             PathDataGridViewTextBoxColumn.ReadOnly = true;
-            PathDataGridViewTextBoxColumn.Width = 400;
+            PathDataGridViewTextBoxColumn.Width = 280;
             // 
             // PatternDataGridViewTextBoxColumn
             // 
+            PatternDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             PatternDataGridViewTextBoxColumn.DataPropertyName = "FileItemPattern";
             PatternDataGridViewTextBoxColumn.HeaderText = "Pattern";
+            PatternDataGridViewTextBoxColumn.MinimumWidth = 70;
             PatternDataGridViewTextBoxColumn.Name = "PatternDataGridViewTextBoxColumn";
-            PatternDataGridViewTextBoxColumn.Width = 150;
+            PatternDataGridViewTextBoxColumn.Width = 70;
             // 
             // TotalPagesDataGridViewTextBoxColumn
             // 
+            TotalPagesDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             TotalPagesDataGridViewTextBoxColumn.DataPropertyName = "TotalPages";
             TotalPagesDataGridViewTextBoxColumn.HeaderText = "Total pages";
+            TotalPagesDataGridViewTextBoxColumn.MinimumWidth = 90;
             TotalPagesDataGridViewTextBoxColumn.Name = "TotalPagesDataGridViewTextBoxColumn";
             TotalPagesDataGridViewTextBoxColumn.ReadOnly = true;
             TotalPagesDataGridViewTextBoxColumn.Width = 90;

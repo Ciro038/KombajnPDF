@@ -97,6 +97,15 @@ namespace KombajnPDF.Properties.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nazwa pliku.
+        /// </summary>
+        internal static string FILE_NAME {
+            get {
+                return ResourceManager.GetString("FILE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Informacja.
         /// </summary>
         internal static string INFORMATION {
@@ -190,11 +199,38 @@ namespace KombajnPDF.Properties.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ścieżka do pliku.
+        /// </summary>
+        internal static string PATH_TO_FILE {
+            get {
+                return ResourceManager.GetString("PATH_TO_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szablon.
+        /// </summary>
+        internal static string PATTERN {
+            get {
+                return ResourceManager.GetString("PATTERN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ustawienia.
         /// </summary>
         internal static string SETTINGS {
             get {
                 return ResourceManager.GetString("SETTINGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ilość stron.
+        /// </summary>
+        internal static string TOTAL_PAGES {
+            get {
+                return ResourceManager.GetString("TOTAL_PAGES", resourceCulture);
             }
         }
         

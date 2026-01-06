@@ -179,4 +179,16 @@ A combination of ranges and single pages, e.g. "1;3-5;7" – pages 1, 3, 4, 5, a
   <data name="MAIN_LICENSE" xml:space="preserve">
     <value>Main license</value>
   </data>
+  <data name="FILE_NAME" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="PATH_TO_FILE" xml:space="preserve">
+    <value>Path to file</value>
+  </data>
+  <data name="PATTERN" xml:space="preserve">
+    <value>Pattern</value>
+  </data>
+  <data name="TOTAL_PAGES" xml:space="preserve">
+    <value>Pages count</value>
+  </data>
 </root>

@@ -2,6 +2,7 @@ using KombajnPDF.Classes;
 using KombajnPDF.Classes.Form;
 using KombajnPDF.Interface;
 using KombajnPDF.Presenter;
+using System.Windows.Forms;
 
 namespace KombajnPDF
 {
@@ -50,6 +51,8 @@ namespace KombajnPDF
         private void InitializeDataGrid()
         {
             FilesDataGridView.AutoGenerateColumns = false;
+            FilesDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
 
             FilesDataGridView.DataSource = presenter.GetBindingList();
             FilesDataGridView.Columns["NameDataGridViewTextBoxColumn"].Tag = "FILE_NAME";

@@ -57,6 +57,10 @@ namespace KombajnPDF.Properties.Translations
         INSTRUCTION_MANUAL_TEXT,
         LICENSE,
         MAIN_LICENSE,
-        EXTERNAL_COMPONENT_LICENSE
+        EXTERNAL_COMPONENT_LICENSE,
+        FILE_NAME,
+        PATH_TO_FILE,
+        PATTERN,
+        TOTAL_PAGES
     }
 }
