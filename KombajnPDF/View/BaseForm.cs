@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using KombajnPDF.Interface;
 
 namespace KombajnPDF.Classes.Form
 {
-    public partial class BaseForm : System.Windows.Forms.Form
+    public partial class BaseForm : System.Windows.Forms.Form, IBaseFormView
     {
         public BaseForm()
         {
@@ -46,37 +47,19 @@ namespace KombajnPDF.Classes.Form
             // Możesz dodać logowanie lub inne akcje
         }
 
-        ///// <summary>
-        ///// Wyświetla komunikat o błędzie
-        ///// </summary>
-        //public void ShowError(string message, string? caption = null)
-        //{
-        //    MessageBox.Show(this, message, caption ?? "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //}
+        public virtual void ShowMessageBox(string message, string caption, MessageBoxButtons messageBoxButtons, MessageBoxIcon messageBoxIcon)
+        {
+           MessageBox.Show(this, message, caption, messageBoxButtons, messageBoxIcon);
+        }
 
-        ///// <summary>
-        ///// Wyświetla komunikat informacyjny
-        ///// </summary>
-        //public void ShowInfo(string message, string? caption = null)
-        //{
-        //    MessageBox.Show(this, message, caption ?? "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //}
+        public virtual void ShowErrorProvider(Control control, string message)
+        {
+            MainErrorProvider.SetError(control, message);
+        }
 
-        ///// <summary>
-        ///// Loguje wyjątek do pliku error.log w katalogu aplikacji
-        ///// </summary>
-        //public void LogException(Exception ex)
-        //{
-        //    try
-        //    {
-        //        string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "error.log");
-        //        string logEntry = $"[{DateTime.Now}] {ex}\n";
-        //        File.AppendAllText(logPath, logEntry);
-        //    }
-        //    catch
-        //    {
-        //        // Jeśli logowanie się nie powiedzie, nie przerywaj działania aplikacji
-        //    }
-        //}
+        public virtual void ShowErrorProvider(string message)
+        {
+            MainErrorProvider.SetError(this, message);
+        }
     }
 }

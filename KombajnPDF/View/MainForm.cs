@@ -6,6 +6,7 @@ using KombajnPDF.Presenter;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using File = KombajnPDF.Data.Entity.File;
 
 namespace KombajnPDF
@@ -123,12 +124,6 @@ namespace KombajnPDF
         public DataGridViewCellStyle GetErrorStyle() => errorDataGridViewCellStyle;
 
         /// <inheritdoc/>
-        public void ShowError(string message)
-        {
-            MainErrorProvider.SetError(FilesDataGridView, message);
-        }
-
-        /// <inheritdoc/>
         public void SetRowStyle(int rowIndex, DataGridViewCellStyle style)
         {
             FilesDataGridView.Rows[rowIndex].DefaultCellStyle = style;
@@ -175,6 +170,11 @@ namespace KombajnPDF
             IconsProvider.SetIconWithResize(HelpButton, Properties.Resources.Icons.Icons.HelpIcon);
 
             InitializeDataGrid();
+        }
+
+        public override void ShowErrorProvider(string message)
+        {
+            base.ShowErrorProvider(FilesDataGridView, message);
         }
     }
 }

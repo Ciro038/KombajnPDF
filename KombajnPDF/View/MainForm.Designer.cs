@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             FilesDataGridView = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
@@ -42,11 +41,9 @@
             MoveDownButton = new Button();
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
-            MainErrorProvider = new ErrorProvider(components);
             SelectFilesOpenFileDialog = new OpenFileDialog();
             HelpButton = new Button();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // FilesDataGridView
@@ -160,16 +157,12 @@
             CombineFilesButton.UseVisualStyleBackColor = true;
             CombineFilesButton.Click += CombineFilesButton_Click;
             // 
-            // MainErrorProvider
-            // 
-            MainErrorProvider.ContainerControl = this;
-            // 
             // SelectFilesOpenFileDialog
             // 
             SelectFilesOpenFileDialog.Filter = "Files PDF (*.pdf)|*.pdf";
             SelectFilesOpenFileDialog.Multiselect = true;
             SelectFilesOpenFileDialog.RestoreDirectory = true;
-            SelectFilesOpenFileDialog.Title = "Select _files";
+            SelectFilesOpenFileDialog.Title = "Select files";
             // 
             // HelpButton
             // 
@@ -201,7 +194,6 @@
             Text = "KombajnPDF";
             Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -214,7 +206,6 @@
         private Button MoveDownButton;
         private Button RemoveFilesButton;
         private Button CombineFilesButton;
-        private ErrorProvider MainErrorProvider;
         private OpenFileDialog SelectFilesOpenFileDialog;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn NameDataGridViewTextBoxColumn;

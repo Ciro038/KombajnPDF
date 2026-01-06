@@ -19,8 +19,8 @@ namespace KombajnPDF.Presenter
     /// </summary>
     class MainFormPresenter
     {
-        private readonly IMainFormView _view;
-        private readonly FilesBindingList _files;
+        private readonly IMainFormView mainFormView;
+        private readonly FilesBindingList files;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainFormPresenter"/> class
@@ -29,8 +29,8 @@ namespace KombajnPDF.Presenter
         /// <param name="mainForm">The main form view.</param>
         public MainFormPresenter(IMainFormView mainForm)
         {
-            _view = mainForm;
-            _files = new FilesBindingList();
+            mainFormView = mainForm;
+            files = new FilesBindingList();
 
             mainForm.FilesDataGridViewOnPatternCellEdited += OnPatternCellEdited;
             mainForm.FilesDataGridViewDragEnter += OnFilesDataGridViewDragEnter;
@@ -66,19 +66,19 @@ namespace KombajnPDF.Presenter
         /// </summary>
         public void CombineFilesButtonClicked()
         {
-            if (_files.Count == 0)
+            if (files.Count == 0)
                 return;
 
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
                 var combiner = new FilesCombiner();
-                combiner.CombineFiles(_files.Items);
-                MessageBox.Show(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                combiner.CombineFiles(files.Items);
+                mainFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                _view.ShowError(ex.Message);
+                mainFormView.ShowErrorProvider(ex.Message);
             }
             finally
             {
@@ -92,23 +92,23 @@ namespace KombajnPDF.Presenter
         /// <param name="selectedIndexes">Indexes of selected files.</param>
         private void OnMoveDownFilesButtonClicked(List<int> selectedIndexes)
         {
-            if (_files.Count <= 1) return;
+            if (files.Count <= 1) return;
 
             List<int> newIndexes = new List<int>();
 
             foreach (int index in selectedIndexes.OrderByDescending(x => x))
             {
-                if (index >= _files.Count - 1)
+                if (index >= files.Count - 1)
                     continue;
 
-                var file = _files[index].GetFullPath();
-                _files.RemoveAt(index);
-                _files.Insert(index + 1, file);
+                var file = files[index].GetFullPath();
+                files.RemoveAt(index);
+                files.Insert(index + 1, file);
                 newIndexes.Add(index + 1);
             }
 
-            _view.RefreshGrid();
-            _view.SelectRows(newIndexes);
+            mainFormView.RefreshGrid();
+            mainFormView.SelectRows(newIndexes);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace KombajnPDF.Presenter
         /// <param name="selectedIndexes">Indexes of selected files.</param>
         private void OnMoveUpFilesButtonClicked(List<int> selectedIndexes)
         {
-            if (_files.Count <= 1) return;
+            if (files.Count <= 1) return;
 
             List<int> newIndexes = new List<int>();
 
@@ -126,14 +126,14 @@ namespace KombajnPDF.Presenter
                 if (index == 0)
                     continue;
 
-                var file = _files[index].GetFullPath();
-                _files.RemoveAt(index);
-                _files.Insert(index - 1, file);
+                var file = files[index].GetFullPath();
+                files.RemoveAt(index);
+                files.Insert(index - 1, file);
                 newIndexes.Add(index - 1);
             }
 
-            _view.RefreshGrid();
-            _view.SelectRows(newIndexes);
+            mainFormView.RefreshGrid();
+            mainFormView.SelectRows(newIndexes);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace KombajnPDF.Presenter
         private void OnRemoveFilesButtonClicked(DataGridViewSelectedRowCollection selectedRows)
         {
             foreach (DataGridViewRow row in selectedRows)
-                _files.RemoveAt(row.Index);
+                files.RemoveAt(row.Index);
         }
 
         /// <summary>
@@ -151,9 +151,9 @@ namespace KombajnPDF.Presenter
         /// </summary>
         private void OnAddFilesButtonClicked()
         {
-            var files = _view.ShowOpenFileDialog();
+            var files = mainFormView.ShowOpenFileDialog();
             foreach (var path in files)
-                _files.Add(path);
+                this.files.Add(path);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KombajnPDF.Presenter
 
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files)
-                _files.Add(file);
+                this.files.Add(file);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace KombajnPDF.Presenter
         /// <param name="columnName">The name of the edited column.</param>
         private void OnPatternCellEdited(int rowIndex, string columnName)
         {
-            var file = _files[rowIndex];
+            var file = files[rowIndex];
             if (columnName != nameof(file.PatternDataGridViewTextBoxColumn))
                 return;
 
@@ -185,18 +185,18 @@ namespace KombajnPDF.Presenter
             {
                 if (!file.CheckPattern())
                 {
-                    _view.SetRowStyle(rowIndex, _view.GetErrorStyle());
-                    _view.ShowError("Wrong pattern for current file!");
+                    mainFormView.SetRowStyle(rowIndex, mainFormView.GetErrorStyle());
+                    mainFormView.ShowErrorProvider("Wrong pattern for current file!");
                 }
                 else
                 {
-                    _view.SetRowStyle(rowIndex, _view.GetCorrectStyle());
+                    mainFormView.SetRowStyle(rowIndex, mainFormView.GetCorrectStyle());
                 }
             }
             catch (Exception ex)
             {
-                _view.SetRowStyle(rowIndex, _view.GetErrorStyle());
-                _view.ShowError(ex.Message);
+                mainFormView.SetRowStyle(rowIndex, mainFormView.GetErrorStyle());
+                mainFormView.ShowErrorProvider(ex.Message);
             }
         }
 
@@ -206,7 +206,7 @@ namespace KombajnPDF.Presenter
         /// <returns>A binding list of files.</returns>
         internal FilesBindingList GetBindingList()
         {
-            return _files;
+            return files;
         }
     }
 

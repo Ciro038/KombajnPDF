@@ -11,7 +11,7 @@ namespace KombajnPDF.Interface
     /// Represents the interface for the settings form view in the application.
     /// It defines events and methods used for handling language settings.
     /// </summary>
-    interface ISettingsFormView
+    interface ISettingsFormView : IBaseFormView
     {
         /// <summary>
         /// Triggered when the settings form is loaded and available languages should be retrieved.

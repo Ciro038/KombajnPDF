@@ -10,7 +10,7 @@ namespace KombajnPDF.Interface
     /// Represents the interface for the main form view in the application.
     /// It defines all UI-related actions and interactions available in the main window.
     /// </summary>
-    interface IMainFormView
+    interface IMainFormView : IBaseFormView
     {
         /// <summary>
         /// Triggered when the pattern cell in the file DataGridView is edited.
@@ -72,12 +72,6 @@ namespace KombajnPDF.Interface
         /// </summary>
         /// <returns>An array of file paths selected by the user.</returns>
         string[] ShowOpenFileDialog();
-
-        /// <summary>
-        /// Displays an error message to the user.
-        /// </summary>
-        /// <param name="message">The message to display.</param>
-        void ShowError(string message);
 
         /// <summary>
         /// Applies the specified style to the given row index.

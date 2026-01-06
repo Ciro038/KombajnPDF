@@ -18,7 +18,7 @@ namespace KombajnPDF.Presenter
     /// </summary>
     class SettingsFormPresenter
     {
-        private readonly ISettingsFormView settingsForm;
+        private readonly ISettingsFormView settingsFormView;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsFormPresenter"/> class
@@ -27,7 +27,7 @@ namespace KombajnPDF.Presenter
         /// <param name="settingsForm">The settings form view instance.</param>
         public SettingsFormPresenter(ISettingsFormView settingsForm)
         {
-            this.settingsForm = settingsForm;
+            this.settingsFormView = settingsForm;
 
             settingsForm.LoadAvailableLanguages += OnLoadAvailableLanguages;
             settingsForm.LanguageChanged += OnLanguageChanged;
@@ -43,7 +43,7 @@ namespace KombajnPDF.Presenter
             if (language != GlobalSettingsProvider.Instance.CurrentLanguage)
             {
                 GlobalSettingsProvider.Instance.CurrentLanguage = language;
-                MessageBox.Show(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.LANGUAGE_CHANGED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                settingsFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.LANGUAGE_CHANGED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -56,7 +56,7 @@ namespace KombajnPDF.Presenter
             var languages = Enum.GetValues(typeof(LanguagesEnum))
                 .Cast<LanguagesEnum>()
                 .ToArray();
-            settingsForm.SetAvailableLanguages(GlobalSettingsProvider.Instance.CurrentLanguage, languages);
+            settingsFormView.SetAvailableLanguages(GlobalSettingsProvider.Instance.CurrentLanguage, languages);
         }
     }
 
