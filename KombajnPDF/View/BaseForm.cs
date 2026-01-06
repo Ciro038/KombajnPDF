@@ -18,13 +18,11 @@ namespace KombajnPDF.Classes.Form
         {
             InitializeComponent();
 
-            // Globalna obsługa wyjątków dla formularza
             this.Load += BaseForm_Load;
             this.Shown += BaseForm_Shown;
             this.FormClosed += BaseForm_FormClosed;
         }
 
-        // Przykładowe zdarzenie: logowanie otwarcia formularza
         private void BaseForm_Load(object sender, EventArgs e)
         {
             // Automatyczne tłumaczenie po zmianie języka
@@ -35,13 +33,11 @@ namespace KombajnPDF.Classes.Form
             GlobalSettingsProvider.Instance.TranslateControl(this);
         }
 
-        // Przykładowe zdarzenie: logowanie pokazania formularza
         private void BaseForm_Shown(object sender, EventArgs e)
         {
             // Możesz dodać logowanie lub inne akcje
         }
 
-        // Przykładowe zdarzenie: logowanie zamknięcia formularza
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Możesz dodać logowanie lub inne akcje
@@ -49,7 +45,7 @@ namespace KombajnPDF.Classes.Form
 
         public virtual void ShowMessageBox(string message, string caption, MessageBoxButtons messageBoxButtons, MessageBoxIcon messageBoxIcon)
         {
-           MessageBox.Show(this, message, caption, messageBoxButtons, messageBoxIcon);
+            MessageBox.Show(this, message, caption, messageBoxButtons, messageBoxIcon);
         }
 
         public virtual void ShowErrorProvider(Control control, string message)
