@@ -51,11 +51,6 @@ namespace KombajnPDF
             FilesDataGridView.AutoGenerateColumns = false;
             FilesDataGridView.DataSource = presenter.GetBindingList();
 
-            FilesDataGridView.Columns["NameDataGridViewTextBoxColumn"].DataPropertyName = "NameDataGridViewTextBoxColumn";
-            FilesDataGridView.Columns["PathDataGridViewTextBoxColumn"].DataPropertyName = "PathDataGridViewTextBoxColumn";
-            FilesDataGridView.Columns["PatternDataGridViewTextBoxColumn"].DataPropertyName = "PatternDataGridViewTextBoxColumn";
-            FilesDataGridView.Columns["TotalPagesDataGridViewTextBoxColumn"].DataPropertyName = "TotalPagesDataGridViewTextBoxColumn";
-
             correctDataGridViewCellStyle = FilesDataGridView.DefaultCellStyle;
             errorDataGridViewCellStyle = correctDataGridViewCellStyle.Clone();
             errorDataGridViewCellStyle.BackColor = Color.Red;

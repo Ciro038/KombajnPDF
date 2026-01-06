@@ -9,22 +9,23 @@ using System.Threading.Tasks;
 
 namespace KombajnPDF.Data.Entity
 {
-    internal class FilesBindingList : BindingList<IFile>, IFilesBindingList
+    internal class FileItemsBindingList : BindingList<FileItem>, IFilesBindingList
     {
         /// <inheritdoc/>
-        public new IFile this[int index]
+        public new FileItem this[int index]
         {
             get { return base[index]; }
         }
         /// <inheritdoc/>
-        public new List<IFile> Items
+        public new List<FileItem> Items
         {
-            get { return ((List<File>)base.Items).ConvertAll(file => (IFile)file); }
+            get { return ((List<FileItem>)base.Items).ConvertAll(file => (FileItem)file); }
         }
+
         /// <inheritdoc/>
         public void Add(string fullPathToFile)
         {
-            Add(new File(fullPathToFile));
+            Add(new FileItem(fullPathToFile));
         }
         /// <inheritdoc/>
         public new void RemoveAt(int rowIndex)
@@ -34,7 +35,7 @@ namespace KombajnPDF.Data.Entity
         /// <inheritdoc/>
         public void Insert(int index, string fullPathToFile)
         {
-           Insert(index, new File(fullPathToFile));
+           Insert(index, new FileItem(fullPathToFile));
         }
     }
 }

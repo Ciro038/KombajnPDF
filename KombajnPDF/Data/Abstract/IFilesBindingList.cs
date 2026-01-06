@@ -1,17 +1,18 @@
-﻿using System;
+﻿using KombajnPDF.Classes;
+using KombajnPDF.Data.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KombajnPDF.Classes;
 
 namespace KombajnPDF.Data.Abstract
 {
     internal interface IFilesBindingList
     {
-        List<IFile> Items { get; }
-        public IFile this[int index] { get; }
+        List<FileItem> Items { get; }
+        public FileItem this[int index] { get; }
         /// <summary>
         /// Adds an object to the end of the collection based on full path to the file
         /// </summary>

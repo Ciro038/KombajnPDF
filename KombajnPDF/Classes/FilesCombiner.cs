@@ -1,4 +1,5 @@
 ﻿using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System;
@@ -60,14 +61,14 @@ namespace KombajnPDF.Classes
         /// </summary>
         /// <param name="items">Files to combine</param>
         /// <exception cref="ArgumentException">Thrown if no path is selected/exception>
-        internal void CombineFiles(List<IFile> items)
+        internal void CombineFiles(List<FileItem> items)
         {
             string fullPath = GetPathToTarget();
             if (string.IsNullOrEmpty(fullPath)) { throw new ArgumentException("First choose where to save the file."); }
             var mainDocument = new PdfDocument();
-            foreach (IFile file in items)
+            foreach (FileItem file in items)
             {
-                var currentDocument = PdfReader.Open(file.GetFullPath(), PdfDocumentOpenMode.Import);
+                var currentDocument = PdfReader.Open(file.FullPath, PdfDocumentOpenMode.Import);
                 foreach (int pageNumber in file.GetPagesToPrint())
                 {
                     mainDocument.AddPage(currentDocument.Pages[pageNumber - 1]);

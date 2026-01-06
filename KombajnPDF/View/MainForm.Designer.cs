@@ -38,7 +38,6 @@
             CombineFilesButton = new Button();
             SelectFilesOpenFileDialog = new OpenFileDialog();
             HelpButton = new Button();
-            Id = new DataGridViewTextBoxColumn();
             NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             PatternDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -53,7 +52,7 @@
             FilesDataGridView.AllowUserToDeleteRows = false;
             FilesDataGridView.AllowUserToResizeRows = false;
             FilesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            FilesDataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, NameDataGridViewTextBoxColumn, PathDataGridViewTextBoxColumn, PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn });
+            FilesDataGridView.Columns.AddRange(new DataGridViewColumn[] { NameDataGridViewTextBoxColumn, PathDataGridViewTextBoxColumn, PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn });
             FilesDataGridView.Location = new Point(12, 41);
             FilesDataGridView.Name = "FilesDataGridView";
             FilesDataGridView.RowHeadersVisible = false;
@@ -141,16 +140,9 @@
             HelpButton.UseVisualStyleBackColor = true;
             HelpButton.Click += HelpButton_Click;
             // 
-            // Id
-            // 
-            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Id.HeaderText = "Id";
-            Id.MinimumWidth = 40;
-            Id.Name = "Id";
-            Id.Resizable = DataGridViewTriState.True;
-            // 
             // NameDataGridViewTextBoxColumn
             // 
+            NameDataGridViewTextBoxColumn.DataPropertyName = "FileNameWithExtension";
             NameDataGridViewTextBoxColumn.HeaderText = "Name";
             NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn";
             NameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -158,6 +150,7 @@
             // 
             // PathDataGridViewTextBoxColumn
             // 
+            PathDataGridViewTextBoxColumn.DataPropertyName = "PathToFile";
             PathDataGridViewTextBoxColumn.HeaderText = "Path";
             PathDataGridViewTextBoxColumn.Name = "PathDataGridViewTextBoxColumn";
             PathDataGridViewTextBoxColumn.ReadOnly = true;
@@ -165,12 +158,14 @@
             // 
             // PatternDataGridViewTextBoxColumn
             // 
+            PatternDataGridViewTextBoxColumn.DataPropertyName = "FileItemPattern";
             PatternDataGridViewTextBoxColumn.HeaderText = "Pattern";
             PatternDataGridViewTextBoxColumn.Name = "PatternDataGridViewTextBoxColumn";
             PatternDataGridViewTextBoxColumn.Width = 150;
             // 
             // TotalPagesDataGridViewTextBoxColumn
             // 
+            TotalPagesDataGridViewTextBoxColumn.DataPropertyName = "TotalPages";
             TotalPagesDataGridViewTextBoxColumn.HeaderText = "Total pages";
             TotalPagesDataGridViewTextBoxColumn.Name = "TotalPagesDataGridViewTextBoxColumn";
             TotalPagesDataGridViewTextBoxColumn.ReadOnly = true;
@@ -210,7 +205,6 @@
         private Button CombineFilesButton;
         private OpenFileDialog SelectFilesOpenFileDialog;
         private Button HelpButton;
-        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn NameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PathDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PatternDataGridViewTextBoxColumn;

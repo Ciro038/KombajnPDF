@@ -6,6 +6,7 @@ using KombajnPDF.Properties.Translations;
 using KombajnPDF.View;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace KombajnPDF.Presenter
     class MainFormPresenter
     {
         private readonly IMainFormView mainFormView;
-        private readonly FilesBindingList files;
+        private readonly FileItemsBindingList files;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainFormPresenter"/> class
@@ -30,7 +31,7 @@ namespace KombajnPDF.Presenter
         public MainFormPresenter(IMainFormView mainForm)
         {
             mainFormView = mainForm;
-            files = new FilesBindingList();
+            files = new FileItemsBindingList();
 
             mainForm.FilesDataGridViewOnPatternCellEdited += OnPatternCellEdited;
             mainForm.FilesDataGridViewDragEnter += OnFilesDataGridViewDragEnter;
@@ -101,7 +102,7 @@ namespace KombajnPDF.Presenter
                 if (index >= files.Count - 1)
                     continue;
 
-                var file = files[index].GetFullPath();
+                var file = files[index].FullPath;
                 files.RemoveAt(index);
                 files.Insert(index + 1, file);
                 newIndexes.Add(index + 1);
@@ -126,7 +127,7 @@ namespace KombajnPDF.Presenter
                 if (index == 0)
                     continue;
 
-                var file = files[index].GetFullPath();
+                var file = files[index].FullPath;
                 files.RemoveAt(index);
                 files.Insert(index - 1, file);
                 newIndexes.Add(index - 1);
@@ -178,7 +179,7 @@ namespace KombajnPDF.Presenter
         private void OnPatternCellEdited(int rowIndex, string columnName)
         {
             var file = files[rowIndex];
-            if (columnName != nameof(file.PatternDataGridViewTextBoxColumn))
+            if (columnName != nameof(file.FileItemPattern))
                 return;
 
             try
@@ -204,7 +205,7 @@ namespace KombajnPDF.Presenter
         /// Returns the current list of files managed by the presenter.
         /// </summary>
         /// <returns>A binding list of files.</returns>
-        internal FilesBindingList GetBindingList()
+        internal FileItemsBindingList GetBindingList()
         {
             return files;
         }
