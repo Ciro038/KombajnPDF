@@ -41,6 +41,7 @@ namespace KombajnPDF
         {
             InitializeComponent();
             presenter = new MainFormPresenter(this);
+            InitializeDataGrid();
         }
 
         /// <summary>
@@ -49,7 +50,12 @@ namespace KombajnPDF
         private void InitializeDataGrid()
         {
             FilesDataGridView.AutoGenerateColumns = false;
+
             FilesDataGridView.DataSource = presenter.GetBindingList();
+            FilesDataGridView.Columns["NameDataGridViewTextBoxColumn"].Tag = "FILE_NAME";
+            FilesDataGridView.Columns["PathDataGridViewTextBoxColumn"].Tag = "PATH_TO_FILE";
+            FilesDataGridView.Columns["PatternDataGridViewTextBoxColumn"].Tag = "PATTERN";
+            FilesDataGridView.Columns["TotalPagesDataGridViewTextBoxColumn"].Tag = "TOTAL_PAGES";
 
             correctDataGridViewCellStyle = FilesDataGridView.DefaultCellStyle;
             errorDataGridViewCellStyle = correctDataGridViewCellStyle.Clone();
@@ -157,8 +163,6 @@ namespace KombajnPDF
             IconsProvider.SetIconWithResize(RemoveFilesButton, Properties.Resources.Icons.Icons.DeleteIcon);
             IconsProvider.SetIconWithResize(AddFilesButton, Properties.Resources.Icons.Icons.AddIcon);
             IconsProvider.SetIconWithResize(HelpButton, Properties.Resources.Icons.Icons.HelpIcon);
-
-            InitializeDataGrid();
         }
 
         public override void ShowErrorProvider(string message)

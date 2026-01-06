@@ -99,6 +99,19 @@ namespace KombajnPDF.Classes
             if (parent.Tag is string code)
                 parent.Text = Translate((TranslationCodes)Enum.Parse(typeof(TranslationCodes), code));
 
+            // Special handling for DataGridView columns
+            if (parent is DataGridView dgv)
+            {
+                foreach (DataGridViewColumn column in dgv.Columns)
+                {
+                    if (column.Tag is string codeColumn)
+                    {
+                        column.HeaderText = Translate((TranslationCodes)Enum.Parse(typeof(TranslationCodes), codeColumn));
+                    }
+                }
+            }
+
+            // Recursively translate child controls
             foreach (Control ctrl in parent.Controls)
             {
                 if (ctrl.Tag is string childCode)

@@ -18,28 +18,24 @@ internal class FileItem
     /// FileItem name
     /// </summary>
     [Browsable(true)]
-    [DisplayName("Name")]
     public string FileNameWithExtension { get; set; }
 
     /// <summary>
     /// Path to file
     /// </summary>
     [Browsable(true)]
-    [DisplayName("Path")]
     public string PathToFile { get; set; }
 
     /// <summary>
     /// Pattern
     /// </summary>
     [Browsable(true)]
-    [DisplayName("Pattern")]
     public string FileItemPattern { get; set; }
 
     /// <summary>
     /// Count of pages
     /// </summary>
     [Browsable(true)]
-    [DisplayName("Total pages")]
     public int TotalPages { get; set; }
 
     /// <summary>
