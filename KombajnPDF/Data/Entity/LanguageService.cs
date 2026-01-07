@@ -46,7 +46,7 @@ namespace KombajnPDF.Data.Entity
         /// <returns>The currently selected language, or a default value if not available.</returns>
         public LanguagesEnum GetLanguage()
         {
-            if (System.Enum.TryParse(Properties.Settings.Default.Language, out LanguagesEnum lang))
+            if (System.Enum.TryParse(App.Properties.Settings.Default.Language, out LanguagesEnum lang))
                 return lang;
 
             return LanguagesEnum.English; // fallback language
@@ -59,8 +59,8 @@ namespace KombajnPDF.Data.Entity
         public void SetLanguage(LanguagesEnum language)
         {
             _currentLanguage = language;
-            Properties.Settings.Default.Language = language.ToString();
-            Properties.Settings.Default.Save();
+            App.Properties.Settings.Default.Language = language.ToString();
+            App.Properties.Settings.Default.Save();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace KombajnPDF.Data.Entity
         {
             if (!_resourceManagers.TryGetValue(_currentLanguage, out var manager))
             {
-                string baseName = $"KombajnPDF.Properties.Translations.Strings.{_currentLanguage}";
+                string baseName = $"KombajnPDF.App.Properties.Translations.Strings.{_currentLanguage}";
                 manager = new ResourceManager(baseName, typeof(LanguageService).Assembly);
                 _resourceManagers[_currentLanguage] = manager;
             }

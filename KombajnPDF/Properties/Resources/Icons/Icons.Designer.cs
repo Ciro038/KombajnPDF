@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KombajnPDF.Properties.Resources.Icons {
+namespace KombajnPDF.App.Properties.Resources.Icons {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KombajnPDF.Properties.Resources.Icons {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KombajnPDF.Properties.Resources.Icons.Icons", typeof(Icons).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KombajnPDF.App.Properties.Resources.Icons.Icons", typeof(Icons).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KombajnPDF.Properties.Translations {
+namespace KombajnPDF.App.Properties.Translations {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KombajnPDF.Properties.Translations {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KombajnPDF.Properties.Translations.Strings.English", typeof(Strings_English).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KombajnPDF.App.Properties.Translations.Strings.English", typeof(Strings_English).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
