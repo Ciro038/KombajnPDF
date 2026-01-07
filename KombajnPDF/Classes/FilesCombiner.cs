@@ -4,6 +4,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ namespace KombajnPDF.Classes
     /// </summary>
     internal class FilesCombiner
     {
+        public static readonly HashSet<string> AllowedExtensions =
+            new(new[] { ".jpg", ".jpeg", ".png", ".pdf", ".tiff" },
+                StringComparer.OrdinalIgnoreCase);
         /// <summary>
         /// Get path to the new file
         /// </summary>
@@ -65,17 +69,23 @@ namespace KombajnPDF.Classes
         {
             string fullPath = GetPathToTarget();
             if (string.IsNullOrEmpty(fullPath)) { throw new ArgumentException("First choose where to save the file."); }
-            var mainDocument = new PdfDocument();
-            foreach (FileItem file in items)
+            using (var mainDocument = new PdfDocument())
             {
-                var currentDocument = PdfReader.Open(file.FullPath, PdfDocumentOpenMode.Import);
-                foreach (int pageNumber in file.GetPagesToPrint())
+                foreach (FileItem file in items)
                 {
-                    mainDocument.AddPage(currentDocument.Pages[pageNumber - 1]);
+                    var currentDocument = PdfReader.Open(file.FullPath, PdfDocumentOpenMode.Import);
+                    var filePatternChecker = new FilePatternChecker();
+                    if (filePatternChecker.TryParse(file, out var pages))
+                    {
+                        foreach (int pageNumber in pages)
+                        {
+                            mainDocument.AddPage(currentDocument.Pages[pageNumber - 1]);
+                        }
+                    }
                 }
+                mainDocument.Save(fullPath);
+                mainDocument.Close();
             }
-            mainDocument.Save(fullPath);
-            mainDocument.Close();
         }
     }
 }

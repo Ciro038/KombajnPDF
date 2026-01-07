@@ -65,7 +65,7 @@ namespace KombajnPDF.Presenter
         /// <summary>
         /// Combines the selected files and displays a message on success.
         /// </summary>
-        public void CombineFilesButtonClicked()
+        private void CombineFilesButtonClicked()
         {
             if (files.Count == 0)
                 return;
@@ -179,20 +179,16 @@ namespace KombajnPDF.Presenter
         private void OnPatternCellEdited(int rowIndex, string columnName)
         {
             var file = files[rowIndex];
-            if (columnName != nameof(file.FileItemPattern))
+            if (columnName != nameof(file.FilePattern))
                 return;
 
             try
             {
-                if (!file.CheckPattern())
-                {
-                    mainFormView.SetRowStyle(rowIndex, mainFormView.GetErrorStyle());
-                    mainFormView.ShowErrorProvider("Wrong pattern for current file!");
-                }
+                var filePatternChecker = new FilePatternChecker();
+                if (!filePatternChecker.TryParse(file, out var pages))
+                    throw new FormatException("Wrong pattern for current file");
                 else
-                {
                     mainFormView.SetRowStyle(rowIndex, mainFormView.GetCorrectStyle());
-                }
             }
             catch (Exception ex)
             {

@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             FilesDataGridView = new DataGridView();
+            NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            PatternDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            TotalPagesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             SettingsButton = new Button();
             AddFilesButton = new Button();
             MoveUpFilesButton = new Button();
@@ -38,10 +42,6 @@
             CombineFilesButton = new Button();
             SelectFilesOpenFileDialog = new OpenFileDialog();
             HelpButton = new Button();
-            NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            PatternDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            TotalPagesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -61,6 +61,45 @@
             FilesDataGridView.TabIndex = 0;
             FilesDataGridView.CellEndEdit += FilesDataGridView_CellEndEdit;
             FilesDataGridView.DragEnter += FilesDataGridView_DragEnter;
+            // 
+            // NameDataGridViewTextBoxColumn
+            // 
+            NameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            NameDataGridViewTextBoxColumn.DataPropertyName = "FileNameWithExtension";
+            NameDataGridViewTextBoxColumn.HeaderText = "Name";
+            NameDataGridViewTextBoxColumn.MinimumWidth = 260;
+            NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn";
+            NameDataGridViewTextBoxColumn.ReadOnly = true;
+            NameDataGridViewTextBoxColumn.Width = 260;
+            // 
+            // PathDataGridViewTextBoxColumn
+            // 
+            PathDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            PathDataGridViewTextBoxColumn.DataPropertyName = "PathToFile";
+            PathDataGridViewTextBoxColumn.HeaderText = "Path";
+            PathDataGridViewTextBoxColumn.MinimumWidth = 280;
+            PathDataGridViewTextBoxColumn.Name = "PathDataGridViewTextBoxColumn";
+            PathDataGridViewTextBoxColumn.ReadOnly = true;
+            PathDataGridViewTextBoxColumn.Width = 280;
+            // 
+            // PatternDataGridViewTextBoxColumn
+            // 
+            PatternDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            PatternDataGridViewTextBoxColumn.DataPropertyName = "FilePattern";
+            PatternDataGridViewTextBoxColumn.HeaderText = "Pattern";
+            PatternDataGridViewTextBoxColumn.MinimumWidth = 70;
+            PatternDataGridViewTextBoxColumn.Name = "PatternDataGridViewTextBoxColumn";
+            PatternDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // TotalPagesDataGridViewTextBoxColumn
+            // 
+            TotalPagesDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            TotalPagesDataGridViewTextBoxColumn.DataPropertyName = "TotalPages";
+            TotalPagesDataGridViewTextBoxColumn.HeaderText = "Total pages";
+            TotalPagesDataGridViewTextBoxColumn.MinimumWidth = 90;
+            TotalPagesDataGridViewTextBoxColumn.Name = "TotalPagesDataGridViewTextBoxColumn";
+            TotalPagesDataGridViewTextBoxColumn.ReadOnly = true;
+            TotalPagesDataGridViewTextBoxColumn.Width = 90;
             // 
             // SettingsButton
             // 
@@ -125,7 +164,6 @@
             // 
             // SelectFilesOpenFileDialog
             // 
-            SelectFilesOpenFileDialog.Filter = "Files PDF (*.pdf)|*.pdf";
             SelectFilesOpenFileDialog.Multiselect = true;
             SelectFilesOpenFileDialog.RestoreDirectory = true;
             SelectFilesOpenFileDialog.Title = "Select files";
@@ -139,45 +177,6 @@
             HelpButton.Text = "Info";
             HelpButton.UseVisualStyleBackColor = true;
             HelpButton.Click += HelpButton_Click;
-            // 
-            // NameDataGridViewTextBoxColumn
-            // 
-            NameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            NameDataGridViewTextBoxColumn.DataPropertyName = "FileNameWithExtension";
-            NameDataGridViewTextBoxColumn.HeaderText = "Name";
-            NameDataGridViewTextBoxColumn.MinimumWidth = 260;
-            NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn";
-            NameDataGridViewTextBoxColumn.ReadOnly = true;
-            NameDataGridViewTextBoxColumn.Width = 260;
-            // 
-            // PathDataGridViewTextBoxColumn
-            // 
-            PathDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            PathDataGridViewTextBoxColumn.DataPropertyName = "PathToFile";
-            PathDataGridViewTextBoxColumn.HeaderText = "Path";
-            PathDataGridViewTextBoxColumn.MinimumWidth = 280;
-            PathDataGridViewTextBoxColumn.Name = "PathDataGridViewTextBoxColumn";
-            PathDataGridViewTextBoxColumn.ReadOnly = true;
-            PathDataGridViewTextBoxColumn.Width = 280;
-            // 
-            // PatternDataGridViewTextBoxColumn
-            // 
-            PatternDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            PatternDataGridViewTextBoxColumn.DataPropertyName = "FileItemPattern";
-            PatternDataGridViewTextBoxColumn.HeaderText = "Pattern";
-            PatternDataGridViewTextBoxColumn.MinimumWidth = 70;
-            PatternDataGridViewTextBoxColumn.Name = "PatternDataGridViewTextBoxColumn";
-            PatternDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // TotalPagesDataGridViewTextBoxColumn
-            // 
-            TotalPagesDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            TotalPagesDataGridViewTextBoxColumn.DataPropertyName = "TotalPages";
-            TotalPagesDataGridViewTextBoxColumn.HeaderText = "Total pages";
-            TotalPagesDataGridViewTextBoxColumn.MinimumWidth = 90;
-            TotalPagesDataGridViewTextBoxColumn.Name = "TotalPagesDataGridViewTextBoxColumn";
-            TotalPagesDataGridViewTextBoxColumn.ReadOnly = true;
-            TotalPagesDataGridViewTextBoxColumn.Width = 90;
             // 
             // MainForm
             // 

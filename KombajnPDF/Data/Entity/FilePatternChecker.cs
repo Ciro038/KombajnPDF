@@ -11,96 +11,153 @@ namespace KombajnPDF.Data.Entity
     /// </summary>
     internal class FilePatternChecker
     {
-        /// <summary>
-        /// List of pages to print
-        /// </summary>
-        public List<int> ListOfPagesToPrint { get; private set; }
-        /// <summary>
-        /// Method checks whether the pattern is correct for the given number of pages
-        /// </summary>
-        /// <param name="pattern">Pattern to check pages to print</param>
-        /// <param name="countOfPages">Cont of pages</param>
-        /// <returns>true if patters is correct</returns>
-        public bool CheckPattern(string pattern, int countOfPages)
-        {
-            if (string.IsNullOrEmpty(pattern) || pattern == "-")
-            {
-                ListOfPagesToPrint = Enumerable.Range(1, countOfPages).ToList();
-                return true;
-            }
-            if (PatternContainsNotAllowedChars(pattern))
-                return false;
-            try
-            {
-                var pagesParts = pattern.Split(';');
-                ListOfPagesToPrint = new List<int>();
-                for (int i = 0; i <= pagesParts.Length - 1; i++)
-                {
-                    string currentPart = pagesParts[i];
-                    if (currentPart == "-")
-                    {
-                        ListOfPagesToPrint.AddRange(Enumerable.Range(1, countOfPages));
-                    }
-                    else if (currentPart.StartsWith('-'))
-                    {
-                        int endPage = Convert.ToInt32(currentPart.Split('-')[1]);
-                        if (endPage> countOfPages)
-                        {
-                            throw new InvalidDataException("Invbalid page number");
-                        }
-                        ListOfPagesToPrint.AddRange(Enumerable.Range(1, endPage));
-                    }
-                    else if (currentPart.EndsWith('-'))
-                    {
-                        int startPage = Convert.ToInt32(currentPart.Split('-')[0]);
-                        if (startPage > countOfPages)
-                        {
-                            throw new InvalidDataException("Invbalid page number");
-                        }
-                        ListOfPagesToPrint.AddRange(Enumerable.Range(startPage, countOfPages));
-                    }
-                    else if (currentPart.Contains('-'))
-                    {
-                        var startEndPages = currentPart.Split('-');
-                        int startPage= Convert.ToInt32(startEndPages[0]);
-                        int endPage= Convert.ToInt32(startEndPages[1]);
-                        if (startPage > countOfPages)
-                        {
-                            throw new InvalidDataException("Invbalid page number");
-                        }
-                        if (endPage > countOfPages)
-                        {
-                            throw new InvalidDataException("Invbalid page number");
-                        }
-                        ListOfPagesToPrint.AddRange(Enumerable.Range(startPage, endPage- startPage+1));
-                    }
-                    else
-                    {
-                        int currentPage=Convert.ToInt32(currentPart);
-                        if (currentPage>countOfPages)
-                        {
-                            throw new InvalidDataException("Invbalid page number");
-                        }
-                        ListOfPagesToPrint.Add(Convert.ToInt32(currentPart));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                ListOfPagesToPrint = null;
-                return false;
-            }
-            return true;
-        }
+        private static readonly HashSet<char> allowedChars =
+            new("0123456789-;");
+
         /// <summary>
         /// Method checks whether pattern contains illegal chars
         /// </summary>
         /// <param name="pattern">Pattern to check pages to print</param>
         /// <returns>true if he doesn't have it</returns>
-        private bool PatternContainsNotAllowedChars(string pattern)
+        private bool ContainsOnlyAllowedChars(string pattern)
         {
-            char[] allowedChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', ';' };
-            return pattern.Any(allowedChar => !allowedChars.Contains(allowedChar));
+            return pattern.All(allowedChars.Contains);
+        }
+
+        /// <summary>
+        /// Method checks whether the FileItem has correct pattern and parses it
+        /// </summary>
+        /// <param name="fileItem">FileItem to check</param>
+        /// <param name="pages">List of pages to print</param>
+        /// <returns>true if FileItem is correct</returns>
+        public bool TryParse(FileItem fileItem, out List<int> pages)
+        {
+            pages = new List<int>();
+
+            if (!IsValidFileItem(fileItem))
+                return false;
+
+            if (!ContainsOnlyAllowedChars(fileItem.FilePattern))
+                return false;
+
+            if (IsAllPagesPattern(fileItem))
+            {
+                pages = GetAllPages(fileItem.TotalPages);
+                return true;
+            }
+
+            foreach (var part in SplitPattern(fileItem))
+            {
+                if (!TryParsePart(part, fileItem.TotalPages, pages))
+                    return false;
+            }
+            return true;
+        }
+
+        private bool TryParsePart(string part, int totalPages, List<int> pages)
+        {
+            string currentPart = part.Trim();
+            if (currentPart == "-")
+                return AddAllPages(totalPages, pages);
+
+            else if (currentPart.StartsWith('-'))
+                return TryParseToEnd(currentPart, totalPages, pages);
+
+            else if (currentPart.EndsWith('-'))
+                return TryParseFromStart(currentPart, totalPages, pages);
+
+            else if (currentPart.Contains('-'))
+                return TryParseRange(currentPart, totalPages, pages);
+
+            else
+                return TryParseSinglePage(currentPart, totalPages, pages);
+        }
+
+        private bool TryParseSinglePage(string part, int totalPages, List<int> pages)
+        {
+            if (!int.TryParse(part, out int page) ||
+    page > totalPages)
+            {
+                return false;
+            }
+            else
+            {
+                pages.Add(page);
+                return true;
+            }
+        }
+
+        private bool TryParseRange(string part, int totalPages, List<int> pages)
+        {
+            var parts = part.Split('-');
+            if (parts.Length != 2 ||
+                    !int.TryParse(parts[0], out int startPage) ||
+                    !int.TryParse(parts[1], out int endPage) ||
+                    startPage > totalPages ||
+                    endPage > totalPages)
+            {
+                return false;
+            }
+            else
+            {
+                pages.AddRange(Enumerable.Range(startPage, endPage - startPage + 1));
+                return true;
+            }
+        }
+
+        private bool TryParseFromStart(string part, int totalPages, List<int> pages)
+        {
+            if (!int.TryParse(part[..^1], out int startPage) ||
+                startPage > totalPages)
+            {
+                return false;
+            }
+            else
+            {
+                pages.AddRange(Enumerable.Range(startPage, totalPages));
+                return true;
+            }
+        }
+
+        private bool TryParseToEnd(string part, int totalPages, List<int> pages)
+        {
+            if (!int.TryParse(part[1..], out int endPage) ||
+                endPage > totalPages)
+            {
+                return false;
+            }
+            else
+            {
+                pages.AddRange(Enumerable.Range(1, endPage));
+                return true;
+            }
+        }
+
+        private bool AddAllPages(int totalPages, List<int> pages)
+        {
+            pages.AddRange(GetAllPages(totalPages));
+            return true;
+        }
+        private IEnumerable<string> SplitPattern(FileItem fileItem)
+        {
+            return fileItem.FilePattern
+                .Split(';', StringSplitOptions.RemoveEmptyEntries)
+                .Select(p => p.Trim());
+        }
+
+        private List<int> GetAllPages(int totalPages)
+        {
+            return Enumerable.Range(1, totalPages).ToList();
+        }
+
+        private bool IsAllPagesPattern(FileItem fileItem)
+        {
+            return string.IsNullOrEmpty(fileItem.FilePattern) || fileItem.FilePattern == "-";
+        }
+
+        private bool IsValidFileItem(FileItem fileItem)
+        {
+            return fileItem != null && fileItem.TotalPages > 0;
         }
     }
 }

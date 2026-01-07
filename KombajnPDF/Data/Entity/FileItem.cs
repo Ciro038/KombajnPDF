@@ -1,4 +1,4 @@
-﻿using KombajnPDF.Data.Abstract;
+﻿using KombajnPDF.Classes;
 using PdfSharp.Pdf.IO;
 using System.ComponentModel;
 
@@ -26,11 +26,28 @@ internal class FileItem
     [Browsable(true)]
     public string PathToFile { get; set; }
 
+    [Browsable(false)]
+    private string filePattern;
     /// <summary>
     /// Pattern
     /// </summary>
     [Browsable(true)]
-    public string FileItemPattern { get; set; }
+    public string FilePattern
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(filePattern))
+                return "-";
+            return filePattern;
+        }
+        set
+        {
+            if (string.IsNullOrEmpty(value))
+                filePattern = "-";
+            else
+                filePattern = value.Trim();
+        }
+    }
 
     /// <summary>
     /// Count of pages
@@ -39,43 +56,53 @@ internal class FileItem
     public int TotalPages { get; set; }
 
     /// <summary>
+    /// Extension of the file
+    /// </summary>
+    [Browsable(false)]
+    public string FileExtension { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the document is in PDF format
+    /// </summary>
+    [Browsable(false)]
+    public bool IsPDF { get; set; }
+
+    /// <summary>
     /// Constructor creates an object based on the file path
     /// </summary>
     /// <param name="fullPathToFile">Full path to the file</param>
     /// <exception cref="ArgumentNullException">If param is nothing</exception>
-    /// <exception cref="FileLoadException">if file is not a pdf</exception>
+    /// <exception cref="FileLoadException">if file has not allowed extension</exception>
+    /// <exception cref="FileNotFoundException">if file do not exists</exception>
     public FileItem(string fullPathToFile)
     {
         if (string.IsNullOrEmpty(fullPathToFile))
             throw new ArgumentNullException(nameof(fullPathToFile));
         if (!System.IO.File.Exists(fullPathToFile))
-            throw new FileLoadException();
-        if (!Path.GetExtension(fullPathToFile).Equals(".PDF", StringComparison.OrdinalIgnoreCase))
+            throw new FileNotFoundException();
+
+        FileExtension = Path.GetExtension(fullPathToFile).ToLower();
+
+        // check if file has allowed extension 
+        if (!FilesCombiner.AllowedExtensions.Contains(FileExtension))
             throw new FileLoadException();
 
         FullPath = fullPathToFile;
         FileNameWithExtension = Path.GetFileName(fullPathToFile);
         PathToFile = Path.GetDirectoryName(fullPathToFile);
-        FileItemPattern = "-";
-        TotalPages = PdfReader.Open(fullPathToFile, PdfDocumentOpenMode.Import).PageCount;
-    }
-    /// <summary>
-    /// Method checks pattern
-    /// </summary>
-    /// <returns>true if pattern is correct</returns>
-    public bool CheckPattern()
-    {
-        var fileChecker = new FilePatternChecker();
-        return fileChecker.CheckPattern(FileItemPattern, TotalPages);
-    }
-    /// <summary>
-    /// Method gets a list of pages to print
-    /// </summary>
-    /// <returns></returns>
-    public List<int> GetPagesToPrint()
-    {
-        var fileChecker = new FilePatternChecker();
-        fileChecker.CheckPattern(FileItemPattern, TotalPages);
-        return fileChecker.ListOfPagesToPrint;
+
+        IsPDF = string.Equals(
+            FileExtension,
+            ".pdf",
+            StringComparison.OrdinalIgnoreCase);
+
+        if (IsPDF)
+        {
+            TotalPages = PdfReader.Open(fullPathToFile, PdfDocumentOpenMode.Import).PageCount;
+        }
+        else
+        {
+            TotalPages = 1;
+        }
     }
 }
