@@ -18,7 +18,8 @@ namespace KombajnPDF.Data.Entity
         /// </summary>
         /// <param name="items">Files to combine</param>
         /// <param name="fullPathTofile">Full path to generated combined final file</param>
-        /// <exception cref="ArgumentException">Thrown if no path is selected/exception>
+        /// <exception cref="ArgumentException">Thrown when destination path is null/empty.</exception>
+        /// <exception cref="FormatException">Thrown when a file's page pattern is invalid.</exception>
         internal void CombineFiles(List<FileItem> items, string fullPathTofile)
         {
             if (string.IsNullOrEmpty(fullPathTofile))
