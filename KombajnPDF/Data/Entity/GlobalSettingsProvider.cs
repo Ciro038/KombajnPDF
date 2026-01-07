@@ -1,5 +1,6 @@
-﻿using KombajnPDF.Data.Enum;
-using KombajnPDF.Interface;
+﻿using KombajnPDF.Classes;
+using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Enum;
 using KombajnPDF.Properties.Translations;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Singleton class that manages global application settings,

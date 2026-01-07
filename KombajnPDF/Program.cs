@@ -1,6 +1,8 @@
+using KombajnPDF.Classes;
+using KombajnPDF.Data.Entity;
 using KombajnPDF.Properties.Translations;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF
 {
     internal static class Program
     {

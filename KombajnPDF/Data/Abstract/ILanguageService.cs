@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Interface
+namespace KombajnPDF.Data.Abstract
 {
     /// <summary>
     /// Provides language-related services such as retrieving translations 

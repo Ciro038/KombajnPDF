@@ -1,4 +1,5 @@
-﻿using KombajnPDF.Interface;
+﻿using KombajnPDF.Data.Entity;
+using KombajnPDF.Interface;
 
 namespace KombajnPDF.Classes.Form
 {

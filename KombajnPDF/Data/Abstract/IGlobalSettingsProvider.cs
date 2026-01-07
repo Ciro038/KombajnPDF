@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Interface
+namespace KombajnPDF.Data.Abstract
 {
     /// <summary>
     /// Provides access to global application settings, such as the current language,

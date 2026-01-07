@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Provides helper methods for working with icons in WinForms, including resizing and applying them to buttons.

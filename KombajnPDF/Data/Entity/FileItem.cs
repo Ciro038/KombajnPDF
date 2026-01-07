@@ -1,5 +1,4 @@
-﻿using KombajnPDF.Classes;
-using PdfSharp.Pdf.IO;
+﻿using PdfSharp.Pdf.IO;
 using System.ComponentModel;
 
 namespace KombajnPDF.Data.Entity;

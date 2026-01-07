@@ -1,5 +1,4 @@
 ﻿using KombajnPDF.Data.Abstract;
-using KombajnPDF.Data.Entity;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Class is responsible for combining files into one

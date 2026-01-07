@@ -1,18 +1,9 @@
 ﻿using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
-using KombajnPDF.Interface;
 using KombajnPDF.Properties.Translations;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Globalization;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace KombajnPDF.Classes
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Provides language-related functionality such as loading, storing,
@@ -55,7 +46,7 @@ namespace KombajnPDF.Classes
         /// <returns>The currently selected language, or a default value if not available.</returns>
         public LanguagesEnum GetLanguage()
         {
-            if (Enum.TryParse(Properties.Settings.Default.Language, out LanguagesEnum lang))
+            if (System.Enum.TryParse(Properties.Settings.Default.Language, out LanguagesEnum lang))
                 return lang;
 
             return LanguagesEnum.English; // fallback language
@@ -97,7 +88,7 @@ namespace KombajnPDF.Classes
         public void TranslateControl(Control parent)
         {
             if (parent.Tag is string code)
-                parent.Text = Translate((TranslationCodes)Enum.Parse(typeof(TranslationCodes), code));
+                parent.Text = Translate((TranslationCodes)System.Enum.Parse(typeof(TranslationCodes), code));
 
             // Special handling for DataGridView columns
             if (parent is DataGridView dgv)
@@ -106,7 +97,7 @@ namespace KombajnPDF.Classes
                 {
                     if (column.Tag is string codeColumn)
                     {
-                        column.HeaderText = Translate((TranslationCodes)Enum.Parse(typeof(TranslationCodes), codeColumn));
+                        column.HeaderText = Translate((TranslationCodes)System.Enum.Parse(typeof(TranslationCodes), codeColumn));
                     }
                 }
             }
@@ -115,7 +106,7 @@ namespace KombajnPDF.Classes
             foreach (Control ctrl in parent.Controls)
             {
                 if (ctrl.Tag is string childCode)
-                    ctrl.Text = Translate((TranslationCodes)Enum.Parse(typeof(TranslationCodes), childCode));
+                    ctrl.Text = Translate((TranslationCodes)System.Enum.Parse(typeof(TranslationCodes), childCode));
 
                 if (ctrl.HasChildren)
                     TranslateControl(ctrl);
