@@ -1,12 +1,5 @@
-﻿using KombajnPDF.Data.Abstract;
-using PdfSharp.Pdf;
+﻿using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KombajnPDF.Data.Entity
 {
