@@ -1,82 +1,110 @@
-﻿using PdfSharp.Pdf;
+﻿using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 
 namespace KombajnPDF.Data.Entity
 {
     /// <summary>
-    /// Class is responsible for combining files into one
+    /// Class responsible for combining files into a single PDF
     /// </summary>
     internal class FilesCombiner
     {
-        public static readonly HashSet<string> AllowedExtensions =
-            new(new[] { ".jpg", ".jpeg", ".png", ".pdf", ".tiff" },
+        public static readonly HashSet<string> AllowedFileExtensions =
+            new(new[] { ".jpg", ".jpeg", ".png", ".pdf" },
                 StringComparer.OrdinalIgnoreCase);
+
         /// <summary>
-        /// Get path to the new file
+        /// Combine files into a single PDF file at the given path 
         /// </summary>
-        /// <returns>New full path to the file</returns>
-        private string GetPathToTarget()
+        /// <param name="items">Files to combine</param>
+        /// <param name="fullPathTofile">Full path to generated combined final file</param>
+        /// <exception cref="ArgumentException">Thrown if no path is selected/exception>
+        internal void CombineFiles(List<FileItem> items, string fullPathTofile)
         {
-            SaveFileDialog saveFileDialog = new()
-            {
-                Filter = "Files PDF|*.pdf",
-                Title = "Save file PDF",
-                FileName = "NewDocument.pdf"
-            };
+            if (string.IsNullOrEmpty(fullPathTofile))
+                throw new ArgumentException("First choose where to save the file.", nameof(fullPathTofile));
 
-            DialogResult result = saveFileDialog.ShowDialog();
+            if (items == null || items.Count == 0)
+                return;
 
-            if (result == DialogResult.OK)
+            var patternChecker = new FilePatternChecker();
+
+            using var mainDocument = new PdfDocument();
+
+            foreach (var file in items)
             {
-                string pathToSave = saveFileDialog.FileName;
-                if (string.IsNullOrEmpty(pathToSave))
+                if (file is null)
+                    continue;
+
+                if (!patternChecker.TryParse(file, out var pages))
+                    throw new FormatException($"Wrong pattern for file: {file.FileNameWithExtension}");
+
+                if (file.IsPDF)
                 {
-                    return string.Empty;
-                }
-                string extension = Path.GetExtension(pathToSave);
-                if (string.IsNullOrEmpty(extension))
-                {
-                    return pathToSave += ".pdf";
-                }
-                if (extension.Contains(".pdf", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    return pathToSave;
+                    using var sourceDocument = PdfReader.Open(file.FullPath, PdfDocumentOpenMode.Import);
+                    ImportPages(mainDocument, sourceDocument, pages, file.FileNameWithExtension);
                 }
                 else
                 {
-                    return string.Empty;
+                    using var ms = CreatePdfStreamFromImage(file.FullPath);
+                    ms.Position = 0;
+                    using var importDoc = PdfReader.Open(ms, PdfDocumentOpenMode.Import);
+                    ImportPages(mainDocument, importDoc, pages, file.FileNameWithExtension);
                 }
             }
-            else
+            mainDocument.Save(fullPathTofile);
+        }
+        private static MemoryStream CreatePdfStreamFromImage(string imagePath)
+        {
+            if (string.IsNullOrEmpty(imagePath))
+                throw new ArgumentException("Image path must not be null or empty.", nameof(imagePath));
+
+            var ms = new MemoryStream();
+            var tempDoc = new PdfDocument();
+
+            try
             {
-                return string.Empty;
+                using var image = XImage.FromFile(imagePath);
+
+                double width = image.PixelWidth * 72.0 / image.HorizontalResolution;
+                double height = image.PixelHeight * 72.0 / image.VerticalResolution;
+
+                var page = tempDoc.AddPage();
+                page.Width = width;
+                page.Height = height;
+
+                using var gfx = XGraphics.FromPdfPage(page);
+                gfx.DrawImage(image, 0, 0, width, height);
+
+                tempDoc.Save(ms, false);
+                ms.Position = 0;
+                return ms;
+            }
+            catch
+            {
+                // Dispose tempDoc if an exception occurs before returning the MemoryStream
+                tempDoc.Dispose();
+                ms.Dispose();
+                throw;
             }
         }
-        /// <summary>
-        /// Combine files into new one 
-        /// </summary>
-        /// <param name="items">Files to combine</param>
-        /// <exception cref="ArgumentException">Thrown if no path is selected/exception>
-        internal void CombineFiles(List<FileItem> items)
+        private static void ImportPages(PdfDocument target, PdfDocument source, List<int> pages, string sourceName)
         {
-            string fullPath = GetPathToTarget();
-            if (string.IsNullOrEmpty(fullPath)) { throw new ArgumentException("First choose where to save the file."); }
-            using (var mainDocument = new PdfDocument())
+            if (target == null) throw new ArgumentNullException(nameof(target));
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (pages == null) throw new ArgumentNullException(nameof(pages));
+
+            for (int i = 0; i < pages.Count; i++)
             {
-                foreach (FileItem file in items)
+                int pageNumber = pages[i];
+                if (pageNumber < 1 || pageNumber > source.PageCount)
                 {
-                    var currentDocument = PdfReader.Open(file.FullPath, PdfDocumentOpenMode.Import);
-                    var filePatternChecker = new FilePatternChecker();
-                    if (filePatternChecker.TryParse(file, out var pages))
-                    {
-                        foreach (int pageNumber in pages)
-                        {
-                            mainDocument.AddPage(currentDocument.Pages[pageNumber - 1]);
-                        }
-                    }
+                    throw new ArgumentOutOfRangeException(
+                        nameof(pages),
+                        $"Requested page {pageNumber} from \"{sourceName}\" is outside the available range (1..{source.PageCount}).");
                 }
-                mainDocument.Save(fullPath);
-                mainDocument.Close();
+
+                target.AddPage(source.Pages[pageNumber - 1]);
             }
         }
     }

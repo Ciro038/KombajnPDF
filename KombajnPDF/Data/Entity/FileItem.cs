@@ -83,7 +83,7 @@ internal class FileItem
         FileExtension = Path.GetExtension(fullPathToFile).ToLower();
 
         // check if file has allowed extension 
-        if (!FilesCombiner.AllowedExtensions.Contains(FileExtension))
+        if (!FilesCombiner.AllowedFileExtensions.Contains(FileExtension))
             throw new FileLoadException();
 
         FullPath = fullPathToFile;

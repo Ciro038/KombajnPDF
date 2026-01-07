@@ -74,7 +74,8 @@ namespace KombajnPDF.Presenter
             {
                 Cursor.Current = Cursors.WaitCursor;
                 var combiner = new FilesCombiner();
-                combiner.CombineFiles(files.Items);
+                var pathToSave = GetFullPathToCombinedFile();
+                combiner.CombineFiles(files.Items, pathToSave);
                 mainFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -204,6 +205,47 @@ namespace KombajnPDF.Presenter
         internal FileItemsBindingList GetBindingList()
         {
             return files;
+        }
+        /// <summary>
+        /// Get path to the new file
+        /// </summary>
+        /// <returns>New full path to the file</returns>
+        private string GetFullPathToCombinedFile()
+        {
+            SaveFileDialog saveFileDialog = new()
+            {
+                Filter = "Files PDF|*.pdf",
+                Title = "Save file PDF",
+                FileName = "NewDocument.pdf"
+            };
+
+            DialogResult result = saveFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string pathToSave = saveFileDialog.FileName;
+                if (string.IsNullOrEmpty(pathToSave))
+                {
+                    return string.Empty;
+                }
+                string extension = Path.GetExtension(pathToSave);
+                if (string.IsNullOrEmpty(extension))
+                {
+                    return pathToSave += ".pdf";
+                }
+                if (extension.Contains(".pdf", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return pathToSave;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 
