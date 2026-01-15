@@ -70,7 +70,6 @@ namespace KombajnPDF.View
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            // Trigger loading of available languages.
             LoadAvailableLanguages?.Invoke();
         }
     }
