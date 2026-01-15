@@ -191,11 +191,11 @@ namespace KombajnPDF.Presenter
                 if (!filePatternChecker.TryParse(file, out var pages))
                     throw new FormatException("Wrong pattern for current file");
                 else
-                    mainFormView.SetRowStyle(rowIndex, mainFormView.GetCorrectStyle());
+                    mainFormView.MarkRowAsValid(rowIndex);
             }
             catch (Exception ex)
             {
-                mainFormView.SetRowStyle(rowIndex, mainFormView.GetErrorStyle());
+                mainFormView.MarkRowAsInvalid(rowIndex);
                 mainFormView.ShowErrorProvider(ex.Message);
             }
         }

@@ -117,18 +117,6 @@ public partial class MainForm : BaseForm, IMainFormView
     }
 
     /// <inheritdoc/>
-    public DataGridViewCellStyle GetCorrectStyle() => correctDataGridViewCellStyle;
-
-    /// <inheritdoc/>
-    public DataGridViewCellStyle GetErrorStyle() => errorDataGridViewCellStyle;
-
-    /// <inheritdoc/>
-    public void SetRowStyle(int rowIndex, DataGridViewCellStyle style)
-    {
-        FilesDataGridView.Rows[rowIndex].DefaultCellStyle = style;
-    }
-
-    /// <inheritdoc/>
     public string[] ShowOpenFileDialog()
     {
         SelectFilesOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -178,5 +166,21 @@ public partial class MainForm : BaseForm, IMainFormView
     public void SetFilesDataSource(object dataSource)
     {
         FilesDataGridView.DataSource = dataSource;
+    }
+
+    public void MarkRowAsValid(int rowIndex)
+    {
+        if (rowIndex < 0 || rowIndex >= FilesDataGridView.Rows.Count)
+            return;
+
+        FilesDataGridView.Rows[rowIndex].DefaultCellStyle = correctDataGridViewCellStyle;
+    }
+
+    public void MarkRowAsInvalid(int rowIndex)
+    {
+        if (rowIndex < 0 || rowIndex >= FilesDataGridView.Rows.Count)
+            return;
+
+        FilesDataGridView.Rows[rowIndex].DefaultCellStyle = errorDataGridViewCellStyle;
     }
 }
