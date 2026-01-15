@@ -22,7 +22,7 @@ public partial class MainForm : BaseForm, IMainFormView
     /// <inheritdoc/>
     public event Action AddFilesButtonOnAddFilesClicked;
     /// <inheritdoc/>
-    public event Action<DataGridViewSelectedRowCollection> RemoveFilesButtonClicked;
+    public event Action<List<int>> RemoveFilesButtonClicked;
     /// <inheritdoc/>
     public event Action<List<int>> MoveUpFilesButtonClicked;
     /// <inheritdoc/>
@@ -79,7 +79,11 @@ public partial class MainForm : BaseForm, IMainFormView
 
     private void RemoveFilesButton_Click(object sender, EventArgs e)
     {
-        RemoveFilesButtonClicked?.Invoke(FilesDataGridView.SelectedRows);
+        var selectedIndexes = FilesDataGridView.SelectedRows
+            .Cast<DataGridViewRow>()
+            .Select(r => r.Index)
+            .ToList();
+        RemoveFilesButtonClicked?.Invoke(selectedIndexes);
     }
 
     private void MoveUpFilesButton_Click(object sender, EventArgs e)
@@ -157,7 +161,7 @@ public partial class MainForm : BaseForm, IMainFormView
 
     private void MainForm_Load(object sender, EventArgs e)
     {
-        
+
         IconsProvider.SetIconWithResize(SettingsButton, App.Properties.Resources.Icons.Icons.SettingsIcon);
         IconsProvider.SetIconWithResize(MoveUpFilesButton, App.Properties.Resources.Icons.Icons.UpIcon);
         IconsProvider.SetIconWithResize(MoveDownButton, App.Properties.Resources.Icons.Icons.DownIcon);

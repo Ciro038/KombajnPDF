@@ -30,7 +30,7 @@ namespace KombajnPDF.Interface
         /// <summary>
         /// Triggered when the user clicks the "Remove Files" button.
         /// </summary>
-        event Action<DataGridViewSelectedRowCollection> RemoveFilesButtonClicked;
+        event Action<List<int>> RemoveFilesButtonClicked;
 
         /// <summary>
         /// Triggered when the user clicks the "Move Up" button to reorder selected files.

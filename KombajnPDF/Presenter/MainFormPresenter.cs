@@ -143,11 +143,11 @@ namespace KombajnPDF.Presenter
         /// <summary>
         /// Removes selected files from the list.
         /// </summary>
-        /// <param name="selectedRows">Selected rows from the DataGridView.</param>
-        private void OnRemoveFilesButtonClicked(DataGridViewSelectedRowCollection selectedRows)
+        /// <param name="selectedIndexes">List of selected rows Indexes</param>
+        private void OnRemoveFilesButtonClicked(List<int> selectedIndexes)
         {
-            foreach (DataGridViewRow row in selectedRows)
-                files.RemoveAt(row.Index);
+            foreach (var index in selectedIndexes)
+                files.RemoveAt(index);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace KombajnPDF.Presenter
         /// <summary>
         /// Validates and applies a new pattern to a file when a DataGridView cell is edited.
         /// </summary>
-        /// <param name="rowIndex">The index of the edited row.</param>
+        /// <param name="rowIndex">The index of the edited index.</param>
         /// <param name="columnName">The name of the edited column.</param>
         private void OnPatternCellEdited(int rowIndex, string columnName)
         {
