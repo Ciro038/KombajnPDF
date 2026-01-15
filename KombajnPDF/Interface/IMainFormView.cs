@@ -90,6 +90,12 @@ namespace KombajnPDF.Interface
         /// </summary>
         /// <param name="rowIndexes">A list of row indexes to select.</param>
         void SelectRows(List<int> rowIndexes);
+
+        /// <summary>
+        /// Sets the data source for the files displayed in the DataGridView.
+        /// </summary>
+        /// <param name="dataSource">The data source to set.</param>
+        void SetFilesDataSource(object dataSource);
     }
 
 }

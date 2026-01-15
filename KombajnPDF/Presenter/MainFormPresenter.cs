@@ -42,6 +42,8 @@ namespace KombajnPDF.Presenter
             mainForm.CombineFilesButtonClicked += CombineFilesButtonClicked;
             mainForm.SettingsButtonClicked += OpenSettingsFormClicked;
             mainForm.InfoButtonClicked += OpenInfoFormClicked;
+
+            mainForm.SetFilesDataSource(files);
         }
         /// <summary>
         /// Opens the info form when the corresponding button is clicked.
@@ -198,14 +200,6 @@ namespace KombajnPDF.Presenter
             }
         }
 
-        /// <summary>
-        /// Returns the current list of files managed by the presenter.
-        /// </summary>
-        /// <returns>A binding list of files.</returns>
-        internal FileItemsBindingList GetBindingList()
-        {
-            return files;
-        }
         /// <summary>
         /// Get path to the new file
         /// </summary>

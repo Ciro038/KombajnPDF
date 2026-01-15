@@ -52,8 +52,6 @@ public partial class MainForm : BaseForm, IMainFormView
         FilesDataGridView.AutoGenerateColumns = false;
         FilesDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-
-        FilesDataGridView.DataSource = presenter.GetBindingList();
         FilesDataGridView.Columns["NameDataGridViewTextBoxColumn"].Tag = "FILE_NAME";
         FilesDataGridView.Columns["PathDataGridViewTextBoxColumn"].Tag = "PATH_TO_FILE";
         FilesDataGridView.Columns["PatternDataGridViewTextBoxColumn"].Tag = "PATTERN";
@@ -171,5 +169,10 @@ public partial class MainForm : BaseForm, IMainFormView
     public override void ShowErrorProvider(string message)
     {
         base.ShowErrorProvider(FilesDataGridView, message);
+    }
+
+    public void SetFilesDataSource(object dataSource)
+    {
+        FilesDataGridView.DataSource = dataSource;
     }
 }
