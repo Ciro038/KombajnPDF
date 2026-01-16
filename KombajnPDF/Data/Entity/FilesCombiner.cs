@@ -18,32 +18,24 @@ namespace KombajnPDF.Data.Entity
                 throw new ArgumentException("Image path must not be null or empty.", nameof(imagePath));
 
             var ms = new MemoryStream();
-            var tempDoc = new PdfDocument();
 
-            try
-            {
-                using var image = XImage.FromFile(imagePath);
+            using var tempDoc = new PdfDocument();
 
-                double width = image.PixelWidth * 72.0 / image.HorizontalResolution;
-                double height = image.PixelHeight * 72.0 / image.VerticalResolution;
+            using var image = XImage.FromFile(imagePath);
 
-                var page = tempDoc.AddPage();
-                page.Width = width;
-                page.Height = height;
+            double width = image.PixelWidth * 72.0 / image.HorizontalResolution;
+            double height = image.PixelHeight * 72.0 / image.VerticalResolution;
 
-                using var gfx = XGraphics.FromPdfPage(page);
-                gfx.DrawImage(image, 0, 0, width, height);
+            var page = tempDoc.AddPage();
+            page.Width = width;
+            page.Height = height;
 
-                tempDoc.Save(ms, false);
-                ms.Position = 0;
-                return ms;
-            }
-            catch
-            {
-                tempDoc.Dispose();
-                ms.Dispose();
-                throw;
-            }
+            using var gfx = XGraphics.FromPdfPage(page);
+            gfx.DrawImage(image, 0, 0, width, height);
+
+            tempDoc.Save(ms, false);
+            ms.Position = 0;
+            return ms;
         }
         private void ImportPages(PdfDocument target, PdfDocument source, List<int> pages, string sourceName)
         {
