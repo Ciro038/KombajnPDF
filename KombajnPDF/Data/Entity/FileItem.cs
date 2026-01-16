@@ -5,7 +5,7 @@ namespace KombajnPDF.Data.Entity;
 /// <summary>
 /// Class representing a file
 /// </summary>
-internal class FileItem
+public class FileItem
 {
     /// <summary>
     /// Full path to the fille

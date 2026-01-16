@@ -7,11 +7,63 @@ namespace KombajnPDF.Data.Entity
     /// <summary>
     /// Class responsible for combining files into a single PDF
     /// </summary>
-    internal class FilesCombiner
+    public class FilesCombiner
     {
         public static readonly HashSet<string> AllowedFileExtensions =
             new(new[] { ".jpg", ".jpeg", ".png", ".pdf" },
                 StringComparer.OrdinalIgnoreCase);
+        private MemoryStream CreatePdfStreamFromImage(string imagePath)
+        {
+            if (string.IsNullOrEmpty(imagePath))
+                throw new ArgumentException("Image path must not be null or empty.", nameof(imagePath));
+
+            var ms = new MemoryStream();
+            var tempDoc = new PdfDocument();
+
+            try
+            {
+                using var image = XImage.FromFile(imagePath);
+
+                double width = image.PixelWidth * 72.0 / image.HorizontalResolution;
+                double height = image.PixelHeight * 72.0 / image.VerticalResolution;
+
+                var page = tempDoc.AddPage();
+                page.Width = width;
+                page.Height = height;
+
+                using var gfx = XGraphics.FromPdfPage(page);
+                gfx.DrawImage(image, 0, 0, width, height);
+
+                tempDoc.Save(ms, false);
+                ms.Position = 0;
+                return ms;
+            }
+            catch
+            {
+                tempDoc.Dispose();
+                ms.Dispose();
+                throw;
+            }
+        }
+        private void ImportPages(PdfDocument target, PdfDocument source, List<int> pages, string sourceName)
+        {
+            if (target == null) throw new ArgumentNullException(nameof(target));
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (pages == null) throw new ArgumentNullException(nameof(pages));
+
+            for (int i = 0; i < pages.Count; i++)
+            {
+                int pageNumber = pages[i];
+                if (pageNumber < 1 || pageNumber > source.PageCount)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        nameof(pages),
+                        $"Requested page {pageNumber} from \"{sourceName}\" is outside the available range (1..{source.PageCount}).");
+                }
+
+                target.AddPage(source.Pages[pageNumber - 1]);
+            }
+        }
 
         /// <summary>
         /// Combine files into a single PDF file at the given path 
@@ -20,7 +72,7 @@ namespace KombajnPDF.Data.Entity
         /// <param name="fullPathTofile">Full path to generated combined final file</param>
         /// <exception cref="ArgumentException">Thrown when destination path is null/empty.</exception>
         /// <exception cref="FormatException">Thrown when a file's page pattern is invalid.</exception>
-        internal void CombineFiles(List<FileItem> items, string fullPathTofile)
+        public void CombineFiles(List<FileItem> items, string fullPathTofile)
         {
             if (string.IsNullOrEmpty(fullPathTofile))
                 throw new ArgumentException("First choose where to save the file.", nameof(fullPathTofile));
@@ -54,59 +106,6 @@ namespace KombajnPDF.Data.Entity
                 }
             }
             mainDocument.Save(fullPathTofile);
-        }
-        private static MemoryStream CreatePdfStreamFromImage(string imagePath)
-        {
-            if (string.IsNullOrEmpty(imagePath))
-                throw new ArgumentException("Image path must not be null or empty.", nameof(imagePath));
-
-            var ms = new MemoryStream();
-            var tempDoc = new PdfDocument();
-
-            try
-            {
-                using var image = XImage.FromFile(imagePath);
-
-                double width = image.PixelWidth * 72.0 / image.HorizontalResolution;
-                double height = image.PixelHeight * 72.0 / image.VerticalResolution;
-
-                var page = tempDoc.AddPage();
-                page.Width = width;
-                page.Height = height;
-
-                using var gfx = XGraphics.FromPdfPage(page);
-                gfx.DrawImage(image, 0, 0, width, height);
-
-                tempDoc.Save(ms, false);
-                ms.Position = 0;
-                return ms;
-            }
-            catch
-            {
-                // Dispose tempDoc if an exception occurs before returning the MemoryStream
-                tempDoc.Dispose();
-                ms.Dispose();
-                throw;
-            }
-        }
-        private static void ImportPages(PdfDocument target, PdfDocument source, List<int> pages, string sourceName)
-        {
-            if (target == null) throw new ArgumentNullException(nameof(target));
-            if (source == null) throw new ArgumentNullException(nameof(source));
-            if (pages == null) throw new ArgumentNullException(nameof(pages));
-
-            for (int i = 0; i < pages.Count; i++)
-            {
-                int pageNumber = pages[i];
-                if (pageNumber < 1 || pageNumber > source.PageCount)
-                {
-                    throw new ArgumentOutOfRangeException(
-                        nameof(pages),
-                        $"Requested page {pageNumber} from \"{sourceName}\" is outside the available range (1..{source.PageCount}).");
-                }
-
-                target.AddPage(source.Pages[pageNumber - 1]);
-            }
         }
     }
 }
