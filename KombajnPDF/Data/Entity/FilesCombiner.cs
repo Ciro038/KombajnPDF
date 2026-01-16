@@ -78,8 +78,6 @@ namespace KombajnPDF.Data.Entity
 
             foreach (var file in items)
             {
-                if (file is null)
-                    continue;
 
                 if (!patternChecker.TryParse(file, out var pages))
                     throw new FormatException($"Wrong pattern for file: {file.FileNameWithExtension}");
