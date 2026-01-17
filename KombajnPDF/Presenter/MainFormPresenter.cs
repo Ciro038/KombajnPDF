@@ -1,16 +1,7 @@
-﻿using KombajnPDF.Data;
-using KombajnPDF.Data.Abstract;
-using KombajnPDF.Data.Entity;
+﻿using KombajnPDF.Data.Entity;
 using KombajnPDF.Interface;
 using KombajnPDF.Properties.Translations;
 using KombajnPDF.View;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace KombajnPDF.Presenter
 {
