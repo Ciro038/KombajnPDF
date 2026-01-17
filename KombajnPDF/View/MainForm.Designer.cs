@@ -40,7 +40,6 @@
             MoveDownButton = new Button();
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
-            SelectFilesOpenFileDialog = new OpenFileDialog();
             HelpButton = new Button();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             SuspendLayout();
@@ -162,12 +161,6 @@
             CombineFilesButton.UseVisualStyleBackColor = true;
             CombineFilesButton.Click += CombineFilesButton_Click;
             // 
-            // SelectFilesOpenFileDialog
-            // 
-            SelectFilesOpenFileDialog.Multiselect = true;
-            SelectFilesOpenFileDialog.RestoreDirectory = true;
-            SelectFilesOpenFileDialog.Title = "Select files";
-            // 
             // HelpButton
             // 
             HelpButton.Location = new Point(12, 9);
@@ -210,7 +203,6 @@
         private Button MoveDownButton;
         private Button RemoveFilesButton;
         private Button CombineFilesButton;
-        private OpenFileDialog SelectFilesOpenFileDialog;
         private Button HelpButton;
         private DataGridViewTextBoxColumn NameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PathDataGridViewTextBoxColumn;

@@ -1,4 +1,5 @@
-﻿using KombajnPDF.Data.Entity;
+﻿using KombajnPDF.App.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using KombajnPDF.Interface;
 using KombajnPDF.Properties.Translations;
 using KombajnPDF.View;
@@ -12,6 +13,8 @@ namespace KombajnPDF.Presenter
     class MainFormPresenter
     {
         private readonly IMainFormView mainFormView;
+        private readonly IFilesCombiner filesCombiner;
+        private readonly IFilePatternChecker filePatternChecker;
         private readonly FileItemsBindingList files;
 
         /// <summary>
@@ -19,9 +22,15 @@ namespace KombajnPDF.Presenter
         /// and subscribes to events from the view.
         /// </summary>
         /// <param name="mainForm">The main form view.</param>
-        public MainFormPresenter(IMainFormView mainForm)
+        public MainFormPresenter(
+            IMainFormView mainForm,
+            IFilesCombiner filesCombiner,
+            IFilePatternChecker filePatternChecker)
         {
-            mainFormView = mainForm;
+            this.mainFormView = mainForm;
+            this.filesCombiner = filesCombiner;
+            this.filePatternChecker = filePatternChecker;
+
             files = new FileItemsBindingList();
 
             mainForm.FilesDataGridViewOnPatternCellEdited += OnPatternCellEdited;
@@ -31,28 +40,8 @@ namespace KombajnPDF.Presenter
             mainForm.MoveUpFilesButtonClicked += OnMoveUpFilesButtonClicked;
             mainForm.MoveDownFilesButtonClicked += OnMoveDownFilesButtonClicked;
             mainForm.CombineFilesButtonClicked += CombineFilesButtonClicked;
-            mainForm.SettingsButtonClicked += OpenSettingsFormClicked;
-            mainForm.InfoButtonClicked += OpenInfoFormClicked;
 
             mainForm.SetFilesDataSource(files);
-        }
-        /// <summary>
-        /// Opens the info form when the corresponding button is clicked.
-        /// </summary>
-        private void OpenInfoFormClicked()
-        {
-            using var form = new InfoForm();
-            form.ShowDialog();
-        }
-
-        /// <summary>
-        /// Opens the settings form when the corresponding button is clicked.
-        /// </summary>
-        private void OpenSettingsFormClicked()
-        {
-
-            using var form = new SettingsForm();
-            form.ShowDialog();
         }
 
         /// <summary>
@@ -65,11 +54,10 @@ namespace KombajnPDF.Presenter
 
             try
             {
-                Cursor.Current = Cursors.WaitCursor;
-                var combiner = new FilesCombiner();
-                var pathToSave = GetFullPathToCombinedFile();
-                combiner.CombineFiles(files.Items, pathToSave);
-                mainFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mainFormView.SetWaitCursor(true);
+                var pathToSave = mainFormView.ShowSaveFileDialogForPdfFile();
+                filesCombiner.CombineFiles(files.Items, pathToSave);
+                mainFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION));
             }
             catch (Exception ex)
             {
@@ -77,7 +65,7 @@ namespace KombajnPDF.Presenter
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                mainFormView.SetWaitCursor(false);
             }
         }
 
@@ -178,7 +166,6 @@ namespace KombajnPDF.Presenter
 
             try
             {
-                var filePatternChecker = new FilePatternChecker();
                 if (!filePatternChecker.TryParse(file, out var pages))
                     throw new FormatException("Wrong pattern for current file");
                 else
@@ -190,48 +177,5 @@ namespace KombajnPDF.Presenter
                 mainFormView.ShowErrorProvider(ex.Message);
             }
         }
-
-        /// <summary>
-        /// Get path to the new file
-        /// </summary>
-        /// <returns>New full path to the file</returns>
-        private string GetFullPathToCombinedFile()
-        {
-            SaveFileDialog saveFileDialog = new()
-            {
-                Filter = "Files PDF|*.pdf",
-                Title = "Save file PDF",
-                FileName = "NewDocument.pdf"
-            };
-
-            DialogResult result = saveFileDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                string pathToSave = saveFileDialog.FileName;
-                if (string.IsNullOrEmpty(pathToSave))
-                {
-                    return string.Empty;
-                }
-                string extension = Path.GetExtension(pathToSave);
-                if (string.IsNullOrEmpty(extension))
-                {
-                    return pathToSave += ".pdf";
-                }
-                if (extension.Contains(".pdf", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    return pathToSave;
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
     }
-
 }

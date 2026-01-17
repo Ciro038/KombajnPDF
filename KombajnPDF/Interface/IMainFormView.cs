@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KombajnPDF.Interface
+﻿namespace KombajnPDF.Interface
 {
     /// <summary>
     /// Represents the interface for the main form view in the application.
@@ -48,21 +42,6 @@ namespace KombajnPDF.Interface
         event Action CombineFilesButtonClicked;
 
         /// <summary>
-        /// Triggered when the user clicks to open the settings form.
-        /// </summary>
-        event Action SettingsButtonClicked;
-        /// <summary>
-        /// Triggered when the user clicks to open the info form.  
-        /// </summary>
-        event Action InfoButtonClicked;
-
-        /// <summary>
-        /// Opens a file dialog and returns the selected file paths.
-        /// </summary>
-        /// <returns>An array of file paths selected by the user.</returns>
-        string[] ShowOpenFileDialog();
-
-        /// <summary>
         /// Refreshes the contents of the DataGridView.
         /// </summary>
         void RefreshGrid();
@@ -88,6 +67,9 @@ namespace KombajnPDF.Interface
         /// </summary>
         /// <param name="rowIndex">The zero-based index of the row to mark as invalid. Must be within the range of existing rows.</param>
         void MarkRowAsInvalid(int rowIndex);
+
+        void ShowInfoForm();
+        void ShowSettingsForm();
     }
 
 }

@@ -34,11 +34,6 @@ namespace KombajnPDF.Classes.Form
             // Możesz dodać logowanie lub inne akcje
         }
 
-        public virtual void ShowMessageBox(string message, string caption, MessageBoxButtons messageBoxButtons, MessageBoxIcon messageBoxIcon)
-        {
-            MessageBox.Show(this, message, caption, messageBoxButtons, messageBoxIcon);
-        }
-
         public virtual void ShowErrorProvider(Control control, string message)
         {
             MainErrorProvider.SetError(control, message);
@@ -47,6 +42,69 @@ namespace KombajnPDF.Classes.Form
         public virtual void ShowErrorProvider(string message)
         {
             MainErrorProvider.SetError(this, message);
+        }
+
+        public void ShowMessageBox(string message, string caption)
+        {
+            MessageBox.Show(this, message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void ShowYesNoMessageBox(string message, string caption, out bool isYesSelected)
+        {
+            var restult = MessageBox.Show(this, message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            isYesSelected = restult is DialogResult.Yes;
+        }
+
+        /// <inheritdoc/>
+        public string[] ShowOpenFileDialog()
+        {
+            SelectFilesOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            return SelectFilesOpenFileDialog.ShowDialog() == DialogResult.OK
+                ? SelectFilesOpenFileDialog.FileNames
+                : Array.Empty<string>();
+        }
+
+        public string ShowSaveFileDialogForPdfFile()
+        {
+            SaveFileDialog saveFileDialog = new()
+            {
+                Filter = "Files PDF|*.pdf",
+                Title = "Save file PDF",
+                FileName = "NewDocument.pdf"
+            };
+
+            DialogResult result = saveFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string pathToSave = saveFileDialog.FileName;
+                if (string.IsNullOrEmpty(pathToSave))
+                {
+                    return string.Empty;
+                }
+                string extension = Path.GetExtension(pathToSave);
+                if (string.IsNullOrEmpty(extension))
+                {
+                    return pathToSave += ".pdf";
+                }
+                if (extension.Contains(".pdf", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return pathToSave;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public void SetWaitCursor(bool isWaiting)
+        {
+            Cursor.Current = isWaiting ? Cursors.WaitCursor : Cursors.Default;
         }
     }
 }

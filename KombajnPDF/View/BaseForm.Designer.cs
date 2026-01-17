@@ -30,12 +30,19 @@
         {
             components = new System.ComponentModel.Container();
             MainErrorProvider = new ErrorProvider(components);
+            SelectFilesOpenFileDialog = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // MainErrorProvider
             // 
             MainErrorProvider.ContainerControl = this;
+            // 
+            // SelectFilesOpenFileDialog
+            // 
+            SelectFilesOpenFileDialog.Multiselect = true;
+            SelectFilesOpenFileDialog.RestoreDirectory = true;
+            SelectFilesOpenFileDialog.Title = "Select files";
             // 
             // BaseForm
             // 
@@ -51,5 +58,6 @@
         #endregion
 
         private ErrorProvider MainErrorProvider;
+        private OpenFileDialog SelectFilesOpenFileDialog;
     }
 }

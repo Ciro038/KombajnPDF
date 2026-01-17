@@ -8,11 +8,12 @@ namespace KombajnPDF.Data.Entity
     /// <summary>
     /// Class responsible for combining files into a single PDF
     /// </summary>
-    public class FilesCombiner
+    public class FilesCombiner : IFilesCombiner
     {
         public static readonly HashSet<string> AllowedFileExtensions =
             new(new[] { ".jpg", ".jpeg", ".png", ".pdf" },
                 StringComparer.OrdinalIgnoreCase);
+
         private readonly IFilePatternChecker _patternChecker;
         private readonly IImageToPdfConverter _imageConverter;
         private readonly IPdfLoader _pdfLoader;

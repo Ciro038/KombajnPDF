@@ -1,8 +1,10 @@
+using KombajnPDF.App.Data.Abstract;
 using KombajnPDF.Classes.Form;
 using KombajnPDF.Data.Entity;
 using KombajnPDF.Interface;
 using KombajnPDF.Presenter;
-
+using KombajnPDF.View;
+using KombajnPDF.App.Data.Entity;
 namespace KombajnPDF;
 
 /// <summary>
@@ -29,10 +31,6 @@ public partial class MainForm : BaseForm, IMainFormView
     public event Action<List<int>> MoveDownFilesButtonClicked;
     /// <inheritdoc/>
     public event Action CombineFilesButtonClicked;
-    /// <inheritdoc/>
-    public event Action SettingsButtonClicked;
-    /// <inheritdoc/>
-    public event Action InfoButtonClicked;
 
     /// <summary>
     /// Initializes the main form and its components.
@@ -40,7 +38,23 @@ public partial class MainForm : BaseForm, IMainFormView
     public MainForm()
     {
         InitializeComponent();
-        presenter = new MainFormPresenter(this);
+
+        // infrastruktura
+        IFilePatternChecker patternChecker = new FilePatternChecker();
+        IImageToPdfConverter imageConverter = new PdfSharpImageToPdfConverter();
+        IPdfLoader pdfLoader = new PdfSharpLoader();
+
+        // serwis domenowy
+        IFilesCombiner filesCombiner = new FilesCombiner(
+            patternChecker,
+            imageConverter,
+            pdfLoader);
+
+        presenter = new MainFormPresenter(
+            this,
+            filesCombiner,
+            patternChecker);
+
         InitializeDataGrid();
     }
 
@@ -113,16 +127,7 @@ public partial class MainForm : BaseForm, IMainFormView
 
     private void SettingsButton_Click(object sender, EventArgs e)
     {
-        SettingsButtonClicked?.Invoke();
-    }
-
-    /// <inheritdoc/>
-    public string[] ShowOpenFileDialog()
-    {
-        SelectFilesOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        return SelectFilesOpenFileDialog.ShowDialog() == DialogResult.OK
-            ? SelectFilesOpenFileDialog.FileNames
-            : Array.Empty<string>();
+        ShowSettingsForm();
     }
 
     /// <inheritdoc/>
@@ -144,7 +149,7 @@ public partial class MainForm : BaseForm, IMainFormView
 
     private void HelpButton_Click(object sender, EventArgs e)
     {
-        InfoButtonClicked?.Invoke();
+        ShowInfoForm();
     }
 
     private void MainForm_Load(object sender, EventArgs e)
@@ -182,5 +187,17 @@ public partial class MainForm : BaseForm, IMainFormView
             return;
 
         FilesDataGridView.Rows[rowIndex].DefaultCellStyle = errorDataGridViewCellStyle;
+    }
+
+    public void ShowInfoForm()
+    {
+        using var form = new InfoForm();
+        form.ShowDialog();
+    }
+
+    public void ShowSettingsForm()
+    {
+        using var form = new SettingsForm();
+        form.ShowDialog();
     }
 }

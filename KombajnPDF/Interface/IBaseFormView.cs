@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-
-namespace KombajnPDF.Interface
+﻿namespace KombajnPDF.Interface
 {
     interface IBaseFormView
     {
-        /// <summary>
-        /// Displays a message box to the user with the specified text, title, buttons, and icon.
-        /// </summary>
-        /// <param name="message">The text to display in the message box.</param>
-        /// <param name="caption">The caption (title) shown in the message box window.</param>
-        /// <param name="messageBoxButtons">Specifies which buttons to display (for example, OK, OKCancel, YesNo).</param>
-        /// <param name="messageBoxIcon">Specifies the icon to display (for example, Information, Warning, Error).</param>
-        void ShowMessageBox(string message, string caption, MessageBoxButtons messageBoxButtons, MessageBoxIcon messageBoxIcon);
+        void ShowMessageBox(string message, string caption);
+
+        void ShowYesNoMessageBox(string message, string caption, out bool isYesSelected);
+
         /// <summary>
         /// Sets or clears an error message associated with a specific control.
         /// When <paramref name="message"/> is non-empty, the implementing view should display the error
@@ -34,5 +23,15 @@ namespace KombajnPDF.Interface
         /// </summary>
         /// <param name="message">The error message to display, or <c>null</c>/<see cref="string.Empty"/> to clear the form-level error.</param>
         void ShowErrorProvider(string message);
+
+        /// <summary>
+        /// Opens a file dialog and returns the selected file paths.
+        /// </summary>
+        /// <returns>An array of file paths selected by the user.</returns>
+        string[] ShowOpenFileDialog();
+
+        string ShowSaveFileDialogForPdfFile();
+
+        void SetWaitCursor(bool isWaiting);
     }
 }

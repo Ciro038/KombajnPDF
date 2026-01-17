@@ -43,7 +43,7 @@ namespace KombajnPDF.Presenter
             if (language != GlobalSettingsProvider.Instance.CurrentLanguage)
             {
                 GlobalSettingsProvider.Instance.CurrentLanguage = language;
-                settingsFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.LANGUAGE_CHANGED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                settingsFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.LANGUAGE_CHANGED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION));
             }
         }
 
