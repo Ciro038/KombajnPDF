@@ -36,6 +36,7 @@
             // 
             // MainErrorProvider
             // 
+            MainErrorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
             MainErrorProvider.ContainerControl = this;
             // 
             // SelectFilesOpenFileDialog
@@ -56,8 +57,7 @@
         }
 
         #endregion
-
-        private ErrorProvider MainErrorProvider;
         private OpenFileDialog SelectFilesOpenFileDialog;
+        public ErrorProvider MainErrorProvider;
     }
 }

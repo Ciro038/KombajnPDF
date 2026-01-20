@@ -146,20 +146,6 @@ namespace KombajnPDF.Presenter
         }
 
         /// <summary>
-        /// Handles drag-and-drop of files into the DataGridView.
-        /// </summary>
-        /// <param name="e">The drag event arguments.</param>
-        private void OnFilesDataGridViewDragEnter(DragEventArgs e)
-        {
-            if (e.Data is null || !e.Data.GetDataPresent(DataFormats.FileDrop))
-                return;
-
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (string file in files)
-                this.files.Add(file);
-        }
-
-        /// <summary>
         /// Validates and applies a new pattern to a file when a DataGridView cell is edited.
         /// </summary>
         /// <param name="rowIndex">The index of the edited index.</param>

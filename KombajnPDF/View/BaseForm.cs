@@ -1,5 +1,6 @@
 ﻿using KombajnPDF.Data.Entity;
 using KombajnPDF.Interface;
+using System.Windows.Forms;
 
 namespace KombajnPDF.Classes.Form
 {
@@ -97,9 +98,15 @@ namespace KombajnPDF.Classes.Form
             Cursor.Current = isWaiting ? Cursors.WaitCursor : Cursors.Default;
         }
 
+        protected void ShowError(Control control, string message)
+        {
+            MainErrorProvider.SetError(control, message);
+        }
+
         public void ShowError(string message)
         {
-            MainErrorProvider.SetError(this, message);
+            var a = ActiveControl;
+            MainErrorProvider.SetError(a, message);
         }
     }
 }
