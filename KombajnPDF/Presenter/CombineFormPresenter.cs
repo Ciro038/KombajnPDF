@@ -149,7 +149,6 @@ namespace KombajnPDF.Presenter
         /// Validates and applies a new pattern to a file when a DataGridView cell is edited.
         /// </summary>
         /// <param name="rowIndex">The index of the edited index.</param>
-        /// <param name="columnName">The name of the edited column.</param>
         private void OnPatternCellEdited(int rowIndex)
         {
             try
