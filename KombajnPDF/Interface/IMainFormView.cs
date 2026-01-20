@@ -4,7 +4,7 @@
     /// Represents the interface for the main form view in the application.
     /// It defines all UI-related actions and interactions available in the main window.
     /// </summary>
-    interface IMainFormView : IBaseFormView
+    public interface IMainFormView : IBaseFormView
     {
         /// <summary>
         /// Triggered when the pattern cell in the file DataGridView is edited.
@@ -12,9 +12,9 @@
         event Action<int, string> FilesDataGridViewOnPatternCellEdited;
 
         /// <summary>
-        /// Triggered when files are dragged into the DataGridView area.
+        /// Triggered when files are dropped onto the view.
         /// </summary>
-        event Action<DragEventArgs> FilesDataGridViewDragEnter;
+        event Action<string[]> FilesDropped;
 
         /// <summary>
         /// Triggered when the user clicks the "Add Files" button.

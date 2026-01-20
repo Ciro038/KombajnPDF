@@ -34,16 +34,6 @@ namespace KombajnPDF.Classes.Form
             // Możesz dodać logowanie lub inne akcje
         }
 
-        public virtual void ShowErrorProvider(Control control, string message)
-        {
-            MainErrorProvider.SetError(control, message);
-        }
-
-        public virtual void ShowErrorProvider(string message)
-        {
-            MainErrorProvider.SetError(this, message);
-        }
-
         public void ShowMessageBox(string message, string caption)
         {
             MessageBox.Show(this, message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -105,6 +95,11 @@ namespace KombajnPDF.Classes.Form
         public void SetWaitCursor(bool isWaiting)
         {
             Cursor.Current = isWaiting ? Cursors.WaitCursor : Cursors.Default;
+        }
+
+        public void ShowError(string message)
+        {
+            MainErrorProvider.SetError(this, message);
         }
     }
 }

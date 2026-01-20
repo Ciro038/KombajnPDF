@@ -10,7 +10,7 @@ namespace KombajnPDF.Presenter
     /// Represents the presenter for the main form in a Model-View-Presenter (MVP) pattern.
     /// Handles user interactions and updates the view accordingly.
     /// </summary>
-    class MainFormPresenter
+    public class MainFormPresenter
     {
         private readonly IMainFormView mainFormView;
         private readonly IFilesCombiner filesCombiner;
@@ -34,14 +34,20 @@ namespace KombajnPDF.Presenter
             files = new FileItemsBindingList();
 
             mainForm.FilesDataGridViewOnPatternCellEdited += OnPatternCellEdited;
-            mainForm.FilesDataGridViewDragEnter += OnFilesDataGridViewDragEnter;
             mainForm.AddFilesButtonOnAddFilesClicked += OnAddFilesButtonClicked;
             mainForm.RemoveFilesButtonClicked += OnRemoveFilesButtonClicked;
             mainForm.MoveUpFilesButtonClicked += OnMoveUpFilesButtonClicked;
             mainForm.MoveDownFilesButtonClicked += OnMoveDownFilesButtonClicked;
             mainForm.CombineFilesButtonClicked += CombineFilesButtonClicked;
+            mainForm.FilesDropped += OnFilesDropped;
 
             mainForm.SetFilesDataSource(files);
+        }
+
+        private void OnFilesDropped(string[] files)
+        {
+            foreach (var file in files)
+                this.files.Add(file);
         }
 
         /// <summary>
@@ -61,7 +67,7 @@ namespace KombajnPDF.Presenter
             }
             catch (Exception ex)
             {
-                mainFormView.ShowErrorProvider(ex.Message);
+                mainFormView.ShowError(ex.Message);
             }
             finally
             {
@@ -174,7 +180,7 @@ namespace KombajnPDF.Presenter
             catch (Exception ex)
             {
                 mainFormView.MarkRowAsInvalid(rowIndex);
-                mainFormView.ShowErrorProvider(ex.Message);
+                mainFormView.ShowError(ex.Message);
             }
         }
     }

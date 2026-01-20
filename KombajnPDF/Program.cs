@@ -17,7 +17,7 @@ namespace KombajnPDF
             try
             {
                 ApplicationConfiguration.Initialize();
-                Application.Run(new MainForm());
+                Application.Run(new CombineForm());
             }
             catch (Exception ex)
             {

@@ -11,7 +11,7 @@ namespace KombajnPDF;
 /// Main form of the application that handles user interface logic for PDF combining.
 /// Implements <see cref="IMainFormView"/> to communicate with the presenter.
 /// </summary>
-public partial class MainForm : BaseForm, IMainFormView
+public partial class CombineForm : BaseForm, IMainFormView
 {
     private readonly MainFormPresenter presenter;
     private DataGridViewCellStyle correctDataGridViewCellStyle;
@@ -19,8 +19,6 @@ public partial class MainForm : BaseForm, IMainFormView
 
     /// <inheritdoc/>
     public event Action<int, string> FilesDataGridViewOnPatternCellEdited;
-    /// <inheritdoc/>
-    public event Action<DragEventArgs> FilesDataGridViewDragEnter;
     /// <inheritdoc/>
     public event Action AddFilesButtonOnAddFilesClicked;
     /// <inheritdoc/>
@@ -31,11 +29,13 @@ public partial class MainForm : BaseForm, IMainFormView
     public event Action<List<int>> MoveDownFilesButtonClicked;
     /// <inheritdoc/>
     public event Action CombineFilesButtonClicked;
+    /// <inheritdoc/>
+    public event Action<string[]> FilesDropped;
 
     /// <summary>
     /// Initializes the main form and its components.
     /// </summary>
-    public MainForm()
+    public CombineForm()
     {
         InitializeComponent();
 
@@ -78,7 +78,14 @@ public partial class MainForm : BaseForm, IMainFormView
 
     private void FilesDataGridView_DragEnter(object sender, DragEventArgs e)
     {
-        FilesDataGridViewDragEnter?.Invoke(e);
+        if (e.Data is null || !e.Data.GetDataPresent(DataFormats.FileDrop))
+            return;
+
+        var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+        if (files is not null)
+        {
+            FilesDropped?.Invoke(files);
+        }
     }
 
     private void FilesDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -161,11 +168,6 @@ public partial class MainForm : BaseForm, IMainFormView
         IconsProvider.SetIconWithResize(RemoveFilesButton, App.Properties.Resources.Icons.Icons.DeleteIcon);
         IconsProvider.SetIconWithResize(AddFilesButton, App.Properties.Resources.Icons.Icons.AddIcon);
         IconsProvider.SetIconWithResize(HelpButton, App.Properties.Resources.Icons.Icons.HelpIcon);
-    }
-
-    public override void ShowErrorProvider(string message)
-    {
-        base.ShowErrorProvider(FilesDataGridView, message);
     }
 
     public void SetFilesDataSource(object dataSource)

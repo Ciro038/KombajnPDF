@@ -1,6 +1,6 @@
 ﻿namespace KombajnPDF
 {
-    partial class MainForm
+    partial class CombineForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CombineForm));
             FilesDataGridView = new DataGridView();
             NameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             PathDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
