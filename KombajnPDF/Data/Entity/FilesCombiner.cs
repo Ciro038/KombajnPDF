@@ -41,7 +41,7 @@ namespace KombajnPDF.Data.Entity
             foreach (var file in items)
             {
                 if (!_patternChecker.TryParse(file, out var pages))
-                    throw new FormatException($"Invalid pattern: {file.FileNameWithExtension}");
+                    throw new FormatException($"Invalid pattern for file: {file.FileNameWithExtension}");
 
                 using var source = file.IsPDF
                     ? _pdfLoader.Load(file.FullPath)
