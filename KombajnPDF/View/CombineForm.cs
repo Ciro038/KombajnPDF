@@ -18,7 +18,7 @@ public partial class CombineForm : BaseForm, IMainFormView
     private DataGridViewCellStyle errorDataGridViewCellStyle;
 
     /// <inheritdoc/>
-    public event Action<int, string> FilesDataGridViewOnPatternCellEdited;
+    public event Action<int> FilesDataGridViewOnPatternCellEdited;
     /// <inheritdoc/>
     public event Action AddFilesButtonOnAddFilesClicked;
     /// <inheritdoc/>
@@ -90,7 +90,8 @@ public partial class CombineForm : BaseForm, IMainFormView
 
     private void FilesDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
     {
-        FilesDataGridViewOnPatternCellEdited?.Invoke(e.RowIndex, FilesDataGridView.Columns[e.ColumnIndex].Name);
+        if (FilesDataGridView.Columns[e.ColumnIndex].Name.Equals(nameof(PatternDataGridViewTextBoxColumn)))
+            FilesDataGridViewOnPatternCellEdited?.Invoke(e.RowIndex);
     }
 
     private void AddFilesButton_Click(object sender, EventArgs e)

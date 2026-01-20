@@ -9,7 +9,7 @@
         /// <summary>
         /// Triggered when the pattern cell in the file DataGridView is edited.
         /// </summary>
-        event Action<int, string> FilesDataGridViewOnPatternCellEdited;
+        event Action<int> FilesDataGridViewOnPatternCellEdited;
 
         /// <summary>
         /// Triggered when files are dropped onto the view.

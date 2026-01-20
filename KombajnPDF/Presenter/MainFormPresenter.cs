@@ -164,14 +164,11 @@ namespace KombajnPDF.Presenter
         /// </summary>
         /// <param name="rowIndex">The index of the edited index.</param>
         /// <param name="columnName">The name of the edited column.</param>
-        private void OnPatternCellEdited(int rowIndex, string columnName)
+        private void OnPatternCellEdited(int rowIndex)
         {
-            var file = files[rowIndex];
-            if (columnName != nameof(file.FilePattern))
-                return;
-
             try
             {
+                var file = files[rowIndex];
                 if (!filePatternChecker.TryParse(file, out var pages))
                     throw new FormatException("Wrong pattern for current file");
                 else
