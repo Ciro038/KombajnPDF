@@ -9,11 +9,11 @@ namespace KombajnPDF;
 
 /// <summary>
 /// Main form of the application that handles user interface logic for PDF combining.
-/// Implements <see cref="IMainFormView"/> to communicate with the presenter.
+/// Implements <see cref="ICombineFormView"/> to communicate with the presenter.
 /// </summary>
-public partial class CombineForm : BaseForm, IMainFormView
+public partial class CombineForm : BaseForm, ICombineFormView
 {
-    private readonly MainFormPresenter presenter;
+    private readonly CombineFormPresenter presenter;
     private DataGridViewCellStyle correctDataGridViewCellStyle;
     private DataGridViewCellStyle errorDataGridViewCellStyle;
 
@@ -50,7 +50,7 @@ public partial class CombineForm : BaseForm, IMainFormView
             imageConverter,
             pdfLoader);
 
-        presenter = new MainFormPresenter(
+        presenter = new CombineFormPresenter(
             this,
             filesCombiner,
             patternChecker);

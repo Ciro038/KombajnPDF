@@ -10,20 +10,20 @@ namespace KombajnPDF.UnitTest
     [TestFixture]
     public class MainFormPresenterTests
     {
-        private Mock<IMainFormView> viewMock;
+        private Mock<ICombineFormView> viewMock;
         private Mock<IFilesCombiner> combinerMock;
         private Mock<IFilePatternChecker> patternCheckerMock;
 
-        private MainFormPresenter presenter;
+        private CombineFormPresenter presenter;
 
         [SetUp]
         public void SetUp()
         {
-            viewMock = new Mock<IMainFormView>();
+            viewMock = new Mock<ICombineFormView>();
             combinerMock = new Mock<IFilesCombiner>();
             patternCheckerMock = new Mock<IFilePatternChecker>();
 
-            presenter = new MainFormPresenter(
+            presenter = new CombineFormPresenter(
                 viewMock.Object,
                 combinerMock.Object,
                 patternCheckerMock.Object);

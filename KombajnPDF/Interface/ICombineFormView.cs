@@ -4,7 +4,7 @@
     /// Represents the interface for the main form view in the application.
     /// It defines all UI-related actions and interactions available in the main window.
     /// </summary>
-    public interface IMainFormView : IBaseFormView
+    public interface ICombineFormView : IBaseFormView
     {
         /// <summary>
         /// Triggered when the pattern cell in the file DataGridView is edited.
