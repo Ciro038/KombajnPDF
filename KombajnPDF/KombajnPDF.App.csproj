@@ -8,6 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>Resources\CombineIcon.ico</ApplicationIcon>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <AssemblyName>KombajnPDF</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
