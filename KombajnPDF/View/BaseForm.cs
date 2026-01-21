@@ -1,5 +1,5 @@
-﻿using KombajnPDF.Data.Entity;
-using KombajnPDF.Interface;
+﻿using KombajnPDF.App.Interface;
+using KombajnPDF.Data.Entity;
 using System.Windows.Forms;
 
 namespace KombajnPDF.Classes.Form

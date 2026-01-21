@@ -1,9 +1,9 @@
 using NUnit.Framework;
 using Moq;
-using KombajnPDF.Presenter;
-using KombajnPDF.Interface;
 using KombajnPDF.Data.Entity;
-using KombajnPDF.App.Data.Abstract;
+using KombajnPDF.Data.Abstract;
+using KombajnPDF.App.Interface;
+using KombajnPDF.App.Presenter;
 
 namespace KombajnPDF.UnitTest
 {

@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.App.Data.Abstract
+namespace KombajnPDF.Data.Abstract
 {
-    public interface IFilePatternChecker
+    public interface IFilesCombiner
     {
-        bool TryParse(FileItem file, out List<int> pages);
+        void CombineFiles(List<FileItem> items, string fullPathToFile);
     }
 }

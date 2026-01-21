@@ -1,10 +1,10 @@
-﻿using KombajnPDF.App.Data.Abstract;
+﻿using KombajnPDF.App.Interface;
+using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Entity;
-using KombajnPDF.Interface;
-using KombajnPDF.Properties.Translations;
+using KombajnPDF.Data.Translations;
 using KombajnPDF.View;
 
-namespace KombajnPDF.Presenter
+namespace KombajnPDF.App.Presenter
 {
     /// <summary>
     /// Represents the presenter for the main formView in a Model-View-Presenter (MVP) pattern.

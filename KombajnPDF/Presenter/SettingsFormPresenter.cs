@@ -1,8 +1,8 @@
-﻿using KombajnPDF.Data.Abstract;
+﻿using KombajnPDF.App.Interface;
+using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Entity;
 using KombajnPDF.Data.Enum;
-using KombajnPDF.Interface;
-using KombajnPDF.Properties.Translations;
+using KombajnPDF.Data.Translations;
 using KombajnPDF.View;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Presenter
+namespace KombajnPDF.App.Presenter
 {
     /// <summary>
     /// Presenter class responsible for managing the logic of the settings form,
@@ -27,7 +27,7 @@ namespace KombajnPDF.Presenter
         /// <param name="settingsForm">The settings form view instance.</param>
         public SettingsFormPresenter(ISettingsFormView settingsForm)
         {
-            this.settingsFormView = settingsForm;
+            settingsFormView = settingsForm;
 
             settingsForm.LoadAvailableLanguages += OnLoadAvailableLanguages;
             settingsForm.LanguageChanged += OnLanguageChanged;

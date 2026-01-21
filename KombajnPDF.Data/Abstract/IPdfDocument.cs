@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.App.Data.Abstract
+namespace KombajnPDF.Data.Abstract
 {
     public interface IPdfDocument : IDisposable
     {

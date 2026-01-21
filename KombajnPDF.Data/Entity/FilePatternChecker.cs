@@ -1,4 +1,4 @@
-﻿using KombajnPDF.App.Data.Abstract;
+﻿using KombajnPDF.Data.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace KombajnPDF.Data.Entity
     /// <summary>
     /// Class to validate pattern for the file
     /// </summary>
-    internal class FilePatternChecker : IFilePatternChecker
+    public class FilePatternChecker : IFilePatternChecker
     {
         private static readonly HashSet<char> allowedChars =
             new("0123456789-;");

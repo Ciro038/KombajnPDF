@@ -1,11 +1,4 @@
-﻿using KombajnPDF.Classes;
-using KombajnPDF.Data.Entity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KombajnPDF.Data.Entity;
 
 namespace KombajnPDF.Data.Abstract
 {

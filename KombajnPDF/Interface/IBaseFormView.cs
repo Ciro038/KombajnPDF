@@ -1,4 +1,4 @@
-﻿namespace KombajnPDF.Interface
+﻿namespace KombajnPDF.App.Interface
 {
     public interface IBaseFormView
     {

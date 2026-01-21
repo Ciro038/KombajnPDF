@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Interface
+namespace KombajnPDF.App.Interface
 {
     interface IInfoFormView
     {

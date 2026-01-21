@@ -1,4 +1,4 @@
-﻿namespace KombajnPDF.Interface
+﻿namespace KombajnPDF.App.Interface
 {
     /// <summary>
     /// Represents the interface for the main form view in the application.

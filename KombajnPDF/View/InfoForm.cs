@@ -1,29 +1,19 @@
-﻿using KombajnPDF.Classes;
+﻿using KombajnPDF.App.Interface;
+using KombajnPDF.App.Presenter;
 using KombajnPDF.Classes.Form;
-using KombajnPDF.Interface;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace KombajnPDF.View
 {
     public partial class InfoForm : BaseForm, IInfoFormView
     {
-        private Presenter.InfoFormPresenter presenter;
+        private InfoFormPresenter presenter;
         public event Action LoadData;
 
         public InfoForm() : base()
         {
             InitializeComponent();
 
-            presenter = new Presenter.InfoFormPresenter(this);
+            presenter = new InfoFormPresenter(this);
         }
 
 

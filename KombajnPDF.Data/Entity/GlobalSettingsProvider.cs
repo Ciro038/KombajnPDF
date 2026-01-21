@@ -1,12 +1,6 @@
-﻿using KombajnPDF.Classes;
-using KombajnPDF.Data.Abstract;
+﻿using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
-using KombajnPDF.Properties.Translations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KombajnPDF.Data.Translations;
 
 namespace KombajnPDF.Data.Entity
 {

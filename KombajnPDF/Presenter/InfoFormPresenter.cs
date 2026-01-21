@@ -1,4 +1,4 @@
-﻿using KombajnPDF.Interface;
+﻿using KombajnPDF.App.Interface;
 using KombajnPDF.View;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Presenter
+namespace KombajnPDF.App.Presenter
 {
     class InfoFormPresenter
     {
@@ -14,7 +14,7 @@ namespace KombajnPDF.Presenter
 
         public InfoFormPresenter(IInfoFormView pMainForm)
         {
-            this._view = pMainForm;
+            _view = pMainForm;
             _view.LoadData += LoadData;
         }
 

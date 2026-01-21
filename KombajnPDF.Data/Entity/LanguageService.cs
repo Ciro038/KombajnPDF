@@ -1,6 +1,6 @@
 ﻿using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Enum;
-using KombajnPDF.Properties.Translations;
+using KombajnPDF.Data.Translations;
 using System.Resources;
 
 namespace KombajnPDF.Data.Entity
@@ -46,7 +46,7 @@ namespace KombajnPDF.Data.Entity
         /// <returns>The currently selected language, or a default value if not available.</returns>
         public LanguagesEnum GetLanguage()
         {
-            if (System.Enum.TryParse(App.Properties.Settings.Default.Language, out LanguagesEnum lang))
+            if (System.Enum.TryParse(Properties.Settings.Default.Language, out LanguagesEnum lang))
                 return lang;
 
             return LanguagesEnum.English; // fallback language
@@ -59,8 +59,8 @@ namespace KombajnPDF.Data.Entity
         public void SetLanguage(LanguagesEnum language)
         {
             _currentLanguage = language;
-            App.Properties.Settings.Default.Language = language.ToString();
-            App.Properties.Settings.Default.Save();
+            Properties.Settings.Default.Language = language.ToString();
+            Properties.Settings.Default.Save();
         }
 
         /// <summary>

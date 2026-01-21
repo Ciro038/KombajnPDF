@@ -1,13 +1,9 @@
-﻿using KombajnPDF.App.Data.Abstract;
+﻿using KombajnPDF.Data.Abstract;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
-namespace KombajnPDF.App.Data.Entity
+namespace KombajnPDF.Data.Entity
 {
     public class PdfSharpImageToPdfConverter : IImageToPdfConverter
     {

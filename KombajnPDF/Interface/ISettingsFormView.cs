@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Interface
+namespace KombajnPDF.App.Interface
 {
     /// <summary>
     /// Represents the interface for the settings form view in the application.

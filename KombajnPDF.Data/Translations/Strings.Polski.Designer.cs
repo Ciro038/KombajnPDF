@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KombajnPDF.App.Properties.Translations {
+namespace KombajnPDF.Data.Translations {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace KombajnPDF.App.Properties.Translations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings_English {
+    internal class Strings_Polski {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings_English() {
+        internal Strings_Polski() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace KombajnPDF.App.Properties.Translations {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KombajnPDF.App.Properties.Translations.Strings.English", typeof(Strings_English).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KombajnPDF.Data.Translations.Strings.Polski", typeof(Strings_Polski).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Combine files.
+        ///   Looks up a localized string similar to Połącz pliki.
         /// </summary>
         internal static string COMBINE_FILES {
             get {
@@ -70,7 +70,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Combined files.
+        ///   Looks up a localized string similar to Połączono pliki.
         /// </summary>
         internal static string COMBINED_FILES {
             get {
@@ -79,7 +79,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error.
+        ///   Looks up a localized string similar to Błąd.
         /// </summary>
         internal static string ERROR {
             get {
@@ -88,7 +88,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to External component license.
+        ///   Looks up a localized string similar to Licencja zewnętrznych komponentów.
         /// </summary>
         internal static string EXTERNAL_COMPONENT_LICENSE {
             get {
@@ -97,7 +97,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File name.
+        ///   Looks up a localized string similar to Nazwa pliku.
         /// </summary>
         internal static string FILE_NAME {
             get {
@@ -106,7 +106,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Information.
+        ///   Looks up a localized string similar to Informacja.
         /// </summary>
         internal static string INFORMATION {
             get {
@@ -115,7 +115,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Information about the application.
+        ///   Looks up a localized string similar to Informacje o aplikacji.
         /// </summary>
         internal static string INFORMATION_ABOUT_APPLICATION {
             get {
@@ -124,7 +124,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The &quot;KombajnPDF&quot; application allows not only merging multiple PDF files into one, but also selecting specific pages from each PDF file to be extracted and included in the output document..
+        ///   Looks up a localized string similar to Aplikacja „KombajnPDF” umożliwia nie tylko łączenie wielu plików PDF w jeden, ale także wybór konkretnych stron z każdego pliku PDF, które mają zostać wyodrębnione i dołączone do dokumentu wynikowego..
         /// </summary>
         internal static string INFORMATION_ABOUT_APPLICATION_TEXT {
             get {
@@ -133,7 +133,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Informations.
+        ///   Looks up a localized string similar to Informacje.
         /// </summary>
         internal static string INFORMATIONS {
             get {
@@ -142,7 +142,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User manual.
+        ///   Looks up a localized string similar to Instrukcja obsługi.
         /// </summary>
         internal static string INSTRUCTION_MANUAL {
             get {
@@ -151,12 +151,10 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1. After launching the application, add the PDF files you want to merge – use the button with the plus icon.
-        ///2. The added files will appear in the list, where you can change their order (buttons with up and down arrow icons) or remove selected items (button with the trash icon).
-        ///3. After setting the correct order of files, click the combine files button to merge the selected documents into one PDF file.
-        ///4. The program will ask you to specify the location and name for the new file.
-        ///
-        ///How to select pages to ex [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 1. Po uruchomieniu aplikacji należy dodać pliki PDF, które chcemy połączyć – służy do tego przycisk z ikoną plusa.
+        ///2. Dodane pliki pojawią się na liście, gdzie można zmieniać ich kolejność (przyciski z ikoną strzałki w dół i przyciski z ikoną strzałki w górę) lub usuwać wybrane pozycje przycisk z ikoną kosza na śmieci.
+        ///3. Po ustawieniu odpowiedniej kolejności plików należy kliknąć przycisk połącz pliki, aby połączyć wybrane dokumenty w jeden plik PDF. 
+        ///4. Program poprosi o wskazanie miejsca i nazwy dla n [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string INSTRUCTION_MANUAL_TEXT {
             get {
@@ -165,7 +163,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language.
+        ///   Looks up a localized string similar to Język.
         /// </summary>
         internal static string LANGUAGE {
             get {
@@ -174,7 +172,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language changed.
+        ///   Looks up a localized string similar to Język zmieniony.
         /// </summary>
         internal static string LANGUAGE_CHANGED {
             get {
@@ -183,7 +181,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License.
+        ///   Looks up a localized string similar to Licencja.
         /// </summary>
         internal static string LICENSE {
             get {
@@ -192,7 +190,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main license.
+        ///   Looks up a localized string similar to Główna licencja.
         /// </summary>
         internal static string MAIN_LICENSE {
             get {
@@ -201,7 +199,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Path to file.
+        ///   Looks up a localized string similar to Ścieżka do pliku.
         /// </summary>
         internal static string PATH_TO_FILE {
             get {
@@ -210,7 +208,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pattern.
+        ///   Looks up a localized string similar to Szablon.
         /// </summary>
         internal static string PATTERN {
             get {
@@ -219,7 +217,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Ustawienia.
         /// </summary>
         internal static string SETTINGS {
             get {
@@ -228,7 +226,7 @@ namespace KombajnPDF.App.Properties.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pages count.
+        ///   Looks up a localized string similar to Ilość stron.
         /// </summary>
         internal static string TOTAL_PAGES {
             get {

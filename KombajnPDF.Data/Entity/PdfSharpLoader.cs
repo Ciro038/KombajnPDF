@@ -1,8 +1,9 @@
-﻿using KombajnPDF.App.Data.Abstract;
+﻿using KombajnPDF.Data.Abstract;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
+using System.IO;
 
-namespace KombajnPDF.App.Data.Entity
+namespace KombajnPDF.Data.Entity
 {
     public class PdfSharpLoader : IPdfLoader
     {

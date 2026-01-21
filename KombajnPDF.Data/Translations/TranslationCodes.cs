@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Properties.Translations
+namespace KombajnPDF.Data.Translations
 {
     /// <summary>
     /// Translation key codes used throughout the application.
