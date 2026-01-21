@@ -98,15 +98,9 @@ namespace KombajnPDF.Classes.Form
             Cursor.Current = isWaiting ? Cursors.WaitCursor : Cursors.Default;
         }
 
-        protected void ShowError(Control control, string message)
+        public virtual void ShowError(string message)
         {
-            MainErrorProvider.SetError(control, message);
-        }
-
-        public void ShowError(string message)
-        {
-            var a = ActiveControl;
-            MainErrorProvider.SetError(a, message);
+            MainErrorProvider.SetError(this, message);
         }
     }
 }

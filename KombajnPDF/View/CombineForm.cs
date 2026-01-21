@@ -203,4 +203,9 @@ public partial class CombineForm : BaseForm, ICombineFormView
         using var form = new SettingsForm();
         form.ShowDialog();
     }
+
+    public override void ShowError(string message)
+    {
+        MainErrorProvider.SetError(FilesDataGridView, message);
+    }
 }
