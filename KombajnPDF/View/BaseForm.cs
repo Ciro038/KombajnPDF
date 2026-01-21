@@ -100,7 +100,7 @@ namespace KombajnPDF.Classes.Form
 
         public virtual void ShowError(string message)
         {
-            MainErrorProvider.SetError(this, message);
+            throw new NotImplementedException(message);
         }
     }
 }
