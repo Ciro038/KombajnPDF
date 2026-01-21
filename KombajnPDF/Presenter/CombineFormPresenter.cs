@@ -2,7 +2,6 @@
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.Data.Entity;
 using KombajnPDF.Data.Translations;
-using KombajnPDF.View;
 
 namespace KombajnPDF.App.Presenter
 {
