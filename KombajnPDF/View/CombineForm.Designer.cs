@@ -41,6 +41,7 @@
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
             HelpButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -171,11 +172,11 @@
             HelpButton.UseVisualStyleBackColor = true;
             HelpButton.Click += HelpButton_Click;
             // 
-            // MainForm
+            // CombineForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(901, 318);
+            ClientSize = new Size(1011, 393);
             Controls.Add(HelpButton);
             Controls.Add(CombineFilesButton);
             Controls.Add(RemoveFilesButton);
@@ -186,10 +187,11 @@
             Controls.Add(FilesDataGridView);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "MainForm";
+            Name = "CombineForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KombajnPDF";
             Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).EndInit();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).EndInit();
             ResumeLayout(false);
         }
