@@ -9,30 +9,19 @@ namespace KombajnPDF.Data.Entity;
 /// </summary>
 public class FileItem : IFileItem
 {
-    /// <summary>
-    /// Full path to the fille
-    /// </summary>
-    [Browsable(false)]
+    /// <inheritdoc/>
     public string FullPath { get; set; }
 
-    /// <summary>
-    /// FileItem name
-    /// </summary>
-    [Browsable(true)]
+    /// <inheritdoc/>
     public string FileNameWithExtension { get; set; }
 
-    /// <summary>
-    /// Path to file
-    /// </summary>
-    [Browsable(true)]
+    /// <inheritdoc/>
     public string PathToFile { get; set; }
 
     [Browsable(false)]
     private string filePattern;
-    /// <summary>
-    /// Pattern
-    /// </summary>
-    [Browsable(true)]
+
+    /// <inheritdoc/>
     public string FilePattern
     {
         get
@@ -50,22 +39,13 @@ public class FileItem : IFileItem
         }
     }
 
-    /// <summary>
-    /// Count of pages
-    /// </summary>
-    [Browsable(true)]
+    /// <inheritdoc/>
     public int TotalPages { get; set; }
 
-    /// <summary>
-    /// Extension of the file
-    /// </summary>
-    [Browsable(false)]
+    /// <inheritdoc/>
     public string FileExtension { get; set; }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether the document is in PDF format
-    /// </summary>
-    [Browsable(false)]
+    /// <inheritdoc/>
     public bool IsPDF { get; set; }
 
     /// <summary>
