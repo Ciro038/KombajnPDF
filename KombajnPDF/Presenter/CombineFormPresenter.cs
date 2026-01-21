@@ -64,7 +64,7 @@ namespace KombajnPDF.App.Presenter
             try
             {
                 formView.SetWaitCursor(true);
-                var pathToSave = formView.ShowSaveFileDialogForPdfFile();
+                string pathToSave = formView.ShowSaveFileDialogForPdfFile();
                 filesCombiner.CombineFiles(files.Items, pathToSave);
                 formView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.COMBINED_FILES), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION));
             }

@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace KombajnPDF.Data.Entity
 {
-    public class FileItemsBindingList : BindingList<IFileItem>, IFilesBindingList
+    public class FileItemsBindingList : BindingList<FileItem>, IFilesBindingList
     {
         /// <inheritdoc/>
         public new IFileItem this[int index]
@@ -17,19 +17,19 @@ namespace KombajnPDF.Data.Entity
         }
 
         /// <inheritdoc/>
-        public new void Add(IFileItem fileItem)
+        public void Add(IFileItem fileItem)
         {
-            base.Add(fileItem);
+            base.Add((FileItem)fileItem);
         }
         /// <inheritdoc/>
-        public new void RemoveAt(int rowIndex)
+        public void RemoveAt(int rowIndex)
         {
             base.RemoveAt(rowIndex);
         }
         /// <inheritdoc/>
-        public void Insert(int index, string fullPathToFile)
+        public  void Insert(int index, string fullPathToFile)
         {
-            Insert(index, new FileItem(fullPathToFile));
+            base.Insert(index, new FileItem(fullPathToFile));
         }
     }
 }
