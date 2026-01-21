@@ -3,7 +3,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using System.IO;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Data.Abstract
 {
     public class PdfSharpLoader : IPdfLoader
     {

@@ -3,7 +3,7 @@ using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Data.Abstract
 {
     /// <summary>
     /// Class responsible for combining files into a single PDF

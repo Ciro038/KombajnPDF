@@ -3,7 +3,7 @@ using KombajnPDF.Data.Enum;
 using KombajnPDF.Data.Translations;
 using System.Resources;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Data.Abstract
 {
     /// <summary>
     /// Provides language-related functionality such as loading, storing,

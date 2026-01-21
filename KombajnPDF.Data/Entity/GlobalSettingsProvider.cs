@@ -2,7 +2,7 @@
 using KombajnPDF.Data.Enum;
 using KombajnPDF.Data.Translations;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Data.Abstract
 {
     /// <summary>
     /// Singleton class that manages global application settings,

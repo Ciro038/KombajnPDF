@@ -3,7 +3,7 @@ using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System.IO;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Data.Abstract
 {
     public class PdfSharpImageToPdfConverter : IImageToPdfConverter
     {

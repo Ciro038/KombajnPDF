@@ -1,4 +1,4 @@
-﻿using KombajnPDF.Data.Entity;
+﻿using KombajnPDF.Data.Abstract;
 
 namespace KombajnPDF.Data.Abstract
 {

@@ -1,7 +1,7 @@
 ﻿using KombajnPDF.Data.Abstract;
 using System.ComponentModel;
 
-namespace KombajnPDF.Data.Entity
+namespace KombajnPDF.Data.Abstract
 {
     public class FileItemsBindingList : BindingList<FileItem>, IFilesBindingList
     {

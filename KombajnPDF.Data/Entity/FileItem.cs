@@ -1,12 +1,13 @@
-﻿using PdfSharp.Pdf.IO;
+﻿using KombajnPDF.Data.Abstract;
+using PdfSharp.Pdf.IO;
 using System.ComponentModel;
 using System.IO;
 
-namespace KombajnPDF.Data.Entity;
+namespace KombajnPDF.Data.Abstract;
 /// <summary>
 /// Class representing a file
 /// </summary>
-public class FileItem
+public class FileItem : IFileItem
 {
     /// <summary>
     /// Full path to the fille
