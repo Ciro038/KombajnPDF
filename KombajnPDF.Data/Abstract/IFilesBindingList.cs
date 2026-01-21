@@ -10,7 +10,7 @@ namespace KombajnPDF.Data.Abstract
         /// Adds an object to the end of the collection based on full path to the file
         /// </summary>
         /// <param name="fullPathToFile">Full path to the file</param>
-        public void Add(string fullPathToFile);
+        public void Add(IFileItem fileItem);
         /// <summary>
         /// Removes the element at the specified index od collection
         /// </summary>

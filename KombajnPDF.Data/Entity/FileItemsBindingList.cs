@@ -17,9 +17,9 @@ namespace KombajnPDF.Data.Abstract
         }
 
         /// <inheritdoc/>
-        public void Add(string fullPathToFile)
+        public void Add(IFileItem fileItem)
         {
-            Add(new FileItem(fullPathToFile));
+            Add(fileItem);
         }
         /// <inheritdoc/>
         public new void RemoveAt(int rowIndex)
@@ -29,7 +29,7 @@ namespace KombajnPDF.Data.Abstract
         /// <inheritdoc/>
         public void Insert(int index, string fullPathToFile)
         {
-           Insert(index, new FileItem(fullPathToFile));
+            Insert(index, new FileItem(fullPathToFile));
         }
     }
 }

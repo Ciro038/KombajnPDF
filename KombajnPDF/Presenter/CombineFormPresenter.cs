@@ -15,6 +15,8 @@ namespace KombajnPDF.App.Presenter
         private readonly IFilesCombiner filesCombiner;
         private readonly IFilePatternChecker filePatternChecker;
         private readonly FileItemsBindingList files;
+        private readonly IFileItemFactory fileItemFactory;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CombineFormPresenter"/> class
@@ -24,11 +26,13 @@ namespace KombajnPDF.App.Presenter
         public CombineFormPresenter(
             ICombineFormView formView,
             IFilesCombiner filesCombiner,
-            IFilePatternChecker filePatternChecker)
+            IFilePatternChecker filePatternChecker,
+            IFileItemFactory fileItemFactory)
         {
             this.formView = formView;
             this.filesCombiner = filesCombiner;
             this.filePatternChecker = filePatternChecker;
+            this.fileItemFactory = fileItemFactory;
 
             files = new FileItemsBindingList();
 
@@ -141,7 +145,7 @@ namespace KombajnPDF.App.Presenter
         {
             var files = formView.ShowOpenFileDialog();
             foreach (var path in files)
-                this.files.Add(path);
+                this.files.Add(fileItemFactory.Create(path));
         }
 
         /// <summary>

@@ -4,6 +4,7 @@ using KombajnPDF.View;
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.App.Interface;
 using KombajnPDF.App.Presenter;
+using KombajnPDF.Data.Entity;
 namespace KombajnPDF;
 
 /// <summary>
@@ -49,10 +50,13 @@ public partial class CombineForm : BaseForm, ICombineFormView
             imageConverter,
             pdfLoader);
 
+        IFileItemFactory fileItemFactory = new FileItemFactory();
+
         presenter = new CombineFormPresenter(
             this,
             filesCombiner,
-            patternChecker);
+            patternChecker,
+            fileItemFactory);
 
         InitializeDataGrid();
     }
