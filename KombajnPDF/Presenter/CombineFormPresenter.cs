@@ -1,6 +1,6 @@
 ﻿using KombajnPDF.App.Interface;
 using KombajnPDF.Data.Abstract;
-using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using KombajnPDF.Data.Translations;
 
 namespace KombajnPDF.App.Presenter
@@ -50,7 +50,7 @@ namespace KombajnPDF.App.Presenter
         private void OnFilesDropped(string[] files)
         {
             foreach (var file in files)
-                this.files.Add(file);
+                this.files.Add(fileItemFactory.Create(file));
         }
 
         /// <summary>

@@ -3,7 +3,7 @@ using PdfSharp.Pdf.IO;
 using System.ComponentModel;
 using System.IO;
 
-namespace KombajnPDF.Data.Abstract;
+namespace KombajnPDF.Data.Entity;
 /// <summary>
 /// Class representing a file
 /// </summary>
@@ -13,7 +13,7 @@ public class FileItem : IFileItem
     /// Full path to the fille
     /// </summary>
     [Browsable(false)]
-    public string FullPath;
+    public string FullPath { get; set; }
 
     /// <summary>
     /// FileItem name
@@ -79,7 +79,7 @@ public class FileItem : IFileItem
     {
         if (string.IsNullOrEmpty(fullPathToFile))
             throw new ArgumentNullException(nameof(fullPathToFile));
-        if (!System.IO.File.Exists(fullPathToFile))
+        if (!File.Exists(fullPathToFile))
             throw new FileNotFoundException();
 
         FileExtension = Path.GetExtension(fullPathToFile).ToLower();

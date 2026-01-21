@@ -1,25 +1,25 @@
 ﻿using KombajnPDF.Data.Abstract;
 using System.ComponentModel;
 
-namespace KombajnPDF.Data.Abstract
+namespace KombajnPDF.Data.Entity
 {
-    public class FileItemsBindingList : BindingList<FileItem>, IFilesBindingList
+    public class FileItemsBindingList : BindingList<IFileItem>, IFilesBindingList
     {
         /// <inheritdoc/>
-        public new FileItem this[int index]
+        public new IFileItem this[int index]
         {
             get { return base[index]; }
         }
         /// <inheritdoc/>
         public new List<FileItem> Items
         {
-            get { return ((List<FileItem>)base.Items).ConvertAll(file => (FileItem)file); }
+            get { return ((List<FileItem>)base.Items).ConvertAll(file => file); }
         }
 
         /// <inheritdoc/>
-        public void Add(IFileItem fileItem)
+        public new void Add(IFileItem fileItem)
         {
-            Add(fileItem);
+            base.Add(fileItem);
         }
         /// <inheritdoc/>
         public new void RemoveAt(int rowIndex)

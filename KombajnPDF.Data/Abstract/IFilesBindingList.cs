@@ -1,11 +1,11 @@
-﻿using KombajnPDF.Data.Abstract;
+﻿using KombajnPDF.Data.Entity;
 
 namespace KombajnPDF.Data.Abstract
 {
     internal interface IFilesBindingList
     {
         List<FileItem> Items { get; }
-        public FileItem this[int index] { get; }
+        public IFileItem this[int index] { get; }
         /// <summary>
         /// Adds an object to the end of the collection based on full path to the file
         /// </summary>

@@ -1,7 +1,6 @@
 using KombajnPDF.Classes.Form;
 using KombajnPDF.Data.Abstract;
 using KombajnPDF.View;
-using KombajnPDF.Data.Abstract;
 using KombajnPDF.App.Interface;
 using KombajnPDF.App.Presenter;
 using KombajnPDF.Data.Entity;
@@ -84,7 +83,7 @@ public partial class CombineForm : BaseForm, ICombineFormView
         if (e.Data is null || !e.Data.GetDataPresent(DataFormats.FileDrop))
             return;
 
-        var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+        string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
         if (files is not null)
         {
             FilesDropped?.Invoke(files);

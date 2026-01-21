@@ -1,4 +1,4 @@
-﻿using KombajnPDF.Data.Abstract;
+﻿using KombajnPDF.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

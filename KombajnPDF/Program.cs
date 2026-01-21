@@ -1,5 +1,5 @@
 using KombajnPDF.Classes;
-using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using KombajnPDF.Data.Translations;
 
 namespace KombajnPDF.App

@@ -3,7 +3,7 @@ using KombajnPDF.Data.Enum;
 using KombajnPDF.Data.Translations;
 using System.Resources;
 
-namespace KombajnPDF.Data.Abstract
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Provides language-related functionality such as loading, storing,
@@ -72,7 +72,7 @@ namespace KombajnPDF.Data.Abstract
         {
             if (!_resourceManagers.TryGetValue(_currentLanguage, out var manager))
             {
-                string baseName = $"KombajnPDF.App.Properties.Translations.Strings.{_currentLanguage}";
+                string baseName = $"KombajnPDF.Data.Translations.Strings.{_currentLanguage}";
                 manager = new ResourceManager(baseName, typeof(LanguageService).Assembly);
                 _resourceManagers[_currentLanguage] = manager;
             }

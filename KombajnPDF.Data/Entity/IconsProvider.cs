@@ -2,7 +2,7 @@
 using System.Drawing; // Ensure this using directive is present
 using System.Windows.Forms;
 
-namespace KombajnPDF.Data.Abstract;
+namespace KombajnPDF.Data.Entity;
 
 /// <summary>
 /// Provides helper methods for working with icons in WinForms, including resizing and applying them to buttons.

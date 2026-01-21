@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using KombajnPDF.App.Interface;
 using KombajnPDF.App.Presenter;
 using KombajnPDF.Data.Abstract;
-using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using Moq;
 using NUnit.Framework;
 

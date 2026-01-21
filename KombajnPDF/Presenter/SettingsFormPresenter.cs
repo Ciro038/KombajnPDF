@@ -1,6 +1,5 @@
 ﻿using KombajnPDF.App.Interface;
-using KombajnPDF.Data.Abstract;
-using KombajnPDF.Data.Abstract;
+using KombajnPDF.Data.Entity;
 using KombajnPDF.Data.Enum;
 using KombajnPDF.Data.Translations;
 using KombajnPDF.View;

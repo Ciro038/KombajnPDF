@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KombajnPDF.Data.Abstract
+namespace KombajnPDF.Data.Entity
 {
     /// <summary>
     /// Class to validate pattern for the file
@@ -18,9 +18,9 @@ namespace KombajnPDF.Data.Abstract
         /// <summary>
         /// Method checks whether pattern contains illegal chars
         /// </summary>
-        /// <param name="pattern">Pattern to check pages to print</param>
+        /// <param name="fileItem">IFileItem abstract interface</param>
         /// <returns>true if he doesn't have it</returns>
-        private bool ContainsOnlyAllowedChars(FileItem fileItem)
+        private bool ContainsOnlyAllowedChars(IFileItem fileItem)
         {
             return fileItem.FilePattern.All(allowedChars.Contains);
         }
@@ -31,7 +31,7 @@ namespace KombajnPDF.Data.Abstract
         /// <param name="fileItem">FileItem to check</param>
         /// <param name="pages">List of pages to print</param>
         /// <returns>true if FileItem is correct</returns>
-        public bool TryParse(FileItem fileItem, out List<int> pages)
+        public bool TryParse(IFileItem fileItem, out List<int> pages)
         {
             pages = new List<int>();
 
@@ -64,13 +64,13 @@ namespace KombajnPDF.Data.Abstract
             return true;
         }
 
-        private bool TryParseOnePage(FileItem fileItem)
+        private bool TryParseOnePage(IFileItem fileItem)
         {
             return int.TryParse(fileItem.FilePattern, out int page) &&
                    page <= fileItem.TotalPages;
         }
 
-        private bool TryParsePart(string part, FileItem fileItem, List<int> pages)
+        private bool TryParsePart(string part, IFileItem fileItem, List<int> pages)
         {
             string currentPart = part.Trim();
             if (currentPart == "-")
@@ -149,32 +149,32 @@ namespace KombajnPDF.Data.Abstract
             }
         }
 
-        private bool AddAllPages(FileItem fileItem, List<int> pages)
+        private bool AddAllPages(IFileItem fileItem, List<int> pages)
         {
             pages.AddRange(GetAllPages(fileItem));
             return true;
         }
-        private IEnumerable<string> SplitPattern(FileItem fileItem)
+        private IEnumerable<string> SplitPattern(IFileItem fileItem)
         {
             return fileItem.FilePattern
                 .Split(';', StringSplitOptions.RemoveEmptyEntries)
                 .Select(p => p.Trim());
         }
 
-        private List<int> GetAllPages(FileItem fileItem)
+        private List<int> GetAllPages(IFileItem fileItem)
         {
             return Enumerable.Range(1, fileItem.TotalPages).ToList();
         }
-        private List<int> GetFirstPage(FileItem fileItem)
+        private List<int> GetFirstPage(IFileItem fileItem)
         {
             return new List<int> { 1 };
         }
-        private bool IsOnePagePattern(FileItem fileItem)
+        private bool IsOnePagePattern(IFileItem fileItem)
         {
             return int.TryParse(fileItem.FilePattern, out var value);
         }
 
-        private bool IsAllPagesPattern(FileItem fileItem)
+        private bool IsAllPagesPattern(IFileItem fileItem)
         {
             if (string.IsNullOrEmpty(fileItem.FilePattern))
                 return true;
@@ -184,7 +184,7 @@ namespace KombajnPDF.Data.Abstract
             return false;
         }
 
-        private bool IsValidFileItem(FileItem fileItem)
+        private bool IsValidFileItem(IFileItem fileItem)
         {
             return fileItem != null && fileItem.TotalPages > 0;
         }

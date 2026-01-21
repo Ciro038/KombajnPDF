@@ -2,6 +2,7 @@
 {
     public interface IFileItem
     {
+        string FullPath { get; set; }
         string FileExtension { get; set; }
         string FileNameWithExtension { get; set; }
         string FilePattern { get; set; }
