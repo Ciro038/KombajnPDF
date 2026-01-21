@@ -210,4 +210,41 @@ public partial class CombineForm : BaseForm, ICombineFormView
     {
         MainErrorProvider.SetError(FilesDataGridView, message);
     }
+    public string ShowSaveFileDialogForPdfFile()
+    {
+        SaveFileDialog saveFileDialog = new()
+        {
+            Filter = "Files PDF|*.pdf",
+            Title = "Save file PDF",
+            FileName = "NewDocument.pdf"
+        };
+
+        DialogResult result = saveFileDialog.ShowDialog();
+
+        if (result == DialogResult.OK)
+        {
+            string pathToSave = saveFileDialog.FileName;
+            if (string.IsNullOrEmpty(pathToSave))
+            {
+                return string.Empty;
+            }
+            string extension = Path.GetExtension(pathToSave);
+            if (string.IsNullOrEmpty(extension))
+            {
+                return pathToSave += ".pdf";
+            }
+            if (extension.Contains(".pdf", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return pathToSave;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+        else
+        {
+            return string.Empty;
+        }
+    }
 }

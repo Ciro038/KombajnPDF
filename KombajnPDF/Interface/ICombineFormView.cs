@@ -5,7 +5,7 @@
     /// It defines all UI-related actions and interactions available in the main window.
     /// </summary>
     public interface ICombineFormView : IBaseFormView
-    {
+    {        
         /// <summary>
         /// Triggered when the pattern cell in the file DataGridView is edited.
         /// </summary>
@@ -70,6 +70,8 @@
 
         void ShowInfoForm();
         void ShowSettingsForm();
+
+        string ShowSaveFileDialogForPdfFile();
     }
 
 }

@@ -14,8 +14,6 @@
         /// <returns>An array of file paths selected by the user.</returns>
         string[] ShowOpenFileDialog();
 
-        string ShowSaveFileDialogForPdfFile();
-
         void SetWaitCursor(bool isWaiting);
     }
 }
