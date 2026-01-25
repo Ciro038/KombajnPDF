@@ -41,12 +41,11 @@ public partial class CombineForm : BaseForm, ICombineFormView
         // infrastruktura
         IFilePatternChecker patternChecker = new FilePatternChecker();
         IImageToPdfConverter imageConverter = new PdfSharpImageToPdfConverter();
-        IPdfLoader pdfLoader = new PdfSharpLoader();
+        IPdfLoader pdfLoader = new PdfSharpLoader(imageConverter);
 
         // serwis domenowy
         IFilesCombiner filesCombiner = new FilesCombiner(
             patternChecker,
-            imageConverter,
             pdfLoader);
 
         IFileItemFactory fileItemFactory = new FileItemFactory();

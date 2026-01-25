@@ -4,8 +4,7 @@ namespace KombajnPDF.Data.Abstract
 {
     public interface IPdfLoader
     {
-        IPdfDocument Load(string path);
-        IPdfDocument Load(Stream stream);
+        IPdfDocument Load(IFileItem fileItem);
         IPdfDocument CreateEmpty();
         void AddPage(IPdfDocument target, object page);
         void Save(IPdfDocument document, string path);
