@@ -158,7 +158,7 @@ namespace KombajnPDF.App.Presenter
             {
                 var file = files[rowIndex];
                 if (!filePatternChecker.TryParse(file, out var pages))
-                    throw new FormatException($"Invalid pattern for file: {file.FileNameWithExtension}");
+                    throw new FormatException($"Invalid pattern for the file: {file.FileNameWithExtension}");
                 else
                     formView.MarkRowAsValid(rowIndex);
             }
