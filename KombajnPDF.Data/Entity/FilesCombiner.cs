@@ -28,7 +28,7 @@ namespace KombajnPDF.Data.Entity
             _pdfLoader = pdfLoader;
         }
 
-        public void CombineFiles(List<FileItem> items, string outputPath)
+        public void CombineFiles(List<IFileItem> items, string outputPath)
         {
             if (string.IsNullOrWhiteSpace(outputPath))
                 throw new ArgumentException(nameof(outputPath));

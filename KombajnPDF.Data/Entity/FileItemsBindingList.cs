@@ -6,30 +6,32 @@ namespace KombajnPDF.Data.Entity
     public class FileItemsBindingList : BindingList<FileItem>, IFilesBindingList
     {
         /// <inheritdoc/>
-        public new IFileItem this[int index]
-        {
-            get { return base[index]; }
-        }
+        public IFileItem this[int index] => base[index];
+
         /// <inheritdoc/>
-        public new List<FileItem> Items
-        {
-            get { return ((List<FileItem>)base.Items).ConvertAll(file => file); }
-        }
+        public List<IFileItem> Items
+            => base.Items.Cast<IFileItem>().ToList();
 
         /// <inheritdoc/>
         public void Add(IFileItem fileItem)
         {
-            base.Add((FileItem)fileItem);
+            if (fileItem is not FileItem concrete)
+                throw new ArgumentException(
+                    "Object is not of type FileItem",
+                    nameof(fileItem));
+
+            base.Add(concrete);
         }
+
         /// <inheritdoc/>
-        public void RemoveAt(int rowIndex)
+        public void Insert(int index, IFileItem fileItem)
         {
-            base.RemoveAt(rowIndex);
-        }
-        /// <inheritdoc/>
-        public  void Insert(int index, string fullPathToFile)
-        {
-            base.Insert(index, new FileItem(fullPathToFile));
+            if (fileItem is not FileItem concrete)
+                throw new ArgumentException(
+                    "Object is not of type FileItem",
+                    nameof(fileItem));
+
+            base.Insert(index, concrete);
         }
     }
 }

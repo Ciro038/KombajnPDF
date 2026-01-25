@@ -1,15 +1,13 @@
-﻿using KombajnPDF.Data.Entity;
-
-namespace KombajnPDF.Data.Abstract
+﻿namespace KombajnPDF.Data.Abstract
 {
     internal interface IFilesBindingList
     {
-        List<FileItem> Items { get; }
+        List<IFileItem> Items { get; }
         public IFileItem this[int index] { get; }
         /// <summary>
         /// Adds an object to the end of the collection based on full path to the file
         /// </summary>
-        /// <param name="fullPathToFile">Full path to the file</param>
+        /// <param name="fileItem">The file item to add</param>
         public void Add(IFileItem fileItem);
         /// <summary>
         /// Removes the element at the specified index od collection
@@ -20,8 +18,8 @@ namespace KombajnPDF.Data.Abstract
         /// Insert an element into collection at the specified index
         /// </summary>
         /// <param name="index">The zero-based index at which item should be inserted</param>
-        /// <param name="fullPathToFile">Full path to the file</param>
-        public void Insert(int index, string fullPathToFile);
+        /// <param name="fileItem">The file item to insert</param>
+        public void Insert(int index, IFileItem fileItem);
 
     }
 }

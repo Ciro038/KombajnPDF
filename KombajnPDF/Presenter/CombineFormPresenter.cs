@@ -93,7 +93,7 @@ namespace KombajnPDF.App.Presenter
                 if (index >= files.Count - 1)
                     continue;
 
-                var file = files[index].FullPath;
+                var file = files[index];
                 files.RemoveAt(index);
                 files.Insert(index + 1, file);
                 newIndexes.Add(index + 1);
@@ -118,7 +118,7 @@ namespace KombajnPDF.App.Presenter
                 if (index == 0)
                     continue;
 
-                var file = files[index].FullPath;
+                var file = files[index];
                 files.RemoveAt(index);
                 files.Insert(index - 1, file);
                 newIndexes.Add(index - 1);
