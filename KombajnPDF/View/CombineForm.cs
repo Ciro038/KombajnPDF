@@ -233,7 +233,7 @@ public partial class CombineForm : BaseForm, ICombineFormView
             {
                 return pathToSave += ".pdf";
             }
-            if (extension.Contains(".pdf", StringComparison.CurrentCultureIgnoreCase))
+            if (extension.Contains(".pdf", StringComparison.OrdinalIgnoreCase))
             {
                 return pathToSave;
             }
