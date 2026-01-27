@@ -41,6 +41,7 @@
             RemoveFilesButton = new Button();
             CombineFilesButton = new Button();
             HelpButton = new Button();
+            RemoveAllFilesButton = new Button();
             ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FilesDataGridView).BeginInit();
             SuspendLayout();
@@ -153,7 +154,7 @@
             // 
             // CombineFilesButton
             // 
-            CombineFilesButton.Location = new Point(805, 237);
+            CombineFilesButton.Location = new Point(1038, 87);
             CombineFilesButton.Name = "CombineFilesButton";
             CombineFilesButton.Size = new Size(89, 46);
             CombineFilesButton.TabIndex = 6;
@@ -172,11 +173,22 @@
             HelpButton.UseVisualStyleBackColor = true;
             HelpButton.Click += HelpButton_Click;
             // 
+            // RemoveAllFilesButton
+            // 
+            RemoveAllFilesButton.Location = new Point(805, 239);
+            RemoveAllFilesButton.Name = "RemoveAllFilesButton";
+            RemoveAllFilesButton.Size = new Size(74, 33);
+            RemoveAllFilesButton.TabIndex = 8;
+            RemoveAllFilesButton.Text = "Remove all files";
+            RemoveAllFilesButton.UseVisualStyleBackColor = true;
+            RemoveAllFilesButton.Click += RemoveAllFilesButton_Click;
+            // 
             // CombineForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1011, 393);
+            ClientSize = new Size(1495, 448);
+            Controls.Add(RemoveAllFilesButton);
             Controls.Add(HelpButton);
             Controls.Add(CombineFilesButton);
             Controls.Add(RemoveFilesButton);
@@ -210,5 +222,6 @@
         private DataGridViewTextBoxColumn PathDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn PatternDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn TotalPagesDataGridViewTextBoxColumn;
+        private Button RemoveAllFilesButton;
     }
 }

@@ -108,6 +108,14 @@ public partial class CombineForm : BaseForm, ICombineFormView
             .ToList();
         RemoveFilesButtonClicked?.Invoke(selectedIndexes);
     }
+    private void RemoveAllFilesButton_Click(object sender, EventArgs e)
+    {
+        var selectedIndexes = FilesDataGridView.Rows
+            .Cast<DataGridViewRow>()
+            .Select(r => r.Index)
+            .ToList();
+        RemoveFilesButtonClicked?.Invoke(selectedIndexes);
+    }
 
     private void MoveUpFilesButton_Click(object sender, EventArgs e)
     {
@@ -246,4 +254,6 @@ public partial class CombineForm : BaseForm, ICombineFormView
             return string.Empty;
         }
     }
+
+
 }

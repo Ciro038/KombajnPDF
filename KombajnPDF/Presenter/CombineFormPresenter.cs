@@ -49,8 +49,21 @@ namespace KombajnPDF.App.Presenter
 
         private void OnFilesDropped(string[] files)
         {
-            foreach (var file in files)
-                this.files.Add(fileItemFactory.Create(file));
+            try
+            {
+                formView.SetWaitCursor(true);
+                foreach (var file in files)
+                    this.files.Add(fileItemFactory.Create(file));
+                formView.RefreshGrid();
+            }
+            catch (Exception ex)
+            {
+                formView.ShowError(ex.Message);
+            }
+            finally
+            {
+                formView.SetWaitCursor(false);
+            }
         }
 
         /// <summary>
@@ -58,9 +71,6 @@ namespace KombajnPDF.App.Presenter
         /// </summary>
         private void CombineFilesButtonClicked()
         {
-            if (files.Count == 0)
-                return;
-
             try
             {
                 formView.SetWaitCursor(true);
@@ -84,23 +94,33 @@ namespace KombajnPDF.App.Presenter
         /// <param name="selectedIndexes">Indexes of selected files.</param>
         private void OnMoveDownFilesButtonClicked(List<int> selectedIndexes)
         {
-            if (files.Count <= 1) return;
-
-            List<int> newIndexes = new List<int>();
-
-            foreach (int index in selectedIndexes.OrderByDescending(x => x))
+            try
             {
-                if (index >= files.Count - 1)
-                    continue;
+                formView.SetWaitCursor(true);
+                List<int> newIndexes = new List<int>();
 
-                var file = files[index];
-                files.RemoveAt(index);
-                files.Insert(index + 1, file);
-                newIndexes.Add(index + 1);
+                foreach (int index in selectedIndexes.OrderByDescending(x => x))
+                {
+                    if (index >= files.Count - 1)
+                        continue;
+
+                    var file = files[index];
+                    files.RemoveAt(index);
+                    files.Insert(index + 1, file);
+                    newIndexes.Add(index + 1);
+                }
+
+                formView.RefreshGrid();
+                formView.SelectRows(newIndexes);
             }
-
-            formView.RefreshGrid();
-            formView.SelectRows(newIndexes);
+            catch (Exception ex)
+            {
+                formView.ShowError(ex.Message);
+            }
+            finally
+            {
+                formView.SetWaitCursor(false);
+            }
         }
 
         /// <summary>
@@ -109,23 +129,33 @@ namespace KombajnPDF.App.Presenter
         /// <param name="selectedIndexes">Indexes of selected files.</param>
         private void OnMoveUpFilesButtonClicked(List<int> selectedIndexes)
         {
-            if (files.Count <= 1) return;
-
-            List<int> newIndexes = new List<int>();
-
-            foreach (int index in selectedIndexes.OrderBy(x => x))
+            try
             {
-                if (index == 0)
-                    continue;
+                formView.SetWaitCursor(true);
+                List<int> newIndexes = new List<int>();
 
-                var file = files[index];
-                files.RemoveAt(index);
-                files.Insert(index - 1, file);
-                newIndexes.Add(index - 1);
+                foreach (int index in selectedIndexes.OrderBy(x => x))
+                {
+                    if (index == 0)
+                        continue;
+
+                    var file = files[index];
+                    files.RemoveAt(index);
+                    files.Insert(index - 1, file);
+                    newIndexes.Add(index - 1);
+                }
+
+                formView.RefreshGrid();
+                formView.SelectRows(newIndexes);
             }
-
-            formView.RefreshGrid();
-            formView.SelectRows(newIndexes);
+            catch (Exception ex)
+            {
+                formView.ShowError(ex.Message);
+            }
+            finally
+            {
+                formView.SetWaitCursor(false);
+            }
         }
 
         /// <summary>
@@ -134,8 +164,21 @@ namespace KombajnPDF.App.Presenter
         /// <param name="selectedIndexes">List of selected rows Indexes</param>
         private void OnRemoveFilesButtonClicked(List<int> selectedIndexes)
         {
-            foreach (var index in selectedIndexes)
-                files.RemoveAt(index);
+            try
+            {
+                formView.SetWaitCursor(true);
+                foreach (var index in selectedIndexes.OrderByDescending(x => x))
+                    files.RemoveAt(index);
+                formView.RefreshGrid();
+            }
+            catch (Exception ex)
+            {
+                formView.ShowError(ex.Message);
+            }
+            finally
+            {
+                formView.SetWaitCursor(false);
+            }
         }
 
         /// <summary>
@@ -143,9 +186,22 @@ namespace KombajnPDF.App.Presenter
         /// </summary>
         private void OnAddFilesButtonClicked()
         {
-            var files = formView.ShowOpenFileDialog();
-            foreach (var path in files)
-                this.files.Add(fileItemFactory.Create(path));
+            try
+            {
+                formView.SetWaitCursor(true);
+                var files = formView.ShowOpenFileDialog();
+                foreach (var path in files)
+                    this.files.Add(fileItemFactory.Create(path));
+                formView.RefreshGrid();
+            }
+            catch (Exception ex)
+            {
+                formView.ShowError(ex.Message);
+            }
+            finally
+            {
+                formView.SetWaitCursor(false);
+            }
         }
 
         /// <summary>
@@ -156,6 +212,7 @@ namespace KombajnPDF.App.Presenter
         {
             try
             {
+                formView.SetWaitCursor(true);
                 var file = files[rowIndex];
                 if (!filePatternChecker.TryParse(file, out var pages))
                     throw new FormatException($"Invalid pattern for the file: {file.FileNameWithExtension}");
@@ -166,6 +223,10 @@ namespace KombajnPDF.App.Presenter
             {
                 formView.MarkRowAsInvalid(rowIndex);
                 formView.ShowError(ex.Message);
+            }
+            finally
+            {
+                formView.SetWaitCursor(false);
             }
         }
     }
