@@ -54,11 +54,11 @@
             FilesDataGridView.AllowUserToResizeRows = false;
             FilesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             FilesDataGridView.Columns.AddRange(new DataGridViewColumn[] { NameDataGridViewTextBoxColumn, PathDataGridViewTextBoxColumn, PatternDataGridViewTextBoxColumn, TotalPagesDataGridViewTextBoxColumn });
-            FilesDataGridView.Location = new Point(12, 41);
+            FilesDataGridView.Location = new Point(12, 38);
             FilesDataGridView.Name = "FilesDataGridView";
             FilesDataGridView.RowHeadersVisible = false;
             FilesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            FilesDataGridView.Size = new Size(787, 242);
+            FilesDataGridView.Size = new Size(763, 270);
             FilesDataGridView.TabIndex = 0;
             FilesDataGridView.CellEndEdit += FilesDataGridView_CellEndEdit;
             FilesDataGridView.DragEnter += FilesDataGridView_DragEnter;
@@ -104,9 +104,9 @@
             // 
             // SettingsButton
             // 
-            SettingsButton.Location = new Point(42, 8);
+            SettingsButton.Location = new Point(33, 0);
             SettingsButton.Name = "SettingsButton";
-            SettingsButton.Size = new Size(27, 27);
+            SettingsButton.Size = new Size(32, 32);
             SettingsButton.TabIndex = 1;
             SettingsButton.Text = "Settings";
             SettingsButton.UseVisualStyleBackColor = true;
@@ -114,9 +114,9 @@
             // 
             // AddFilesButton
             // 
-            AddFilesButton.Location = new Point(805, 41);
+            AddFilesButton.Location = new Point(781, 38);
             AddFilesButton.Name = "AddFilesButton";
-            AddFilesButton.Size = new Size(74, 33);
+            AddFilesButton.Size = new Size(74, 42);
             AddFilesButton.TabIndex = 2;
             AddFilesButton.Text = "Add files";
             AddFilesButton.UseVisualStyleBackColor = true;
@@ -124,9 +124,9 @@
             // 
             // MoveUpFilesButton
             // 
-            MoveUpFilesButton.Location = new Point(805, 94);
+            MoveUpFilesButton.Location = new Point(781, 95);
             MoveUpFilesButton.Name = "MoveUpFilesButton";
-            MoveUpFilesButton.Size = new Size(74, 33);
+            MoveUpFilesButton.Size = new Size(74, 42);
             MoveUpFilesButton.TabIndex = 3;
             MoveUpFilesButton.Text = "Move up";
             MoveUpFilesButton.UseVisualStyleBackColor = true;
@@ -134,9 +134,9 @@
             // 
             // MoveDownButton
             // 
-            MoveDownButton.Location = new Point(805, 139);
+            MoveDownButton.Location = new Point(781, 152);
             MoveDownButton.Name = "MoveDownButton";
-            MoveDownButton.Size = new Size(74, 33);
+            MoveDownButton.Size = new Size(74, 42);
             MoveDownButton.TabIndex = 4;
             MoveDownButton.Text = "Move down";
             MoveDownButton.UseVisualStyleBackColor = true;
@@ -144,9 +144,9 @@
             // 
             // RemoveFilesButton
             // 
-            RemoveFilesButton.Location = new Point(805, 185);
+            RemoveFilesButton.Location = new Point(781, 209);
             RemoveFilesButton.Name = "RemoveFilesButton";
-            RemoveFilesButton.Size = new Size(74, 33);
+            RemoveFilesButton.Size = new Size(74, 42);
             RemoveFilesButton.TabIndex = 5;
             RemoveFilesButton.Text = "Ramove files";
             RemoveFilesButton.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
             // 
             // CombineFilesButton
             // 
-            CombineFilesButton.Location = new Point(1038, 87);
+            CombineFilesButton.Location = new Point(121, 340);
             CombineFilesButton.Name = "CombineFilesButton";
             CombineFilesButton.Size = new Size(89, 46);
             CombineFilesButton.TabIndex = 6;
@@ -165,9 +165,9 @@
             // 
             // HelpButton
             // 
-            HelpButton.Location = new Point(12, 9);
+            HelpButton.Location = new Point(1, 1);
             HelpButton.Name = "HelpButton";
-            HelpButton.Size = new Size(24, 24);
+            HelpButton.Size = new Size(30, 30);
             HelpButton.TabIndex = 7;
             HelpButton.Text = "Info";
             HelpButton.UseVisualStyleBackColor = true;
@@ -175,9 +175,9 @@
             // 
             // RemoveAllFilesButton
             // 
-            RemoveAllFilesButton.Location = new Point(805, 239);
+            RemoveAllFilesButton.Location = new Point(781, 266);
             RemoveAllFilesButton.Name = "RemoveAllFilesButton";
-            RemoveAllFilesButton.Size = new Size(74, 33);
+            RemoveAllFilesButton.Size = new Size(74, 42);
             RemoveAllFilesButton.TabIndex = 8;
             RemoveAllFilesButton.Text = "Remove all files";
             RemoveAllFilesButton.UseVisualStyleBackColor = true;

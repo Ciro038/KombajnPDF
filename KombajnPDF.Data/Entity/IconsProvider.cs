@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing; // Ensure this using directive is present
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace KombajnPDF.Data.Entity;
@@ -21,25 +22,32 @@ public static class IconsProvider
         ArgumentNullException.ThrowIfNull(image);
         ArgumentNullException.ThrowIfNull(targetSize);
 
+
+        // -1 px bufor bezpieczeństwa (WinForms Button clipping)
+        int safeWidth = targetSize.Width - 1;
+        int safeHeight = targetSize.Height - 1;
+
         // Calculate scale to maintain aspect ratio
-        float ratioX = (float)targetSize.Width / image.Width;
-        float ratioY = (float)targetSize.Height / image.Height;
+        float ratioX = (float)safeWidth / image.Width;
+        float ratioY = (float)safeHeight / image.Height;
         float scale = Math.Min(ratioX, ratioY);
 
         // Calculate scaled dimensions
-        int scaledWidth = (int)(image.Width * scale) - 1;
-        int scaledHeight = (int)(image.Height * scale) - 1;
+        int scaledWidth = (int)Math.Floor(image.Width * scale);
+        int scaledHeight = (int)Math.Floor(image.Height * scale);
 
         // Calculate position to center the image
-        int posX = (targetSize.Width - scaledWidth) / 2;
-        int posY = (targetSize.Height - scaledHeight) / 2;
+        int posX = (safeWidth - scaledWidth) / 2;
+        int posY = (safeHeight - scaledHeight) / 2;
 
         // Create resized bitmap
-        var result = new Bitmap(targetSize.Width, targetSize.Height);
+        var result = new Bitmap(safeWidth, safeHeight);
         using (Graphics g = Graphics.FromImage(result))
         {
             g.Clear(Color.Transparent);
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.SmoothingMode = SmoothingMode.HighQuality;
             g.DrawImage(image, posX, posY, scaledWidth, scaledHeight);
         }
 
@@ -58,14 +66,26 @@ public static class IconsProvider
         ArgumentNullException.ThrowIfNull(button);
         ArgumentNullException.ThrowIfNull(icon);
 
-        var originalIcon = icon.ToBitmap();
-        var resizedIcon = ResizeImage(originalIcon, button.ClientSize);
-        button.Image = resizedIcon;
-        button.Text = string.Empty;
-        button.ImageAlign = ContentAlignment.MiddleCenter;
+        button.AutoSize = false;
+        button.UseVisualStyleBackColor = false;
         button.FlatStyle = FlatStyle.Flat;
         button.FlatAppearance.BorderSize = 0;
-        button.BackColor = Color.Transparent;
+        button.Padding = new Padding(2);
+        button.Text = string.Empty;
+        button.ImageAlign = ContentAlignment.MiddleCenter;
         button.TextImageRelation = TextImageRelation.Overlay;
+        button.BackColor = Color.Transparent;
+
+        using var originalIcon = icon.ToBitmap();
+
+        var targetSize = new Size(
+            button.ClientSize.Width - button.Padding.Horizontal,
+            button.ClientSize.Height - button.Padding.Vertical
+        );
+
+        var resizedIcon = ResizeImage(originalIcon, targetSize);
+
+        button.Image = resizedIcon;
+
     }
 }
