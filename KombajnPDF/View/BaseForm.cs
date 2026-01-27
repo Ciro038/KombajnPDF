@@ -55,8 +55,6 @@ namespace KombajnPDF.Classes.Form
                 : Array.Empty<string>();
         }
 
-
-
         public void SetWaitCursor(bool isWaiting)
         {
             Cursor.Current = isWaiting ? Cursors.WaitCursor : Cursors.Default;
