@@ -40,6 +40,7 @@
             OtherLicenseTextBox = new TextBox();
             MainLicenseGroupBox = new GroupBox();
             MainLicenseTextBox = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             MainInfoTabControl.SuspendLayout();
             InfoTabPage.SuspendLayout();
             InstructionGroupBox.SuspendLayout();
@@ -57,7 +58,7 @@
             MainInfoTabControl.Location = new Point(0, 0);
             MainInfoTabControl.Name = "MainInfoTabControl";
             MainInfoTabControl.SelectedIndex = 0;
-            MainInfoTabControl.Size = new Size(716, 496);
+            MainInfoTabControl.Size = new Size(735, 646);
             MainInfoTabControl.TabIndex = 0;
             // 
             // InfoTabPage
@@ -68,7 +69,7 @@
             InfoTabPage.Location = new Point(4, 24);
             InfoTabPage.Name = "InfoTabPage";
             InfoTabPage.Padding = new Padding(3);
-            InfoTabPage.Size = new Size(607, 422);
+            InfoTabPage.Size = new Size(727, 618);
             InfoTabPage.TabIndex = 0;
             InfoTabPage.Tag = "INFORMATION";
             InfoTabPage.Text = "INFO";
@@ -77,11 +78,11 @@
             // InstructionGroupBox
             // 
             InstructionGroupBox.Controls.Add(InstructionTextBox);
-            InstructionGroupBox.Dock = DockStyle.Fill;
+            InstructionGroupBox.Dock = DockStyle.Bottom;
             InstructionGroupBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            InstructionGroupBox.Location = new Point(3, 209);
+            InstructionGroupBox.Location = new Point(3, 315);
             InstructionGroupBox.Name = "InstructionGroupBox";
-            InstructionGroupBox.Size = new Size(601, 210);
+            InstructionGroupBox.Size = new Size(721, 300);
             InstructionGroupBox.TabIndex = 0;
             InstructionGroupBox.TabStop = false;
             InstructionGroupBox.Tag = "INSTRUCTION_MANUAL";
@@ -96,7 +97,7 @@
             InstructionTextBox.Name = "InstructionTextBox";
             InstructionTextBox.ReadOnly = true;
             InstructionTextBox.ScrollBars = ScrollBars.Both;
-            InstructionTextBox.Size = new Size(595, 184);
+            InstructionTextBox.Size = new Size(715, 274);
             InstructionTextBox.TabIndex = 1;
             InstructionTextBox.Tag = "INSTRUCTION_MANUAL_TEXT";
             // 
@@ -107,7 +108,7 @@
             InfoGroupBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
             InfoGroupBox.Location = new Point(3, 3);
             InfoGroupBox.Name = "InfoGroupBox";
-            InfoGroupBox.Size = new Size(601, 206);
+            InfoGroupBox.Size = new Size(721, 300);
             InfoGroupBox.TabIndex = 1;
             InfoGroupBox.TabStop = false;
             InfoGroupBox.Tag = "INFORMATION_ABOUT_APPLICATION";
@@ -121,7 +122,7 @@
             InfoTextBox.Name = "InfoTextBox";
             InfoTextBox.ReadOnly = true;
             InfoTextBox.ScrollBars = ScrollBars.Both;
-            InfoTextBox.Size = new Size(595, 180);
+            InfoTextBox.Size = new Size(715, 274);
             InfoTextBox.TabIndex = 0;
             InfoTextBox.Tag = "INFORMATION_ABOUT_APPLICATION_TEXT";
             // 
@@ -132,7 +133,7 @@
             LicenseTabPage.Location = new Point(4, 24);
             LicenseTabPage.Name = "LicenseTabPage";
             LicenseTabPage.Padding = new Padding(3);
-            LicenseTabPage.Size = new Size(708, 468);
+            LicenseTabPage.Size = new Size(727, 618);
             LicenseTabPage.TabIndex = 1;
             LicenseTabPage.Tag = "LICENSE";
             LicenseTabPage.Text = "LICENSE";
@@ -141,11 +142,11 @@
             // OtherLicenseGroupBox
             // 
             OtherLicenseGroupBox.Controls.Add(OtherLicenseTextBox);
-            OtherLicenseGroupBox.Dock = DockStyle.Fill;
+            OtherLicenseGroupBox.Dock = DockStyle.Bottom;
             OtherLicenseGroupBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            OtherLicenseGroupBox.Location = new Point(3, 209);
+            OtherLicenseGroupBox.Location = new Point(3, 315);
             OtherLicenseGroupBox.Name = "OtherLicenseGroupBox";
-            OtherLicenseGroupBox.Size = new Size(702, 256);
+            OtherLicenseGroupBox.Size = new Size(721, 300);
             OtherLicenseGroupBox.TabIndex = 1;
             OtherLicenseGroupBox.TabStop = false;
             OtherLicenseGroupBox.Tag = "EXTERNAL_COMPONENT_LICENSE";
@@ -159,7 +160,7 @@
             OtherLicenseTextBox.Name = "OtherLicenseTextBox";
             OtherLicenseTextBox.ReadOnly = true;
             OtherLicenseTextBox.ScrollBars = ScrollBars.Both;
-            OtherLicenseTextBox.Size = new Size(696, 230);
+            OtherLicenseTextBox.Size = new Size(715, 274);
             OtherLicenseTextBox.TabIndex = 1;
             // 
             // MainLicenseGroupBox
@@ -169,7 +170,7 @@
             MainLicenseGroupBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
             MainLicenseGroupBox.Location = new Point(3, 3);
             MainLicenseGroupBox.Name = "MainLicenseGroupBox";
-            MainLicenseGroupBox.Size = new Size(702, 206);
+            MainLicenseGroupBox.Size = new Size(721, 300);
             MainLicenseGroupBox.TabIndex = 0;
             MainLicenseGroupBox.TabStop = false;
             MainLicenseGroupBox.Tag = "MAIN_LICENSE";
@@ -183,21 +184,26 @@
             MainLicenseTextBox.Name = "MainLicenseTextBox";
             MainLicenseTextBox.ReadOnly = true;
             MainLicenseTextBox.ScrollBars = ScrollBars.Both;
-            MainLicenseTextBox.Size = new Size(696, 180);
+            MainLicenseTextBox.Size = new Size(715, 274);
             MainLicenseTextBox.TabIndex = 1;
             // 
             // InfoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(716, 496);
+            ClientSize = new Size(735, 646);
             Controls.Add(MainInfoTabControl);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MaximumSize = new Size(751, 685);
+            MinimizeBox = false;
+            MinimumSize = new Size(751, 685);
             Name = "InfoForm";
             StartPosition = FormStartPosition.CenterScreen;
             Tag = "INFORMATIONS";
             Text = "InfoForm";
             Load += InfoForm_Load;
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).EndInit();
             MainInfoTabControl.ResumeLayout(false);
             InfoTabPage.ResumeLayout(false);
             InstructionGroupBox.ResumeLayout(false);
