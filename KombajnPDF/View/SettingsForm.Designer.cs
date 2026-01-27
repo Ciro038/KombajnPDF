@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             CurrentLanguageComboBox = new ComboBox();
             groupBox1 = new GroupBox();
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(228, 286);
+            ClientSize = new Size(451, 308);
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
@@ -68,6 +69,7 @@
             Tag = "SETTINGS";
             Text = "SettingsForm";
             Load += SettingsForm_Load;
+            ((System.ComponentModel.ISupportInitialize)MainErrorProvider).EndInit();
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
