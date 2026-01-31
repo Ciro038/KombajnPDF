@@ -191,4 +191,13 @@ A combination of ranges and single pages, e.g. "1;3-5;7" – pages 1, 3, 4, 5, a
   <data name="TOTAL_PAGES" xml:space="preserve">
     <value>Pages count</value>
   </data>
+  <data name="OPTIONS" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="OPEN_FILE_AFTER_COMBINE" xml:space="preserve">
+    <value>Open file after combine</value>
+  </data>
+  <data name="SETTING_CHANGED" xml:space="preserve">
+    <value>Setting changed</value>
+  </data>
 </root>

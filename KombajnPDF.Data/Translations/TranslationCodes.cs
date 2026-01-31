@@ -61,6 +61,9 @@ namespace KombajnPDF.Data.Translations
         FILE_NAME,
         PATH_TO_FILE,
         PATTERN,
-        TOTAL_PAGES
+        TOTAL_PAGES,
+        OPEN_FILE_AFTER_COMBINE,
+        OPTIONS,
+        SETTING_CHANGED
     }
 }

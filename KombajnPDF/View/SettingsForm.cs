@@ -30,12 +30,13 @@ namespace KombajnPDF.View
         /// <summary>
         /// Event triggered when the form should load available languages.
         /// </summary>
-        public event Action LoadAvailableLanguages;
+        public event Action LoadConfigs;
 
         /// <summary>
         /// Event triggered when the user selects a different language.
         /// </summary>
-        public event Action<LanguagesEnum> LanguageChanged;
+        public event Action<LanguagesEnum> LanguageConfigChanged;
+        public event Action<bool> OpenFileAfterCombineConfigChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsForm"/> class.
@@ -47,30 +48,39 @@ namespace KombajnPDF.View
         }
 
         /// <summary>
-        /// Populates the language combo box with available languages and selects the current one.
-        /// </summary>
-        /// <param name="currentLanguage">The currently selected language.</param>
-        /// <param name="languagesEnums">Array of all supported languages.</param>
-        public void SetAvailableLanguages(LanguagesEnum currentLanguage, LanguagesEnum[] languagesEnums)
-        {
-            CurrentLanguageComboBox.Items.AddRange(languagesEnums.Cast<object>().ToArray());
-            CurrentLanguageComboBox.SelectedItem = currentLanguage;
-        }
-
-        /// <summary>
         /// Event handler for when the selected language in the combo box changes.
         /// </summary>
         private void CurrentLanguageComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (CurrentLanguageComboBox.SelectedItem is LanguagesEnum selectedLanguage)
             {
-                LanguageChanged?.Invoke(selectedLanguage);
+                LanguageConfigChanged?.Invoke(selectedLanguage);
             }
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
-            LoadAvailableLanguages?.Invoke();
+            LoadConfigs?.Invoke();
+        }
+        /// <summary>
+        /// Populates the language combo box with available languages and selects the current one.
+        /// </summary>
+        /// <param name="currentLanguage">The currently selected language.</param>
+        /// <param name="availableLanguages">Array of all supported languages.</param>
+        public void SetLanguagesConfig(LanguagesEnum currentLanguage, LanguagesEnum[] availableLanguages)
+        {
+            CurrentLanguageComboBox.Items.AddRange(availableLanguages.Cast<object>().ToArray());
+            CurrentLanguageComboBox.SelectedItem = currentLanguage;
+        }
+
+        public void SetOpenFileAfterCombineConfig(bool openFileAfterCombine)
+        {
+            OpenFileAfterCombineCheckBox.Checked = openFileAfterCombine;
+        }
+
+        private void OpenFileAfterCombineCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            OpenFileAfterCombineConfigChanged?.Invoke(OpenFileAfterCombineCheckBox.Checked);
         }
     }
 

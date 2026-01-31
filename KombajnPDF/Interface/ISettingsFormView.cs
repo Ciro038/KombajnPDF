@@ -14,21 +14,24 @@ namespace KombajnPDF.App.Interface
     interface ISettingsFormView : IBaseFormView
     {
         /// <summary>
-        /// Triggered when the settings form is loaded and available languages should be retrieved.
+        /// Triggered when the settings form is loaded
         /// </summary>
-        event Action LoadAvailableLanguages;
+        event Action LoadConfigs;
 
         /// <summary>
         /// Triggered when the user selects a different language from the settings form.
         /// </summary>
-        event Action<LanguagesEnum> LanguageChanged;
+        event Action<LanguagesEnum> LanguageConfigChanged;
+        event Action<bool> OpenFileAfterCombineConfigChanged;
 
         /// <summary>
         /// Sets the list of available languages in the form, highlighting the current one.
         /// </summary>
         /// <param name="currentLanguage">The currently selected language.</param>
-        /// <param name="languagesEnums">Array of available language options.</param>
-        void SetAvailableLanguages(LanguagesEnum currentLanguage, LanguagesEnum[] languagesEnums);
+        /// <param name="availableLanguages">Array of available language options.</param>
+        void SetLanguagesConfig(LanguagesEnum currentLanguage, LanguagesEnum[] availableLanguages);
+        void SetOpenFileAfterCombineConfig(bool openFileAfterCombine);
+
     }
 
 }

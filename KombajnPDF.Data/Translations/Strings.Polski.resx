@@ -176,6 +176,12 @@ Połączenie zakresów i pojedynczych stron, np. "1;3-5;7" – wyodrębnione zos
   <data name="MAIN_LICENSE" xml:space="preserve">
     <value>Główna licencja</value>
   </data>
+  <data name="OPEN_FILE_AFTER_COMBINE" xml:space="preserve">
+    <value>Otwórz plik po połączeniu</value>
+  </data>
+  <data name="OPTIONS" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
   <data name="PATH_TO_FILE" xml:space="preserve">
     <value>Ścieżka do pliku</value>
   </data>
@@ -185,10 +191,13 @@ Połączenie zakresów i pojedynczych stron, np. "1;3-5;7" – wyodrębnione zos
   <data name="SETTINGS" xml:space="preserve">
     <value>Ustawienia</value>
   </data>
+  <data name="SETTING_CHANGED" xml:space="preserve">
+    <value>Ustawienie zmienione</value>
+  </data>
   <data name="TOTAL_PAGES" xml:space="preserve">
     <value>Ilość stron</value>
   </data>
   <data name="UNEXPECTED_EXCEPTION_OCCURED" xml:space="preserve">
-    <value>An unexpected exception occurred</value>
+    <value>Wystąpił nieoczekiwany wyjątek</value>
   </data>
 </root>

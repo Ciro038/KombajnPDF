@@ -34,5 +34,17 @@ namespace KombajnPDF.Data.Properties {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("true")]
+        public string OpenFileAfterCombine {
+            get {
+                return ((string)(this["OpenFileAfterCombine"]));
+            }
+            set {
+                this["OpenFileAfterCombine"] = value;
+            }
+        }
     }
 }

@@ -33,5 +33,6 @@ namespace KombajnPDF.Data.Abstract
         /// </summary>
         /// <param name="control">The root control to apply translations to.</param>
         void TranslateControl(Control control);
+        LanguagesEnum[] GetAvailableLanguages();
     }
 }

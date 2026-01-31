@@ -1,9 +1,5 @@
 ﻿using KombajnPDF.Data.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KombajnPDF.Data.Translations;
 
 namespace KombajnPDF.Data.Abstract
 {
@@ -17,8 +13,14 @@ namespace KombajnPDF.Data.Abstract
         /// Gets or sets the currently selected language in the application.
         /// Changing this value triggers the <see cref="LanguageChanged"/> event.
         /// </summary>
-        LanguagesEnum CurrentLanguage { get; set; }
-
+        LanguagesEnum CurrentLanguage { get; }
+        bool OpenFileAfterCombine { get; }
+        bool TryChangeOpenFileAfterCombine(bool openFileAfterCombine);
+        string TranslateCode(TranslationCodes translationCode);
+        void TranslateControl(Control parent);
+        bool TryChangeCurrentLanguage(LanguagesEnum language);
+        (LanguagesEnum currentLanguage, LanguagesEnum[] availableLanguages) GetLanguages();
+        bool GetOpenFileAfterCombine();
         /// <summary>
         /// Event that is raised when the <see cref="CurrentLanguage"/> is changed.
         /// </summary>

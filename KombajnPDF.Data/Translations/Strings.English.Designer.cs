@@ -201,6 +201,24 @@ namespace KombajnPDF.Data.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open file after combine.
+        /// </summary>
+        internal static string OPEN_FILE_AFTER_COMBINE {
+            get {
+                return ResourceManager.GetString("OPEN_FILE_AFTER_COMBINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        internal static string OPTIONS {
+            get {
+                return ResourceManager.GetString("OPTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Path to file.
         /// </summary>
         internal static string PATH_TO_FILE {
@@ -215,6 +233,15 @@ namespace KombajnPDF.Data.Translations {
         internal static string PATTERN {
             get {
                 return ResourceManager.GetString("PATTERN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting changed.
+        /// </summary>
+        internal static string SETTING_CHANGED {
+            get {
+                return ResourceManager.GetString("SETTING_CHANGED", resourceCulture);
             }
         }
         

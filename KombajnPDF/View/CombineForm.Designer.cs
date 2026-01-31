@@ -154,9 +154,9 @@
             // 
             // CombineFilesButton
             // 
-            CombineFilesButton.Location = new Point(121, 340);
+            CombineFilesButton.Location = new Point(280, 324);
             CombineFilesButton.Name = "CombineFilesButton";
-            CombineFilesButton.Size = new Size(89, 46);
+            CombineFilesButton.Size = new Size(255, 58);
             CombineFilesButton.TabIndex = 6;
             CombineFilesButton.Tag = "COMBINE_FILES";
             CombineFilesButton.Text = "Combine files";
@@ -187,7 +187,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1495, 448);
+            ClientSize = new Size(866, 394);
             Controls.Add(RemoveAllFilesButton);
             Controls.Add(HelpButton);
             Controls.Add(CombineFilesButton);

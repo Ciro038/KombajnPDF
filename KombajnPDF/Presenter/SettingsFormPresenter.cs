@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Globalization;
 
 namespace KombajnPDF.App.Presenter
 {
@@ -28,8 +29,17 @@ namespace KombajnPDF.App.Presenter
         {
             settingsFormView = settingsForm;
 
-            settingsForm.LoadAvailableLanguages += OnLoadAvailableLanguages;
-            settingsForm.LanguageChanged += OnLanguageChanged;
+            settingsForm.LoadConfigs += OnLoadConfigs;
+            settingsForm.LanguageConfigChanged += OnLanguageConfigChanged;
+            settingsForm.OpenFileAfterCombineConfigChanged += OnOpenFileAfterCombineConfigChanged;
+        }
+
+        private void OnOpenFileAfterCombineConfigChanged(bool openFileAfterCombine)
+        {
+            if (GlobalSettingsProvider.Instance.TryChangeOpenFileAfterCombine(openFileAfterCombine))
+            {
+                settingsFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.SETTING_CHANGED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION));
+            }
         }
 
         /// <summary>
@@ -37,12 +47,11 @@ namespace KombajnPDF.App.Presenter
         /// Updates the global settings and notifies the user.
         /// </summary>
         /// <param name="language">The new language selected by the user.</param>
-        private void OnLanguageChanged(LanguagesEnum language)
+        private void OnLanguageConfigChanged(LanguagesEnum language)
         {
-            if (language != GlobalSettingsProvider.Instance.CurrentLanguage)
+            if (GlobalSettingsProvider.Instance.TryChangeCurrentLanguage(language))
             {
-                GlobalSettingsProvider.Instance.CurrentLanguage = language;
-                settingsFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.LANGUAGE_CHANGED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION));
+                settingsFormView.ShowMessageBox(GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.SETTING_CHANGED), GlobalSettingsProvider.Instance.TranslateCode(TranslationCodes.INFORMATION));
             }
         }
 
@@ -50,12 +59,21 @@ namespace KombajnPDF.App.Presenter
         /// Event handler triggered when the form requests the list of available languages.
         /// Loads all defined languages and updates the view.
         /// </summary>
-        private void OnLoadAvailableLanguages()
+        private void OnLoadConfigs()
         {
-            var languages = Enum.GetValues(typeof(LanguagesEnum))
-                .Cast<LanguagesEnum>()
-                .ToArray();
-            settingsFormView.SetAvailableLanguages(GlobalSettingsProvider.Instance.CurrentLanguage, languages);
+            //TODO: do refaktoryzacji
+
+            //pobranie języków
+            var (currentLanguage, availableLanguages) = GlobalSettingsProvider.Instance.GetLanguages();
+
+            //ustawienie języków w kontrolce
+            settingsFormView.SetLanguagesConfig(currentLanguage, availableLanguages);
+
+            //pobranie ustawienia otwierania pliku po połączeniu
+            var openFileAfterCombine = GlobalSettingsProvider.Instance.GetOpenFileAfterCombine();
+
+            //ustawienie w kontrolce ustawienia otwierania pliku po połączeniu
+            settingsFormView.SetOpenFileAfterCombineConfig(openFileAfterCombine);
         }
     }
 

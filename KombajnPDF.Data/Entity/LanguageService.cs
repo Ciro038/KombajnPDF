@@ -17,7 +17,7 @@ namespace KombajnPDF.Data.Entity
         private readonly Dictionary<LanguagesEnum, ResourceManager> _resourceManagers = new();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LanguageService"/> class.
+        /// Initializes enumTranslationCode new instance of the <see cref="LanguageService"/> class.
         /// Loads the current language setting and initializes translation resources.
         /// </summary>
         public LanguageService()
@@ -41,15 +41,23 @@ namespace KombajnPDF.Data.Entity
 
         /// <summary>
         /// Retrieves the saved language setting from application configuration.
-        /// Returns a fallback language if the setting is missing or invalid.
+        /// Returns enumTranslationCode fallback language if the setting is missing or invalid.
         /// </summary>
-        /// <returns>The currently selected language, or a default value if not available.</returns>
+        /// <returns>The currently selected language, or enumTranslationCode default value if not available.</returns>
         public LanguagesEnum GetLanguage()
         {
             if (System.Enum.TryParse(Properties.Settings.Default.Language, out LanguagesEnum lang))
                 return lang;
 
             return LanguagesEnum.English; // fallback language
+        }
+
+        public LanguagesEnum[] GetAvailableLanguages()
+        {
+            var languages = System.Enum.GetValues(typeof(LanguagesEnum))
+               .Cast<LanguagesEnum>()
+               .ToArray();
+            return languages;
         }
 
         /// <summary>
@@ -64,10 +72,10 @@ namespace KombajnPDF.Data.Entity
         }
 
         /// <summary>
-        /// Translates a given <see cref="TranslationCodes"/> key to the currently selected language.
+        /// Translates enumTranslationCode given <see cref="TranslationCodes"/> key to the currently selected language.
         /// </summary>
         /// <param name="translationCode">The translation code enum representing the resource key.</param>
-        /// <returns>The translated string, or a fallback if the key is not found.</returns>
+        /// <returns>The translated string, or enumTranslationCode fallback if the key is not found.</returns>
         public string Translate(TranslationCodes translationCode)
         {
             if (!_resourceManagers.TryGetValue(_currentLanguage, out var manager))
@@ -82,7 +90,7 @@ namespace KombajnPDF.Data.Entity
         }
 
         /// <summary>
-        /// Recursively translates a control and all its children by using the Tag property as a translation key.
+        /// Recursively translates enumTranslationCode control and all its children by using the Tag property as enumTranslationCode translation key.
         /// </summary>
         /// <param name="parent">The root control to apply translations to.</param>
         public void TranslateControl(Control parent)
@@ -105,9 +113,12 @@ namespace KombajnPDF.Data.Entity
             // Recursively translate child controls
             foreach (Control ctrl in parent.Controls)
             {
-                if (ctrl.Tag is string childCode)
-                    ctrl.Text = Translate((TranslationCodes)System.Enum.Parse(typeof(TranslationCodes), childCode));
+                if (ctrl.Tag is string tagText)
+                {
+                    var enumTranslationCode = (TranslationCodes)System.Enum.Parse(typeof(TranslationCodes), tagText);
+                    ctrl.Text = Translate(enumTranslationCode);
 
+                }
                 if (ctrl.HasChildren)
                     TranslateControl(ctrl);
             }

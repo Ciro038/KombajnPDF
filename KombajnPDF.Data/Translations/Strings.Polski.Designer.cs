@@ -199,6 +199,24 @@ namespace KombajnPDF.Data.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Otwórz plik po połączeniu.
+        /// </summary>
+        internal static string OPEN_FILE_AFTER_COMBINE {
+            get {
+                return ResourceManager.GetString("OPEN_FILE_AFTER_COMBINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opcje.
+        /// </summary>
+        internal static string OPTIONS {
+            get {
+                return ResourceManager.GetString("OPTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ścieżka do pliku.
         /// </summary>
         internal static string PATH_TO_FILE {
@@ -213,6 +231,15 @@ namespace KombajnPDF.Data.Translations {
         internal static string PATTERN {
             get {
                 return ResourceManager.GetString("PATTERN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ustawienie zmienione.
+        /// </summary>
+        internal static string SETTING_CHANGED {
+            get {
+                return ResourceManager.GetString("SETTING_CHANGED", resourceCulture);
             }
         }
         
@@ -235,7 +262,7 @@ namespace KombajnPDF.Data.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An unexpected exception occurred.
+        ///   Looks up a localized string similar to Wystąpił nieoczekiwany wyjątek.
         /// </summary>
         internal static string UNEXPECTED_EXCEPTION_OCCURED {
             get {
