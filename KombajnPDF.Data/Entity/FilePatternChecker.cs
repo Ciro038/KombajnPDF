@@ -130,7 +130,7 @@ namespace KombajnPDF.Data.Entity
             }
             else
             {
-                pages.AddRange(Enumerable.Range(startPage, totalPages));
+                pages.AddRange(Enumerable.Range(startPage, totalPages- startPage+1));
                 return true;
             }
         }
